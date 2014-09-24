@@ -12,7 +12,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +29,13 @@ public class PatientQuery {
     private ResultSet rs = null;
     private PreparedStatement createTable = null;
     private PreparedStatement getAllPatients = null;
-    private PreparedStatement getPatientsByWard = null;
     private PreparedStatement returnPatientByID = null;
     private PreparedStatement patientUpdate = null;
     private PreparedStatement deletePatientRecords = null;
     private PreparedStatement deletePatient = null;
+    private static final String URL = "jdbc:oracle:thin:@//sage.business.unsw.edu.au:1521/orcl01.asbpldb001.ad.unsw.edu.au";
+    private static final String USERNAME = "Z3373928";
+    private static final String PASSWORD = "fra5reDr";
     
     public PatientQuery() {
         openConnection();
@@ -42,23 +43,29 @@ public class PatientQuery {
         try {
 
             DatabaseMetaData dbmd = conn.getMetaData();
-            rs = dbmd.getTables(null, "APP", "PATIENTS", null);
+            
+            rs = dbmd.getTables(null, "APP", "PATIENT", null);
 
-            if (!rs.next()) {
+            /*if (!rs.next()) {
                 System.out.println("creating table");
                 createTable = conn.prepareStatement(
                         "CREATE TABLE app.patients (" //27
                         + "\"PATIENT_ID\" INT not null primary key "
                         + "GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
-                        + "\"FIRST_NAME\" VARCHAR(30), \"LAST_NAME\" VARCHAR(30), "
-                        + "\"GENDER\" VARCHAR(6), DATE_OF_BIRTH DATE, "
-                        + "\"ADDRESS\" VARCHAR(100), \"PHONE\" VARCHAR(10), "
-                        + "\"EMERGENCY_PHONE\" VARCHAR(10), "
-                        + "\"DOCTOR_STAFF_ID\" INT REFERENCES app.doctor (staff_id), "
-                        + "\"WARD_ID\" INT REFERENCES app.ward (ward_id), "
-                        + "\"DATE_ADMITTED\" DATE)");
+                        + "\"LAST_NAME\" VARCHAR(20), \"FIRST_NAME\" VARCHAR(20), "
+                        + "DATE_OF_BIRTH DATE, "
+                        + "\"STREET_ADDRESS\" VARCHAR(50), \"SUBURB\" VARCHAR(20), "
+                        + "\"STATE\" VARCHAR(3), \"POSTCODE\" VARCHAR(4), "
+                        + "\"HOME_PHONE\" VARCHAR(10), \"MOBILE_PHONE\" VARCHAR(10), "
+                        + "\" EMAIL_ADDRESS\" VARCHAR(30), \"ALLERGIES\" VARCHAR(50), "
+                        + "\"MEDICATIONS\" VARCHAR(100), \"EXISTING_CONDITIONS\" VARCHAR(50), "
+                        + "\"MEDICARE_NUMBER\" VARCHAR(10), \"REFERRING_DOCTOR\" VARCHAR(30), "
+                        + "\"GENDER\" VARCHAR(10), \"EMER_CONT_NAME\" VARCHAR(30), "        
+                        + "\"EMER_CONT_RELATIONSHIP\" VARCHAR(10), \"EMER_CONT_PHONE\" VARCHAR(10), "
+                        + "\"FUN_POINT\" VARCHAR(300));");
                 createTable.execute();
-            }
+            
+            }*/
 
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -69,7 +76,8 @@ public class PatientQuery {
 
     private void openConnection() {
         try {
-            conn = DriverManager.getConnection("jdbc:derby:./hospital;create=true");
+            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            System.out.println("connection gained");
         } catch (SQLException ex) {
             Logger.getLogger(PatientQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -89,9 +97,6 @@ public class PatientQuery {
             if (getAllPatients != null) {
                 getAllPatients.close();
             }
-            if (getPatientsByWard != null) {
-                getPatientsByWard.close();
-            }
             if (patientUpdate != null) {
                 patientUpdate.close();
             }
@@ -101,6 +106,7 @@ public class PatientQuery {
             if (conn != null) {
                 conn.close();
             }
+            System.out.println("connection terminated");
         } catch (SQLException ex) {
             Logger.getLogger(PatientQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -117,30 +123,39 @@ public class PatientQuery {
         openConnection();
 
         try {
-
-            getAllPatients = conn.prepareStatement("SELECT * FROM app.patients");
+            
+            getAllPatients = conn.prepareStatement("SELECT * FROM PATIENT");
             resultSet = getAllPatients.executeQuery();
             results = new ArrayList<Patient>();
 
             while (resultSet.next()) {
                 results.add(new Patient(
                         resultSet.getInt("patient_id"),
-                        resultSet.getString("first_name"),
-                        resultSet.getString("last_name"),
-                        resultSet.getString("gender"),
+                        resultSet.getString("patient_lastname"),
+                        resultSet.getString("patient_firstname"),
                         resultSet.getDate("date_of_birth"),
-                        resultSet.getString("address"),
-                        resultSet.getString("phone"),
-                        resultSet.getString("emergency_phone"),
-                        resultSet.getInt("doctor_staff_id"),
-                        resultSet.getInt("ward_id"),
-                        resultSet.getDate("date_admitted")));
+                        resultSet.getString("gender"),
+                        resultSet.getString("street_address"),
+                        resultSet.getString("suburb"),
+                        resultSet.getString("state"),
+                        resultSet.getString("postcode"),
+                        resultSet.getString("home_phone"),
+                        resultSet.getString("mobile_phone"),
+                        resultSet.getString("email_address"),
+                        resultSet.getString("allergies"),
+                        resultSet.getString("medications"),
+                        resultSet.getString("existing_conditions"),
+                        resultSet.getString("medicare_number"),
+                        resultSet.getString("referring_doctor"),
+                        resultSet.getString("emer_cont_name"),
+                        resultSet.getString("emer_cont_relationship"),
+                        resultSet.getString("emer_cont_phone"),
+                        resultSet.getString("fun_point")));
             }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
         closeConnection();
         return results;
-    }
     }
 }

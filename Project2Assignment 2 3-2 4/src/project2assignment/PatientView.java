@@ -6,17 +6,53 @@
 
 package project2assignment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author GuestAccount
  */
 public class PatientView extends javax.swing.JFrame {
 
+    private PatientQuery patientQuery;
+    private DefaultTableModel patientTableModel;
+    private DateFormat df;
+    
     /**
      * Creates new form PatientView
      */
     public PatientView() {
         initComponents();
+        
+        df = new SimpleDateFormat("dd/MM/yyyy");
+        
+        patientTableModel = new DefaultTableModel();
+        patientTableModel.setColumnCount(10);
+        patientTableModel.setColumnIdentifiers(new String[]{"Patient ID", "First Name", "Last Name",
+            "Date of Birth", "Street Address", "Suburb", "Postcode", "Home Phone",
+            "Mobile Phone", "Medicare Number"});
+        jTable1.setModel(patientTableModel);
+    }
+    
+    private void loadPatientTable() {
+        List<Patient> entries = patientQuery.getPatients();
+        int tableRow = 0;
+        patientTableModel.setNumRows(entries.size());
+        for (Patient b : entries) {
+            patientTableModel.setValueAt(b.getPatientID(), tableRow, 0);
+            patientTableModel.setValueAt(b.getFirstName(), tableRow, 1);
+            patientTableModel.setValueAt(b.getLastName(), tableRow, 2);
+            patientTableModel.setValueAt(df.format(b.getDateOfBirth()), tableRow, 3);
+            patientTableModel.setValueAt(b.getStreetAddress(), tableRow, 4);
+            patientTableModel.setValueAt(b.getSuburb(), tableRow, 5);
+            patientTableModel.setValueAt(b.getPostcode(), tableRow, 6);
+            patientTableModel.setValueAt(b.getHomePhone(), tableRow, 7);
+            patientTableModel.setValueAt(b.getMobilePhone(), tableRow, 8);
+            patientTableModel.setValueAt(b.getMedicareNo(), tableRow, 9);
+            tableRow++;
+        }
     }
 
     /**
