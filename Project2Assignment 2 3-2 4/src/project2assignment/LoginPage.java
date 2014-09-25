@@ -70,6 +70,11 @@ public class LoginPage extends javax.swing.JFrame {
         jInternalFrame1.getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 210, 30));
 
         loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
         jInternalFrame1.getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 230, 90, 40));
 
         backdrop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
@@ -96,6 +101,11 @@ public class LoginPage extends javax.swing.JFrame {
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameFieldActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+    new HomePage().setVisible(true);
+    this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
