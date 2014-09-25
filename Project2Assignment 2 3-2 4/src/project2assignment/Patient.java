@@ -14,7 +14,7 @@ import java.sql.Date;
  */
 public class Patient {
     
-    private int patientID;
+    private String patientID;
     private String lastName;
     private String firstName;
     private Date dateOfBirth;
@@ -39,7 +39,7 @@ public class Patient {
     private String emContactNo;
     private String funPoint;
     
-    public Patient(int id, String lname, String fname, Date dob, String sex,
+    public Patient(String id, String lname, String fname, Date dob, String sex,
             String street, String sub, String state, String postcode, String home,
             String mobile, String email, String allergy, String medication, String
                     condition, String medicare, String refDoctor, String emContName,
@@ -70,14 +70,14 @@ public class Patient {
     /**
      * @return the patientID
      */
-    public int getPatientID() {
+    public String getPatientID() {
         return patientID;
     }
 
     /**
      * @param patientID the patientID to set
      */
-    public void setPatientID(int patientID) {
+    public void setPatientID(String patientID) {
         this.patientID = patientID;
     }
 

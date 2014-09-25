@@ -6,16 +6,30 @@
 
 package project2assignment;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author GuestAccount
  */
 public class PatientForm extends javax.swing.JFrame {
 
+    private PatientQuery patientQuery;
+    private DateFormat df;
+    private final String NEXTVAL = "seq_patient.nextval";
+    
     /**
      * Creates new form PatientForm
      */
     public PatientForm() {
+        
+        df = new SimpleDateFormat("dd/MM/yyyy");
+        patientQuery = new PatientQuery();
+        
         initComponents();
     }
 
@@ -33,7 +47,7 @@ public class PatientForm extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         logo = new javax.swing.JLabel();
         genetechLabel = new javax.swing.JLabel();
-        editButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         messagesButton = new javax.swing.JButton();
         messagesLabel = new javax.swing.JLabel();
@@ -58,7 +72,6 @@ public class PatientForm extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         givenNameField = new javax.swing.JTextField();
         surnameField = new javax.swing.JTextField();
-        genderField = new javax.swing.JTextField();
         birthdayField = new javax.swing.JFormattedTextField();
         streetAddressField = new javax.swing.JTextField();
         suburbField = new javax.swing.JTextField();
@@ -82,6 +95,9 @@ public class PatientForm extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         funPointField = new javax.swing.JTextField();
+        genderComboBox = new javax.swing.JComboBox();
+        stateLabel = new javax.swing.JLabel();
+        stateComboBox = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -167,13 +183,13 @@ public class PatientForm extends javax.swing.JFrame {
         genetechLabel.setText("Genetech");
         jInternalFrame2.getContentPane().add(genetechLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 250, 90));
 
-        editButton.setText("Edit");
-        editButton.addActionListener(new java.awt.event.ActionListener() {
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtonActionPerformed(evt);
+                saveButtonActionPerformed(evt);
             }
         });
-        jInternalFrame2.getContentPane().add(editButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 100, 40));
+        jInternalFrame2.getContentPane().add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 100, 40));
 
         backButton.setText("Back");
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -304,12 +320,6 @@ public class PatientForm extends javax.swing.JFrame {
             }
         });
 
-        genderField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                genderFieldActionPerformed(evt);
-            }
-        });
-
         birthdayField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 birthdayFieldActionPerformed(evt);
@@ -423,6 +433,12 @@ public class PatientForm extends javax.swing.JFrame {
             }
         });
 
+        genderComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female", "Unspecified" }));
+
+        stateLabel.setText("State:");
+
+        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "NSW", "VIC", "QLD", "ACT", "WA", "SA", "NT", "TAS" }));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -439,10 +455,9 @@ public class PatientForm extends javax.swing.JFrame {
                                 .addComponent(jButton7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton6)))))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(49, 49, 49)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel17)
@@ -453,42 +468,47 @@ public class PatientForm extends javax.swing.JFrame {
                             .addComponent(jLabel27))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(streetAddressField)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(suburbField, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                            .addComponent(homePhoneField)
+                                            .addComponent(homePhoneField, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                                             .addComponent(referringDocField))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel28)
-                                            .addComponent(jLabel19))
-                                        .addGap(6, 6, 6))
+                                        .addGap(48, 48, 48)
+                                        .addComponent(jLabel28))
                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(genderField, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                            .addComponent(givenNameField))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel16))
-                                        .addGap(24, 24, 24)))
+                                            .addComponent(givenNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(48, 48, 48)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel16)
+                                            .addComponent(jLabel14))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(surnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                                     .addComponent(birthdayField)
                                     .addComponent(medicareNoField)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(postcodeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(streetAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(suburbField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel21)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(mobilePhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(mobilePhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel19)
+                                            .addComponent(stateLabel))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(stateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(postcodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
         );
@@ -505,14 +525,16 @@ public class PatientForm extends javax.swing.JFrame {
                             .addComponent(jLabel14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(genderField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15)
                             .addComponent(birthdayField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(streetAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(streetAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stateLabel)
+                            .addComponent(stateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
@@ -1054,9 +1076,40 @@ public class PatientForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_givenNameFieldActionPerformed
 
-    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editButtonActionPerformed
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        String dobField = this.birthdayField.getText();
+        try {
+            Patient p = new Patient(
+                    NEXTVAL,
+                    givenNameField.getText(),
+                    surnameField.getText(),
+                    new java.sql.Date(df.parse(dobField).getTime()),
+                    (String) genderComboBox.getSelectedItem(),      
+                    streetAddressField.getText(),
+                    suburbField.getText(),
+                    (String) genderComboBox.getSelectedItem(),
+                    postcodeField.getText(),
+                    homePhoneField.getText(),
+                    mobilePhoneField.getText(),
+                    "email@email.com",
+                    patientAllergiesField.getText(),
+                    medicationsField.getText(),
+                    existingConditionsField.getText(),
+                    referringDocField.getText(),
+                    medicareNoField.getText(),
+                    emerContNameField.getText(),
+                    emerContRshipField.getText(),
+                    emerContPhoneField.getText(),
+                    funPointField.getText());
+
+                patientQuery.addPatient(p);
+        } catch (ParseException ex) {
+            Logger.getLogger(PatientForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        PatientView patientList = new PatientView();
+        this.setVisible(false);
+        patientList.setVisible(true);
+    }//GEN-LAST:event_saveButtonActionPerformed
 
     private void scheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleButtonActionPerformed
     
@@ -1086,10 +1139,6 @@ public class PatientForm extends javax.swing.JFrame {
     new PatientView().setVisible(true);
     this.dispose();
     }//GEN-LAST:event_backButtonMouseClicked
-
-    private void genderFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_genderFieldActionPerformed
 
     private void birthdayFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_birthdayFieldActionPerformed
         // TODO add your handling code here:
@@ -1162,14 +1211,13 @@ public class PatientForm extends javax.swing.JFrame {
     private javax.swing.JTextField bloodPressureField;
     private javax.swing.JLabel commentsLabel;
     private javax.swing.JTextArea commentsTextArea;
-    private javax.swing.JButton editButton;
     private javax.swing.JTextField emerContNameField;
     private javax.swing.JTextField emerContPhoneField;
     private javax.swing.JTextField emerContRshipField;
     private javax.swing.JTextField existingConditionsField;
     private javax.swing.JTextField fev1Field;
     private javax.swing.JTextField funPointField;
-    private javax.swing.JTextField genderField;
+    private javax.swing.JComboBox genderComboBox;
     private javax.swing.JLabel genetechLabel;
     private javax.swing.JTextField givenNameField;
     private javax.swing.JTextField heartRateField;
@@ -1254,9 +1302,12 @@ public class PatientForm extends javax.swing.JFrame {
     private javax.swing.JLabel patientTab;
     private javax.swing.JTextField postcodeField;
     private javax.swing.JTextField referringDocField;
+    private javax.swing.JButton saveButton;
     private javax.swing.JButton scheduleButton;
     private javax.swing.JLabel scheduleLabel;
     private javax.swing.JLabel scheduleTab;
+    private javax.swing.JComboBox stateComboBox;
+    private javax.swing.JLabel stateLabel;
     private javax.swing.JTextField streetAddressField;
     private javax.swing.JTextField suburbField;
     private javax.swing.JTextField surnameField;

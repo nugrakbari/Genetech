@@ -9,6 +9,8 @@ package project2assignment;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -16,6 +18,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PatientView extends javax.swing.JFrame {
 
+    private JPopupMenu popupMenu;
+    private JMenuItem viewPatient;
+    private JMenuItem viewMedicalRecord;
     private PatientQuery patientQuery;
     private DefaultTableModel patientTableModel;
     private DateFormat df;
@@ -27,13 +32,15 @@ public class PatientView extends javax.swing.JFrame {
         initComponents();
         
         df = new SimpleDateFormat("dd/MM/yyyy");
+        patientQuery = new PatientQuery();
         
         patientTableModel = new DefaultTableModel();
         patientTableModel.setColumnCount(10);
         patientTableModel.setColumnIdentifiers(new String[]{"Patient ID", "First Name", "Last Name",
             "Date of Birth", "Street Address", "Suburb", "Postcode", "Home Phone",
             "Mobile Phone", "Medicare Number"});
-        jTable1.setModel(patientTableModel);
+        patientTable.setModel(patientTableModel);
+        loadPatientTable();
     }
     
     private void loadPatientTable() {
@@ -54,6 +61,18 @@ public class PatientView extends javax.swing.JFrame {
             tableRow++;
         }
     }
+    
+    private void loadPopupMenu() {
+        popupMenu = new JPopupMenu();
+        viewPatient = new JMenuItem("Edit");
+        viewMedicalRecord = new JMenuItem("View Medical Record");
+
+        popupMenu.add(viewPatient);
+        popupMenu.add(viewMedicalRecord);
+        
+
+        patientTable.setComponentPopupMenu(popupMenu);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,7 +90,7 @@ public class PatientView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        patientTable = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -134,7 +153,7 @@ public class PatientView extends javax.swing.JFrame {
         });
         internalFrame.getContentPane().add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 560, 100, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        patientTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -142,7 +161,7 @@ public class PatientView extends javax.swing.JFrame {
                 "Patient ID", "First Name", "Surname", "DOB", "Address", "Suburb", "Postcode", "Medicare No."
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(patientTable);
 
         internalFrame.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 1020, 430));
 
@@ -323,6 +342,10 @@ this.dispose();// TODO add your handling code here:
         // TODO add your handling code here:
     }//GEN-LAST:event_scheduleButtonActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {                                    
+        loadPopupMenu();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -372,7 +395,6 @@ this.dispose();// TODO add your handling code here:
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton messagesButton;
     private javax.swing.JLabel messagesLabel;
@@ -380,6 +402,7 @@ this.dispose();// TODO add your handling code here:
     private javax.swing.JButton patientButton;
     private javax.swing.JLabel patientLabel;
     private javax.swing.JLabel patientTab;
+    private javax.swing.JTable patientTable;
     private javax.swing.JButton scheduleButton;
     private javax.swing.JLabel scheduleLabel;
     private javax.swing.JLabel scheduleTab;

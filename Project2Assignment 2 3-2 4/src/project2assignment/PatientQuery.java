@@ -8,6 +8,7 @@ package project2assignment;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -130,7 +131,7 @@ public class PatientQuery {
 
             while (resultSet.next()) {
                 results.add(new Patient(
-                        resultSet.getInt("patient_id"),
+                        resultSet.getString("patient_id"),
                         resultSet.getString("patient_lastname"),
                         resultSet.getString("patient_firstname"),
                         resultSet.getDate("date_of_birth"),
@@ -157,5 +158,96 @@ public class PatientQuery {
         }
         closeConnection();
         return results;
+    }
+    
+    /**
+     * Get patient by ID
+     * @param id Patient ID
+     * @return ResultSet
+     */
+    public Patient getPatientByID(int id) {
+        Patient p = null;
+        ResultSet resultSet = null;
+        openConnection();
+
+        try {
+
+            returnPatientByID = conn.prepareStatement(
+                    "SELECT * FROM PATIENT WHERE patient_id = ?");
+            returnPatientByID.setInt(1, id);
+            resultSet = returnPatientByID.executeQuery();
+
+            if (resultSet.next()) {
+                p = new Patient(
+                        resultSet.getString("patient_id"),
+                        resultSet.getString("patient_lastname"),
+                        resultSet.getString("patient_firstname"),
+                        resultSet.getDate("date_of_birth"),
+                        resultSet.getString("gender"),
+                        resultSet.getString("street_address"),
+                        resultSet.getString("suburb"),
+                        resultSet.getString("state"),
+                        resultSet.getString("postcode"),
+                        resultSet.getString("home_phone"),
+                        resultSet.getString("mobile_phone"),
+                        resultSet.getString("email_address"),
+                        resultSet.getString("allergies"),
+                        resultSet.getString("medications"),
+                        resultSet.getString("existing_conditions"),
+                        resultSet.getString("medicare_number"),
+                        resultSet.getString("referring_doctor"),
+                        resultSet.getString("emer_cont_name"),
+                        resultSet.getString("emer_cont_relationship"),
+                        resultSet.getString("emer_cont_phone"),
+                        resultSet.getString("fun_point"));
+            }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        closeConnection();
+        return p;
+    }
+    
+    /**
+     * Add a patient
+     * @param patient Patient to be added
+     */
+    public void addPatient(Patient patient) {
+        openConnection();
+
+        try {
+            insertPatient = conn.prepareStatement(
+                    "INSERT INTO PATIENT "
+                    + "(patient_id, patient_lastname, patient_firstname, date_of_birth, gender, "
+                    + "street_address, suburb, state, postcode, home_phone, mobile_phone, email_address, "
+                    + "allergies, medications, existing_conditions, medicare_number, referring_doctor, "
+                    + "emer_cont_name, emer_cont_relationship, emer_cont_phone, fun_point) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            insertPatient.setString(1, "6");
+            insertPatient.setString(2, patient.getLastName());
+            insertPatient.setString(3, patient.getFirstName());
+            insertPatient.setDate(4, new Date(patient.getDateOfBirth().getTime()));
+            insertPatient.setString(5, patient.getGender());
+            insertPatient.setString(6, patient.getStreetAddress());
+            insertPatient.setString(7, patient.getSuburb());
+            insertPatient.setString(8, patient.getState());
+            insertPatient.setString(9, patient.getPostcode());
+            insertPatient.setString(10, patient.getHomePhone());
+            insertPatient.setString(11, patient.getMobilePhone());
+            insertPatient.setString(12, patient.getEmailAddress());
+            insertPatient.setString(13, patient.getAllergies());
+            insertPatient.setString(14, patient.getMedications());
+            insertPatient.setString(15, patient.getExistingConditions());
+            insertPatient.setString(16, patient.getMedicareNo());
+            insertPatient.setString(17, patient.getReferringDoctor());
+            insertPatient.setString(18, patient.getEmContactName());
+            insertPatient.setString(19, patient.getEmContactRelation());
+            insertPatient.setString(20, patient.getEmContactNo());
+            insertPatient.setString(21, patient.getFunPoint());
+            insertPatient.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PatientQuery.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        closeConnection();
     }
 }
