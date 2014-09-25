@@ -82,6 +82,13 @@ public class PatientForm extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         funPointField = new javax.swing.JTextField();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        patientAllergiesField = new javax.swing.JTextField();
+        existingConditionsField = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        medicationsField = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -106,13 +113,14 @@ public class PatientForm extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel30 = new javax.swing.JLabel();
-        patientAllergiesField = new javax.swing.JTextField();
-        existingConditionsField = new javax.swing.JTextField();
-        jLabel31 = new javax.swing.JLabel();
-        medicationsField = new javax.swing.JTextField();
-        jLabel32 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        commentsTextArea = new javax.swing.JTextArea();
+        commentsLabel = new javax.swing.JLabel();
+        logLabel = new javax.swing.JLabel();
+        addButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        logTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -131,14 +139,6 @@ public class PatientForm extends javax.swing.JFrame {
         jLabel40 = new javax.swing.JLabel();
         jTextField19 = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        commentsTextArea = new javax.swing.JTextArea();
-        commentsLabel = new javax.swing.JLabel();
-        logLabel = new javax.swing.JLabel();
-        addButton = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        logTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -547,6 +547,65 @@ public class PatientForm extends javax.swing.JFrame {
 
         Tabs.addTab("General", jPanel4);
 
+        jLabel30.setText("Patient Allergies");
+
+        patientAllergiesField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patientAllergiesFieldActionPerformed(evt);
+            }
+        });
+
+        existingConditionsField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                existingConditionsFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel31.setText("Existing Medical Conditions");
+
+        medicationsField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                medicationsFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel32.setText("Medications");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(patientAllergiesField, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30)
+                    .addComponent(existingConditionsField, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel31)
+                    .addComponent(medicationsField, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel32))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(patientAllergiesField, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(existingConditionsField, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(medicationsField, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        Tabs.addTab("Medical History", jPanel7);
+
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Clinical measurments"));
         jPanel9.setToolTipText("");
 
@@ -708,64 +767,64 @@ public class PatientForm extends javax.swing.JFrame {
 
         Tabs.addTab("Current Visit", jPanel2);
 
-        jLabel30.setText("Patient Allergies");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        patientAllergiesField.addActionListener(new java.awt.event.ActionListener() {
+        commentsTextArea.setColumns(20);
+        commentsTextArea.setRows(5);
+        jScrollPane1.setViewportView(commentsTextArea);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 910, 149));
+
+        commentsLabel.setText("Comments:");
+        jPanel1.add(commentsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        logLabel.setText("Log:");
+        jPanel1.add(logLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        addButton.setText("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patientAllergiesFieldActionPerformed(evt);
+                addButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 190, 80, 30));
 
-        existingConditionsField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                existingConditionsFieldActionPerformed(evt);
+        logTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Note date", "Note"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        logTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(logTable);
+        if (logTable.getColumnModel().getColumnCount() > 0) {
+            logTable.getColumnModel().getColumn(0).setResizable(false);
+            logTable.getColumnModel().getColumn(0).setPreferredWidth(1);
+        }
 
-        jLabel31.setText("Existing Medical Conditions");
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 910, 149));
 
-        medicationsField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medicationsFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel32.setText("Medications");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(patientAllergiesField, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel30)
-                    .addComponent(existingConditionsField, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel31)
-                    .addComponent(medicationsField, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel32))
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel30)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(patientAllergiesField, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addComponent(jLabel31)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(existingConditionsField, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addComponent(jLabel32)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(medicationsField, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-
-        Tabs.addTab("Medical History", jPanel7);
+        Tabs.addTab("Patient Notes", jPanel1);
 
         jLabel35.setText("Prescribed Medications:");
 
@@ -927,65 +986,6 @@ public class PatientForm extends javax.swing.JFrame {
         );
 
         Tabs.addTab("Prescriptions", jPanel3);
-
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        commentsTextArea.setColumns(20);
-        commentsTextArea.setRows(5);
-        jScrollPane1.setViewportView(commentsTextArea);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 910, 149));
-
-        commentsLabel.setText("Comments:");
-        jPanel1.add(commentsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
-
-        logLabel.setText("Log:");
-        jPanel1.add(logLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
-
-        addButton.setText("Add");
-        addButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 190, 80, 30));
-
-        logTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Note date", "Note"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        logTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(logTable);
-        if (logTable.getColumnModel().getColumnCount() > 0) {
-            logTable.getColumnModel().getColumn(0).setResizable(false);
-            logTable.getColumnModel().getColumn(0).setPreferredWidth(1);
-        }
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 910, 149));
-
-        Tabs.addTab("Patient Notes", jPanel1);
 
         jInternalFrame2.getContentPane().add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 1010, 470));
 
