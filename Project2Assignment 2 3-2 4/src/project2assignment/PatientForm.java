@@ -95,11 +95,11 @@ public class PatientForm extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         funPointField = new javax.swing.JTextField();
-<<<<<<< HEAD
+
         genderComboBox = new javax.swing.JComboBox();
         stateLabel = new javax.swing.JLabel();
         stateComboBox = new javax.swing.JComboBox();
-=======
+
         jPanel7 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         patientAllergiesField = new javax.swing.JTextField();
@@ -107,7 +107,7 @@ public class PatientForm extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         medicationsField = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
->>>>>>> FETCH_HEAD
+
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
