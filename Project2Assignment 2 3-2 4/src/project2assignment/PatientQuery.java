@@ -218,33 +218,32 @@ public class PatientQuery {
         try {
             insertPatient = conn.prepareStatement(
                     "INSERT INTO PATIENT "
-                    + "(patient_id, patient_lastname, patient_firstname, date_of_birth, gender, "
+                    + "(patient_lastname, patient_firstname, date_of_birth, gender, "
                     + "street_address, suburb, state, postcode, home_phone, mobile_phone, email_address, "
                     + "allergies, medications, existing_conditions, medicare_number, referring_doctor, "
                     + "emer_cont_name, emer_cont_relationship, emer_cont_phone, fun_point) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            insertPatient.setString(1, "6");
-            insertPatient.setString(2, patient.getLastName());
-            insertPatient.setString(3, patient.getFirstName());
-            insertPatient.setDate(4, new Date(patient.getDateOfBirth().getTime()));
-            insertPatient.setString(5, patient.getGender());
-            insertPatient.setString(6, patient.getStreetAddress());
-            insertPatient.setString(7, patient.getSuburb());
-            insertPatient.setString(8, patient.getState());
-            insertPatient.setString(9, patient.getPostcode());
-            insertPatient.setString(10, patient.getHomePhone());
-            insertPatient.setString(11, patient.getMobilePhone());
-            insertPatient.setString(12, patient.getEmailAddress());
-            insertPatient.setString(13, patient.getAllergies());
-            insertPatient.setString(14, patient.getMedications());
-            insertPatient.setString(15, patient.getExistingConditions());
-            insertPatient.setString(16, patient.getMedicareNo());
-            insertPatient.setString(17, patient.getReferringDoctor());
-            insertPatient.setString(18, patient.getEmContactName());
-            insertPatient.setString(19, patient.getEmContactRelation());
-            insertPatient.setString(20, patient.getEmContactNo());
-            insertPatient.setString(21, patient.getFunPoint());
-            insertPatient.executeUpdate();
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            insertPatient.setString(1, patient.getLastName());
+            insertPatient.setString(2, patient.getFirstName());
+            insertPatient.setDate(3, new Date(patient.getDateOfBirth().getTime()));
+            insertPatient.setString(4, patient.getGender());
+            insertPatient.setString(5, patient.getStreetAddress());
+            insertPatient.setString(6, patient.getSuburb());
+            insertPatient.setString(7, patient.getState());
+            insertPatient.setString(8, patient.getPostcode());
+            insertPatient.setString(9, patient.getHomePhone());
+            insertPatient.setString(10, patient.getMobilePhone());
+            insertPatient.setString(11, patient.getEmailAddress());
+            insertPatient.setString(12, patient.getAllergies());
+            insertPatient.setString(13, patient.getMedications());
+            insertPatient.setString(14, patient.getExistingConditions());
+            insertPatient.setString(15, patient.getMedicareNo());
+            insertPatient.setString(16, patient.getReferringDoctor());
+            insertPatient.setString(17, patient.getEmContactName());
+            insertPatient.setString(18, patient.getEmContactRelation());
+            insertPatient.setString(19, patient.getEmContactNo());
+            insertPatient.setString(20, patient.getFunPoint());
+            insertPatient.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(PatientQuery.class.getName()).log(Level.SEVERE, null, ex);
         }

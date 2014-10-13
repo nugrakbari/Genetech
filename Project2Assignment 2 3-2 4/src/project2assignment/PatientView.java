@@ -6,6 +6,8 @@
 
 package project2assignment;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -60,12 +62,15 @@ public class PatientView extends javax.swing.JFrame {
             patientTableModel.setValueAt(b.getMedicareNo(), tableRow, 9);
             tableRow++;
         }
+        loadPopupMenu();
     }
     
     private void loadPopupMenu() {
         popupMenu = new JPopupMenu();
-        viewPatient = new JMenuItem("Edit");
+        viewPatient = new JMenuItem("Get Info");
         viewMedicalRecord = new JMenuItem("View Medical Record");
+        
+        viewPatient.addActionListener(viewPatientListener);
 
         popupMenu.add(viewPatient);
         popupMenu.add(viewMedicalRecord);
@@ -73,6 +78,25 @@ public class PatientView extends javax.swing.JFrame {
 
         patientTable.setComponentPopupMenu(popupMenu);
     }
+    
+    private final ActionListener viewPatientListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            int patientElementToView = patientTable.getSelectedRow();
+            String patientID = (String) patientTable.getValueAt(patientElementToView, 0);
+            int id = Integer.parseInt(patientID);
+            
+
+            if (patientElementToView != -1) {
+                System.out.println(id);
+                PatientForm form = new PatientForm();
+                form.setAction(PatientForm.Action.EDIT);
+                form.setToEdit(id);
+                setVisible(false);
+                form.setVisible(true);
+            }
+        }
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.

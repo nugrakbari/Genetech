@@ -21,6 +21,19 @@ public class PatientForm extends javax.swing.JFrame {
     private PatientQuery patientQuery;
     private DateFormat df;
     private final String NEXTVAL = "seq_patient.nextval";
+    private int toEdit;
+    public enum Action {
+
+        /**
+         *
+         */
+        ADD,
+        /**
+         *
+         */
+        EDIT;
+    }
+     private PatientForm.Action action;
     
     /**
      * Creates new form PatientForm
@@ -95,11 +108,9 @@ public class PatientForm extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         funPointField = new javax.swing.JTextField();
-
         genderComboBox = new javax.swing.JComboBox();
         stateLabel = new javax.swing.JLabel();
         stateComboBox = new javax.swing.JComboBox();
-
         jPanel7 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         patientAllergiesField = new javax.swing.JTextField();
@@ -107,7 +118,6 @@ public class PatientForm extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         medicationsField = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
-
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -1090,7 +1100,7 @@ public class PatientForm extends javax.swing.JFrame {
                     (String) genderComboBox.getSelectedItem(),      
                     streetAddressField.getText(),
                     suburbField.getText(),
-                    (String) genderComboBox.getSelectedItem(),
+                    (String) stateComboBox.getSelectedItem(),
                     postcodeField.getText(),
                     homePhoneField.getText(),
                     mobilePhoneField.getText(),
@@ -1167,6 +1177,52 @@ public class PatientForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_medicationsFieldActionPerformed
 
+    /**
+     *
+     * @param action
+     */
+    public void setAction(PatientForm.Action action) {
+        this.action = action;
+        System.out.println("(Patient) setting action as " + action);
+    }
+
+    /**
+     *
+     * @param toEdit
+     */
+    public void setToEdit(int toEdit) {
+        this.toEdit = toEdit;
+        System.out.println("toEdit value is " + toEdit);
+    }
+    
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {                                    
+        if (action == Action.EDIT) {
+            Patient p = patientQuery.getPatientByID(toEdit);
+            if (p != null) {
+                this.givenNameField.setText(p.getFirstName());
+                this.surnameField.setText(p.getLastName());
+                this.genderComboBox.setSelectedItem((String) p.getGender());
+                this.birthdayField.setText(df.format(p.getDateOfBirth()));
+                this.streetAddressField.setText(p.getStreetAddress());
+                this.stateComboBox.setSelectedItem((String) p.getState());
+                this.suburbField.setText(p.getSuburb());
+                this.postcodeField.setText(p.getPostcode());
+                this.homePhoneField.setText(p.getHomePhone());
+                this.mobilePhoneField.setText(p.getMobilePhone());
+                this.referringDocField.setText(p.getReferringDoctor());
+                this.medicareNoField.setText(p.getMedicareNo());
+                this.emerContNameField.setText(p.getEmContactName());
+                this.emerContPhoneField.setText(p.getEmContactNo());
+                this.emerContRshipField.setText(p.getEmContactRelation());
+                this.funPointField.setText(p.getFunPoint());
+            } else {
+                //TODO the staff member does not exist
+                throw new UnsupportedOperationException("No such patient exists");
+            }
+            
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
