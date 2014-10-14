@@ -359,7 +359,7 @@ public class Billing extends javax.swing.JFrame {
 
         jInternalFrame1.getContentPane().add(billableItemPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 530, 220));
 
-        jLabel4.setText("Patient Name:");
+        jLabel4.setText("Patient Visit ID:");
         jInternalFrame1.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, 30));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -367,7 +367,7 @@ public class Billing extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jInternalFrame1.getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 340, -1));
+        jInternalFrame1.getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 330, -1));
 
         jButton1.setText("Browse");
         jInternalFrame1.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, -1));
@@ -481,7 +481,6 @@ public class Billing extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel12)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
@@ -501,7 +500,7 @@ public class Billing extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(4, 4, 4))
         );
@@ -542,11 +541,6 @@ new PatientView().setVisible(true);
 this.dispose();
     }//GEN-LAST:event_patientButtonMouseClicked
 
-    private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
-new Billing().setVisible(true);
-this.dispose();
-    }//GEN-LAST:event_billingButtonMouseClicked
-
     private void messagesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButtonMouseClicked
 new InstantMessaging().setVisible(true);
 this.dispose();// TODO add your handling code here:
@@ -584,6 +578,11 @@ this.dispose();// TODO add your handling code here:
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
+        new Billing().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_billingButtonMouseClicked
 
     /**
      * @param args the command line arguments
