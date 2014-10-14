@@ -40,6 +40,8 @@ public class HomePage extends javax.swing.JFrame {
         jMenu10 = new javax.swing.JMenu();
         jFrame1 = new javax.swing.JFrame();
         jInternalFrame2 = new javax.swing.JInternalFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         Welcome = new javax.swing.JLabel();
         patientButton = new javax.swing.JButton();
         patientLabel = new javax.swing.JLabel();
@@ -100,6 +102,21 @@ public class HomePage extends javax.swing.JFrame {
         jInternalFrame2.setPreferredSize(new java.awt.Dimension(966, 966));
         jInternalFrame2.setVisible(true);
         jInternalFrame2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Appointment Time", "Patient Lastname", "Patient First Name", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jInternalFrame2.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 990, 420));
 
         Welcome.setBackground(new java.awt.Color(0, 0, 0));
         Welcome.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
@@ -332,6 +349,8 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel logo;
     private javax.swing.JButton messagingButton;
     private javax.swing.JLabel messagingLabel;
