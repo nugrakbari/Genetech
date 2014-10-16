@@ -220,13 +220,13 @@ public class AdminForm extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "First Name", "Surname", "Position"
+                "Staff ID", "First Name", "Surname", "Position"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
