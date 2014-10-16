@@ -1129,9 +1129,13 @@ public class PatientForm extends javax.swing.JFrame {
                     emerContNameField.getText(),
                     emerContRshipField.getText(),
                     emerContPhoneField.getText(),
-                    funPointField.getText());
-
-                patientQuery.addPatient(p);
+                    funPointField.getText()
+            );
+            if (action == Action.EDIT) {
+                patientQuery.update(toEdit, p);
+            } else {
+                patientQuery.add(p);
+            }
         } catch (ParseException ex) {
             Logger.getLogger(PatientForm.class.getName()).log(Level.SEVERE, null, ex);
         }

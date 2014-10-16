@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -353,13 +354,13 @@ public class PatientView extends javax.swing.JFrame {
     }//GEN-LAST:event_addButtonMouseClicked
 
     private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
-    new PatientForm().setVisible(true);
-    this.dispose();
+        new PatientForm().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_viewButtonMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-new HomePage().setVisible(true);
-this.dispose();// TODO add your handling code here:
+        new HomePage().setVisible(true);
+        this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void scheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleButtonActionPerformed

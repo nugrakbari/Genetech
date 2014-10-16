@@ -27,6 +27,7 @@ public class PatientQuery {
      
     private Connection conn = null;
     private PreparedStatement insertPatient = null;
+    private PreparedStatement updatePatient = null;
     private ResultSet rs = null;
     private PreparedStatement createTable = null;
     private PreparedStatement getAllPatients = null;
@@ -212,7 +213,7 @@ public class PatientQuery {
      * Add a patient
      * @param patient Patient to be added
      */
-    public void addPatient(Patient patient) {
+    public void add (Patient patient) {
         openConnection();
 
         try {
@@ -244,6 +245,49 @@ public class PatientQuery {
             insertPatient.setString(19, patient.getEmContactNo());
             insertPatient.setString(20, patient.getFunPoint());
             insertPatient.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(PatientQuery.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        closeConnection();
+    }
+    
+    public void update (int id, Patient patient) {
+        openConnection();
+        
+        try {
+            updatePatient = conn.prepareStatement(
+                    "UPDATE PATIENT " 
+                    + "SET street_address = ?, "
+                    + "suburb = ?, "
+                    + "state = ?, "
+                    + "postcode = ?, "
+                    + "home_phone = ?, "
+                    + "mobile_phone = ?, "        
+                    + "email_address = ?, "
+                    + "allergies = ?, "
+                    + "medications = ?, "
+                    + "existing_conditions = ?, "
+                    + "emer_cont_name = ?, "
+                    + "emer_cont_relationship = ?, "
+                    + "emer_cont_phone = ?, "
+                    + "fun_point = ? "
+                    + "WHERE patient_id = ?");
+            updatePatient.setString(1, patient.getStreetAddress());
+            updatePatient.setString(2, patient.getSuburb());
+            updatePatient.setString(3, patient.getState());
+            updatePatient.setString(4, patient.getPostcode());
+            updatePatient.setString(5, patient.getHomePhone());
+            updatePatient.setString(6, patient.getMobilePhone());
+            updatePatient.setString(7, patient.getEmailAddress());
+            updatePatient.setString(8, patient.getAllergies());
+            updatePatient.setString(9, patient.getMedications());
+            updatePatient.setString(10, patient.getExistingConditions());
+            updatePatient.setString(11, patient.getEmContactName());
+            updatePatient.setString(12, patient.getEmContactRelation());
+            updatePatient.setString(13, patient.getEmContactNo());
+            updatePatient.setString(14, patient.getFunPoint());
+            updatePatient.setInt(15, id);
+            updatePatient.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(PatientQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
