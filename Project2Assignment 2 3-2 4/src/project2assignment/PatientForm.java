@@ -23,7 +23,10 @@ public class PatientForm extends javax.swing.JFrame {
     private final String NEXTVAL = "seq_patient.nextval";
     private int toEdit;
     
-    //private final int ACCESS_LEVEL = 2; 
+    
+    //this access level is put in as a temporary measure. remove and replace
+    //with value passed in from login when login complete.
+    private final int ACCESS_LEVEL = 3; 
     
     public enum Action {
    
