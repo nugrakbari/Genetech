@@ -132,6 +132,7 @@ public class PatientView extends javax.swing.JFrame {
         messagesLabel = new javax.swing.JLabel();
         messagesTab = new javax.swing.JLabel();
         viewButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
@@ -196,19 +197,19 @@ public class PatientView extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        internalFrame.getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 90, 120, 30));
+        internalFrame.getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 90, 120, 30));
 
         jLabel3.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Filter by:");
-        internalFrame.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, -1, 30));
+        internalFrame.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 90, -1, 30));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        internalFrame.getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 90, 180, -1));
+        internalFrame.getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 90, 180, -1));
 
         scheduleButton.setBorderPainted(false);
         scheduleButton.setOpaque(false);
@@ -299,6 +300,9 @@ public class PatientView extends javax.swing.JFrame {
             }
         });
         internalFrame.getContentPane().add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 560, 100, 40));
+
+        jButton1.setText("Search");
+        internalFrame.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 90, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
         internalFrame.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 650));
@@ -412,6 +416,7 @@ public class PatientView extends javax.swing.JFrame {
     private javax.swing.JLabel billingLabel;
     private javax.swing.JLabel billingTab;
     private javax.swing.JInternalFrame internalFrame;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
