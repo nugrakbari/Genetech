@@ -29,12 +29,10 @@ public class PatientQuery {
     private PreparedStatement insertPatient = null;
     private PreparedStatement updatePatient = null;
     private ResultSet rs = null;
-    private PreparedStatement createTable = null;
     private PreparedStatement getAllPatients = null;
+    private PreparedStatement findPatient = null;
     private PreparedStatement returnPatientByID = null;
-    private PreparedStatement patientUpdate = null;
-    private PreparedStatement deletePatientRecords = null;
-    private PreparedStatement deletePatient = null;
+    
     private static final String URL = "jdbc:oracle:thin:@//sage.business.unsw.edu.au:1521/orcl01.asbpldb001.ad.unsw.edu.au";
     private static final String USERNAME = "Z3373928";
     private static final String PASSWORD = "fra5reDr";
@@ -47,27 +45,6 @@ public class PatientQuery {
             DatabaseMetaData dbmd = conn.getMetaData();
             
             rs = dbmd.getTables(null, "APP", "PATIENT", null);
-
-            /*if (!rs.next()) {
-                System.out.println("creating table");
-                createTable = conn.prepareStatement(
-                        "CREATE TABLE app.patients (" //27
-                        + "\"PATIENT_ID\" INT not null primary key "
-                        + "GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), "
-                        + "\"LAST_NAME\" VARCHAR(20), \"FIRST_NAME\" VARCHAR(20), "
-                        + "DATE_OF_BIRTH DATE, "
-                        + "\"STREET_ADDRESS\" VARCHAR(50), \"SUBURB\" VARCHAR(20), "
-                        + "\"STATE\" VARCHAR(3), \"POSTCODE\" VARCHAR(4), "
-                        + "\"HOME_PHONE\" VARCHAR(10), \"MOBILE_PHONE\" VARCHAR(10), "
-                        + "\" EMAIL_ADDRESS\" VARCHAR(30), \"ALLERGIES\" VARCHAR(50), "
-                        + "\"MEDICATIONS\" VARCHAR(100), \"EXISTING_CONDITIONS\" VARCHAR(50), "
-                        + "\"MEDICARE_NUMBER\" VARCHAR(10), \"REFERRING_DOCTOR\" VARCHAR(30), "
-                        + "\"GENDER\" VARCHAR(10), \"EMER_CONT_NAME\" VARCHAR(30), "        
-                        + "\"EMER_CONT_RELATIONSHIP\" VARCHAR(10), \"EMER_CONT_PHONE\" VARCHAR(10), "
-                        + "\"FUN_POINT\" VARCHAR(300));");
-                createTable.execute();
-            
-            }*/
 
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -90,17 +67,14 @@ public class PatientQuery {
             if (rs != null) {
                 rs.close();
             }
-            if (createTable != null) {
-                createTable.close();
-            }
             if (insertPatient != null) {
                 insertPatient.close();
             }
             if (getAllPatients != null) {
                 getAllPatients.close();
             }
-            if (patientUpdate != null) {
-                patientUpdate.close();
+            if (updatePatient != null) {
+                updatePatient.close();
             }
             if (returnPatientByID != null) {
                 returnPatientByID.close();
@@ -160,6 +134,52 @@ public class PatientQuery {
         closeConnection();
         return results;
     }
+    
+    public List<Patient> searchPatient(String keyword) {
+
+        List<Patient> results = null;
+        ResultSet resultSet = null;
+        openConnection();
+
+        try {
+            
+            findPatient = conn.prepareStatement("SELECT * FROM PATIENT WHERE patient_lastname = ?");
+            findPatient.setString(1, keyword);
+            resultSet = findPatient.executeQuery();
+            results = new ArrayList<Patient>();
+
+            while (resultSet.next()) {
+                results.add(new Patient(
+                        resultSet.getString("patient_id"),
+                        resultSet.getString("patient_lastname"),
+                        resultSet.getString("patient_firstname"),
+                        resultSet.getDate("date_of_birth"),
+                        resultSet.getString("gender"),
+                        resultSet.getString("street_address"),
+                        resultSet.getString("suburb"),
+                        resultSet.getString("state"),
+                        resultSet.getString("postcode"),
+                        resultSet.getString("home_phone"),
+                        resultSet.getString("mobile_phone"),
+                        resultSet.getString("email_address"),
+                        resultSet.getString("allergies"),
+                        resultSet.getString("medications"),
+                        resultSet.getString("existing_conditions"),
+                        resultSet.getString("medicare_number"),
+                        resultSet.getString("referring_doctor"),
+                        resultSet.getString("emer_cont_name"),
+                        resultSet.getString("emer_cont_relationship"),
+                        resultSet.getString("emer_cont_phone"),
+                        resultSet.getString("fun_point")));
+            }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        closeConnection();
+        return results;
+    }
+    
+    
     
     /**
      * Get patient by ID

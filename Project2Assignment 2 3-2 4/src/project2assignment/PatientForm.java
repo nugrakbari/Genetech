@@ -1029,7 +1029,7 @@ public class PatientForm extends javax.swing.JFrame {
 
         Tabs.addTab("Prescriptions", prescriptionsPanel);
 
-        if (ACCESS_LEVEL == 1) {
+        /*if (ACCESS_LEVEL == 1) {
             Tabs.remove(medicalHistoryPanel);
             Tabs.remove(prescriptionsPanel);
             Tabs.remove(patientNotesPanel);
@@ -1039,7 +1039,7 @@ public class PatientForm extends javax.swing.JFrame {
         if (ACCESS_LEVEL == 2) {
             Tabs.remove(prescriptionsPanel);
             Tabs.remove(patientNotesPanel);
-        }
+        }*/
 
         jInternalFrame2.getContentPane().add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 1010, 470));
 
