@@ -23,7 +23,7 @@ public class StaffQuery {
     private Connection conn = null;
     private PreparedStatement insertStaff = null;
     private ResultSet rs = null;
-    private PreparedStatement getStaff = null;
+    private PreparedStatement getAllStaff = null;
     private PreparedStatement updateStaff = null;
     private PreparedStatement returnStaffByID = null;
 
@@ -61,68 +61,14 @@ public class StaffQuery {
             if (rs != null) {
                 rs.close();
             }
-            if (createMainTable != null) {
-                createMainTable.close();
-            }
-            if (createDoctorTable != null) {
-                createDoctorTable.close();
-            }
-            if (createNurseTable != null) {
-                createNurseTable.close();
-            }
-            if (createAdminTable != null) {
-                createAdminTable.close();
-            }
-            if (createWardTable != null) {
-                createWardTable.close();
-            }
-            if (addConstraintWard != null) {
-                addConstraintWard.close();
-            }
             if (insertStaff != null) {
                 insertStaff.close();
-            }
-            if (insertDoctor != null) {
-                insertDoctor.close();
-            }
-            if (insertNurse != null) {
-                insertNurse.close();
-            }
-            if (insertAdmin != null) {
-                insertAdmin.close();
-            }
-            if (getAllStaff != null) {
-                getAllStaff.close();
-            }
-            if (getAllDoctors != null) {
-                getAllDoctors.close();
-            }
-            if (getAllNurses != null) {
-                getAllNurses.close();
-            }
-            if (getAllAdmins != null) {
-                getAllAdmins.close();
             }
             if (updateStaff != null) {
                 updateStaff.close();
             }
-            if (updateNurseWard != null) {
-                updateNurseWard.close();
-            }
-            if (addWard != null) {
-                addWard.close();
-            }
             if (returnStaffByID != null) {
                 returnStaffByID.close();
-            }
-            if (getWard != null) {
-                getWard.close();
-            }
-            if (updateWard != null) {
-                updateWard.close();
-            }
-            if (nullifyHeadNurse != null) {
-                nullifyHeadNurse.close();
             }
             if (conn != null) {
                 conn.close();
