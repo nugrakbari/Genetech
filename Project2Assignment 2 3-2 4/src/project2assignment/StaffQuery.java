@@ -93,21 +93,22 @@ public class StaffQuery {
 
             getAllStaff = conn.prepareStatement("SELECT * FROM app.staff");
             resultSet = getAllStaff.executeQuery();
-            results = new ArrayList<Staff>();
+            results = new ArrayList<>();
 
             while (resultSet.next()) {
                 results.add(new Staff(
                         resultSet.getInt("staff_id"),
-                        resultSet.getString("staff_type"),
-                        resultSet.getString("password"),
-                        resultSet.getString("first_name"),
                         resultSet.getString("last_name"),
-                        resultSet.getString("gender"),
-                        resultSet.getString("medical_specialty"),
-                        resultSet.getString("phone")));
+                        resultSet.getString("first_name"),
+                        resultSet.getString("first_name"),
+                        resultSet.getString("position"),
+                        resultSet.getString("access_level"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("speciality"),
+                        resultSet.getString("prescriber_number")));
             }
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
         }
         closeConnection();
         return results;
@@ -249,34 +250,6 @@ public class StaffQuery {
         closeConnection();
         return s;
     }
-    
-    /**
-     * Get all wards
-     * @return ResultSet
-     */
-    public List<Ward> getWards() {
-        List<Ward> results = null;
-        ResultSet resultSet = null;
-        openConnection();
-        
-        try {
-            getWard = conn.prepareStatement(
-                    "SELECT * FROM app.ward");
-            resultSet = getWard.executeQuery();
-            results = new ArrayList<Ward>();
-            
-            while (resultSet.next()) {
-                results.add(new Ward(
-                        resultSet.getInt("ward_id"),
-                        resultSet.getInt("staff_id")));
-            }
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        }
-        closeConnection();
-        return results;
-        
-    }
 
     /**
      * Add a staff member
@@ -354,50 +327,6 @@ public class StaffQuery {
         }
         closeConnection();
     }
-
-    /**
-     * Get the ward a nurse is assigned to
-     * @param id Nurse's ID
-     * @return Ward number in which the nurse is assigned to
-     */
-    public int getNurseWard(int id) {
-        openConnection();
-
-        try {
-            PreparedStatement getWard = conn.prepareStatement(
-                    "SELECT ward_id FROM app.nurse "
-                    + "WHERE staff_id = ?");
-            getWard.setInt(1, id);
-            ResultSet rs = getWard.executeQuery();
-            while (rs.next()) {
-                nurseWard = rs.getInt(1);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(StaffQuery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        closeConnection();
-        return nurseWard;
-    }
-
-    /**
-     * Add an administrator
-     */
-    public void addAdmin() {
-        ResultSet resultSet;
-        openConnection();
-
-        try {
-            insertAdmin = conn.prepareStatement(
-                    "INSERT INTO app.admin (staff_id) "
-                    + "VALUES (?)");
-            insertAdmin.setInt(1, getID());
-            insertAdmin.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(StaffQuery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        closeConnection();
-    }
-
     /**
      * Update staff details
      * @param staff Staff details
@@ -436,69 +365,6 @@ public class StaffQuery {
             s.executeUpdate(sql);
                     
                        
-        } catch (SQLException ex) {
-            Logger.getLogger(StaffQuery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        closeConnection();
-    }
-    
-    /**
-     * Assign a new ward to the nurse
-     * @param id The nurse's ID
-     * @param ward The new ward number
-     */
-    public void updateNurseWard(int id, int ward) {
-        openConnection();
-        try {
-            updateNurseWard = conn.prepareStatement(
-                    "UPDATE app.nurse "
-                    + "SET ward_id = ? "
-                    + "WHERE staff_id = ?");
-            updateNurseWard.setInt(1, ward);
-            updateNurseWard.setInt(2, id);
-            updateNurseWard.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(StaffQuery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        closeConnection();
-    }
-    
-    /**
-     * Assign a head nurse
-     * @param ward Ward number
-     * @param id Nurse ID to be assigned
-     */
-    public void assignHeadNurse(int ward, int id) {
-        openConnection();
-        try {
-            updateWard = conn.prepareStatement(
-                    "UPDATE app.ward "
-                    + "SET staff_id = ? "
-                    + "WHERE ward_id = ?");
-            updateWard.setInt(1, id);
-            updateWard.setInt(2, ward);
-            updateWard.executeUpdate();
-            System.out.println("Updating ward");
-        } catch (SQLException ex) {
-            Logger.getLogger(StaffQuery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        closeConnection();
-    }
-   
-    /**
-     * Insert null value to the nurse's old ward
-     * @param ward The old ward number
-     */
-    public void nullifyHeadNurse(int ward) {
-        openConnection();
-        try {
-            nullifyHeadNurse = conn.prepareStatement(
-                    "UPDATE app.ward "
-                    + "SET staff_id = null "
-                    + "WHERE ward_id = ?");
-            nullifyHeadNurse.setInt(1, ward);
-            nullifyHeadNurse.executeUpdate();
-            System.out.println("Updating ward");
         } catch (SQLException ex) {
             Logger.getLogger(StaffQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
