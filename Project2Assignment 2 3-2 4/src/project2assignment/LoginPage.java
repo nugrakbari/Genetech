@@ -102,9 +102,12 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameFieldActionPerformed
 
+    // get username field and password field and match it to an account from 
+    // database 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
     new HomePage().setVisible(true);
-    this.dispose();// TODO add your handling code here:
+    this.dispose();// TODO add your handling code here
+    
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**

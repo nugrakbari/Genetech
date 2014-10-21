@@ -24,9 +24,15 @@ public class StaffQuery {
     private PreparedStatement insertStaff = null;
     private ResultSet rs = null;
     private PreparedStatement getAllStaff = null;
-    private PreparedStatement updateStaff = null;
+    private PreparedStatement getAllDoctors = null;
+    private PreparedStatement getAllNurses= null; 
+    private PreparedStatement getAllReceptionist= null; 
+    private final PreparedStatement updateStaff = null;
     private PreparedStatement returnStaffByID = null;
-
+    private int currentID;
+    private static final String URL = "jdbc:oracle:thin:@//sage.business.unsw.edu.au:1521/orcl01.asbpldb001.ad.unsw.edu.au";
+    private static final String USERNAME = "Z3373928";
+    private static final String PASSWORD = "fra5reDr";
     /**
      *
      */
@@ -64,8 +70,17 @@ public class StaffQuery {
             if (insertStaff != null) {
                 insertStaff.close();
             }
-            if (updateStaff != null) {
-                updateStaff.close();
+            if (getAllStaff !=null)  {
+                getAllStaff.close(); 
+            }
+            if (getAllDoctors !=null)  {
+                getAllDoctors.close(); 
+            }
+            if (getAllNurses !=null)  {
+                getAllNurses.close(); 
+            }
+            if (getAllReceptionist !=null)  {
+                getAllReceptionist.close(); 
             }
             if (returnStaffByID != null) {
                 returnStaffByID.close();
@@ -91,15 +106,14 @@ public class StaffQuery {
 
         try {
 
-            getAllStaff = conn.prepareStatement("SELECT * FROM app.staff");
+            getAllStaff = conn.prepareStatement("SELECT * FROM staff");
             resultSet = getAllStaff.executeQuery();
             results = new ArrayList<>();
 
             while (resultSet.next()) {
                 results.add(new Staff(
-                        resultSet.getInt("staff_id"),
+                        resultSet.getString("staff_id"),
                         resultSet.getString("last_name"),
-                        resultSet.getString("first_name"),
                         resultSet.getString("first_name"),
                         resultSet.getString("position"),
                         resultSet.getString("access_level"),
@@ -126,23 +140,23 @@ public class StaffQuery {
         try {
 
             getAllDoctors = conn.prepareStatement(
-                    "SELECT * FROM app.staff NATURAL JOIN app.doctor");
+                    "SELECT * FROM staff WHERE access_level= 3");
             resultSet = getAllDoctors.executeQuery();
             results = new ArrayList<Staff>();
 
             while (resultSet.next()) {
                 results.add(new Staff(
-                        resultSet.getInt("staff_id"),
-                        resultSet.getString("staff_type"),
-                        resultSet.getString("password"),
-                        resultSet.getString("first_name"),
+                        resultSet.getString("staff_id"),
                         resultSet.getString("last_name"),
-                        resultSet.getString("gender"),
-                        resultSet.getString("medical_specialty"),
-                        resultSet.getString("phone")));
+                        resultSet.getString("first_name"),
+                        resultSet.getString("position"),
+                        resultSet.getString("access_level"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("speciality"),
+                        resultSet.getString("prescriber_number")));
             }
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
         }
         closeConnection();
         return results;
@@ -160,57 +174,57 @@ public class StaffQuery {
         try {
 
             getAllNurses = conn.prepareStatement(
-                    "SELECT * FROM app.staff NATURAL JOIN app.nurse");
+                    "SELECT * FROM app.staff WHERE access_level= 2");
             resultSet = getAllNurses.executeQuery();
             results = new ArrayList<Staff>();
 
             while (resultSet.next()) {
                 results.add(new Staff(
-                        resultSet.getInt("staff_id"),
-                        resultSet.getString("staff_type"),
-                        resultSet.getString("password"),
-                        resultSet.getString("first_name"),
+                        resultSet.getString("staff_id"),
                         resultSet.getString("last_name"),
-                        resultSet.getString("gender"),
-                        resultSet.getString("medical_specialty"),
-                        resultSet.getString("phone")));
+                        resultSet.getString("first_name"),
+                        resultSet.getString("position"),
+                        resultSet.getString("access_level"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("speciality"),
+                        resultSet.getString("prescriber_number")));
             }
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
         }
         closeConnection();
         return results;
     }
 
     /**
-     * Get all administrators
+     * Get all receptionist
      * @return ResultSet
      */
-    public List<Staff> getAdmins() {
+    public List<Staff> getReceptionist() {
         List<Staff> results = null;
         ResultSet resultSet = null;
         openConnection();
 
         try {
 
-            getAllAdmins = conn.prepareStatement(
-                    "SELECT * FROM app.staff NATURAL JOIN app.admin");
-            resultSet = getAllAdmins.executeQuery();
+            getAllReceptionist = conn.prepareStatement(
+                    "SELECT * FROM app.staff WHERE access_level= 1");
+            resultSet = getAllReceptionist.executeQuery();
             results = new ArrayList<Staff>();
 
             while (resultSet.next()) {
                 results.add(new Staff(
-                        resultSet.getInt("staff_id"),
-                        resultSet.getString("staff_type"),
-                        resultSet.getString("password"),
-                        resultSet.getString("first_name"),
+                        resultSet.getString("staff_id"),
                         resultSet.getString("last_name"),
-                        resultSet.getString("gender"),
-                        resultSet.getString("medical_specialty"),
-                        resultSet.getString("phone")));
+                        resultSet.getString("first_name"),
+                        resultSet.getString("position"),
+                        resultSet.getString("access_level"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("speciality"),
+                        resultSet.getString("prescriber_number")));
             }
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
         }
         closeConnection();
         return results;
@@ -229,20 +243,21 @@ public class StaffQuery {
         try {
 
             returnStaffByID = conn.prepareStatement(
-                    "SELECT * FROM app.staff WHERE staff_id = ?");
+                    "SELECT * FROM staff WHERE staff_id = ?");
             returnStaffByID.setInt(1, id);
             resultSet = returnStaffByID.executeQuery();
 
             if (resultSet.next()) {
                 s = new Staff(
-                        resultSet.getInt("staff_id"),
-                        resultSet.getString("staff_type"),
-                        resultSet.getString("password"),
-                        resultSet.getString("first_name"),
+                        resultSet.getString("staff_id"),
                         resultSet.getString("last_name"),
-                        resultSet.getString("gender"),
-                        resultSet.getString("medical_specialty"),
-                        resultSet.getString("phone"));
+                        resultSet.getString("first_name"),
+                        resultSet.getString("position"),
+                        resultSet.getString("access_level"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("speciality"),
+                        resultSet.getString("prescriber_number"));
             }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -258,19 +273,20 @@ public class StaffQuery {
     public void addStaff(Staff staff) {
         openConnection();
         String insert =
-                "INSERT INTO app.staff (staff_type, password, first_name, last_name, gender, "
-                + "medical_specialty, phone) "
-                + "VALUES (?,?,?,?,?,?,?)";
+                "INSERT INTO staff (last_name, first_name, position, access_level "
+                + "username, password, specialty, prescriber number) "
+                + "VALUES (?,?,?,?,?,?,?,?)";
 
         try {
             insertStaff = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
-            insertStaff.setString(1, staff.getStaffType());
+            insertStaff.setString(1, staff.getLastName());
+            insertStaff.setString(2, staff.getFirstName()); 
+            insertStaff.setString(8, staff.getPosition());
+            insertStaff.setString(8, staff.getAccessLevel()); 
+            insertStaff.setString(8, staff.getUsername()); 
             insertStaff.setString(2, new String(staff.getPassword()));
-            insertStaff.setString(3, staff.getFirstName());
-            insertStaff.setString(4, staff.getLastName());
-            insertStaff.setString(5, staff.getGender());
-            insertStaff.setString(6, staff.getMedicalSpecialty());
-            insertStaff.setString(7, staff.getPhone());
+            insertStaff.setString(6, staff.getSpecialty());
+            insertStaff.setString(7, staff.getPrescriberNumber());
             insertStaff.executeUpdate();
 
             ResultSet rs = insertStaff.getGeneratedKeys();
@@ -291,83 +307,29 @@ public class StaffQuery {
     }
 
     /**
-     * Add a doctor
+     * Add a staff member
      */
-    public void addDoctor() {
+    public void addStaff() {
         openConnection();
 
         try {
-            insertDoctor = conn.prepareStatement(
-                    "INSERT INTO app.doctor (staff_id) "
+            insertStaff = conn.prepareStatement(
+                    "INSERT INTO staff (staff_id) "
                     + "VALUES (?)");
-            insertDoctor.setInt(1, getID());
-            insertDoctor.executeUpdate();
+            insertStaff.setInt(1, getID());
+            insertStaff.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(StaffQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         closeConnection();
     }
 
-    /**
-     * Add a nurse
-     * @param ward
-     */
-    public void addNurse(int ward) {
-        openConnection();
-
-        try {
-            insertNurse = conn.prepareStatement(
-                    "INSERT INTO app.nurse (staff_id, ward_id) "
-                    + "VALUES (?,?)");
-            insertNurse.setInt(1, getID());
-            insertNurse.setInt(2, ward);
-            insertNurse.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(StaffQuery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        closeConnection();
-    }
     /**
      * Update staff details
      * @param staff Staff details
      */
     public void updateStaff(Staff staff) {
         openConnection();
-        try {
-            /*updateStaff = conn.prepareStatement(
-             "UPDATE app.staff "
-             + "SET staff_type = ?, "
-             + "password = ?, "
-             + "first_name = ?, "
-             + "last_name = ?, "
-             + "gender = ?, "
-             + "medical_specialty = ?, "
-             + "phone = ? "
-             + "WHERE staff_id = ?");
-             updateStaff.setString(1, staff.getStaffType());
-             updateStaff.setString(2, staff.getPassword());
-             updateStaff.setString(3, staff.getFirstName());
-             updateStaff.setString(4, staff.getLastName());
-             updateStaff.setString(5, staff.getGender());
-             updateStaff.setString(6, staff.getMedicalSpecialty());
-             updateStaff.setString(7, staff.getPhone());
-             updateStaff.setInt(8, staff.getStaffID());
-             updateStaff.executeUpdate();*/
-            String sql = "update app.staff set staff_type = '" + staff.getStaffType()
-                    + "', password = '" + staff.getPassword() + "', first_name = '"
-                    + staff.getFirstName() + "', last_name = '" + staff.getLastName()
-                    + "', gender = '" + staff.getGender() + "', medical_specialty = '"
-                    + staff.getMedicalSpecialty() + "', phone = '" + staff.getPhone() 
-                    + "' WHERE staff_id = " + staff.getStaffID();
-                    
-            System.out.println("sql = "+sql);
-            Statement s = conn.createStatement();
-            s.executeUpdate(sql);
-                    
-                       
-        } catch (SQLException ex) {
-            Logger.getLogger(StaffQuery.class.getName()).log(Level.SEVERE, null, ex);
-        }
         closeConnection();
     }
 }

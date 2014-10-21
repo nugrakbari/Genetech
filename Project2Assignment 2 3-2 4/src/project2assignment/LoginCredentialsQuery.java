@@ -7,7 +7,6 @@
 package project2assignment;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +17,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author nugrakbari <z3423268@zmail.unsw.edu.au>
+ * 
  */
 public class LoginCredentialsQuery {
 
@@ -73,7 +72,7 @@ public class LoginCredentialsQuery {
 
         try {
             selectUser = conn.prepareStatement(
-                    "SELECT staff_type FROM app.staff WHERE staff_id = ? AND password = ?");
+                    "SELECT accesslevel FROM app.staff WHERE staff_id = ? AND password = ?");
             selectUser.setInt(1, id);
             selectUser.setString(2, pass);
             rs = selectUser.executeQuery();
