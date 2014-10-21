@@ -6,18 +6,24 @@
 
 package project2assignment;
 
+import javax.swing.JOptionPane;
 /**
  *
- * @author gregjacobson
+ * @author erina ung
  */
 public class LoginPage extends javax.swing.JFrame {
 
+    private final LoginCredentialsQuery login;
+    private final StaffQuery staffQuery;
+    private String type;
+    private int ward;
     /**
      * Creates new form LoginPage
      */
     public LoginPage() {
+        login = new LoginCredentialsQuery();
+        staffQuery = new StaffQuery();
         initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,7 +112,25 @@ public class LoginPage extends javax.swing.JFrame {
     // database 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
     new HomePage().setVisible(true);
-    this.dispose();// TODO add your handling code here
+    this.dispose();
+
+    int id = Integer.parseInt(usernameField.getText());
+        String pass = new String(this.passwordField.getPassword());
+        type = login.getUserType(id, pass);
+        ward = staffQuery.getNurseWard(id);
+        if (type != null) {
+            AllTables staffUI = new AllTables();
+            staffUI.setAccessLevel(type);
+            staffUI.setWard(ward);
+            System.out.println("ward: " +ward);
+            setVisible(false);
+            staffUI.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Incorrect ID/Password combination");
+            passwordField.setText("");
+        }
+
+// TODO add your handling code here
     
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -156,4 +180,8 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
+
+    private void initComponents() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
