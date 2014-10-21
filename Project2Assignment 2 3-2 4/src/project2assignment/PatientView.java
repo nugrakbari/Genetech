@@ -341,6 +341,10 @@ public class PatientView extends javax.swing.JFrame {
         });
         internalFrame.getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 90, -1, -1));
 
+        searchButton.setText("Search");
+        internalFrame.getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1115, 90, 90, -1));
+
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
         internalFrame.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 650));
 
