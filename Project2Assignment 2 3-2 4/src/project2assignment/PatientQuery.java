@@ -79,6 +79,9 @@ public class PatientQuery {
             if (returnPatientByID != null) {
                 returnPatientByID.close();
             }
+            if (findPatient != null) {
+                findPatient.close();
+            }
             if (conn != null) {
                 conn.close();
             }
@@ -136,15 +139,34 @@ public class PatientQuery {
     }
     
     public List<Patient> searchPatient(String keyword) {
-
+        System.out.println("searchPatient searching patient " + keyword);
         List<Patient> results = null;
         ResultSet resultSet = null;
         openConnection();
 
         try {
             
-            findPatient = conn.prepareStatement("SELECT * FROM PATIENT WHERE patient_lastname = ?");
+            findPatient = conn.prepareStatement("SELECT * FROM PATIENT WHERE "
+                    + "TO_CHAR(patient_id) = ? OR "
+                    + "UPPER(patient_lastname) = UPPER(?) OR "
+                    + "UPPER(patient_firstname) = UPPER(?) OR "
+                    + "UPPER(street_address) = UPPER(?) OR "
+                    + "home_phone = ? OR "
+                    + "mobile_phone = ? OR "
+                    + "UPPER(email_address) = UPPER(?) OR "
+                    + "medicare_number = ? OR "
+                    + "UPPER(emer_cont_name) = UPPER(?) OR "
+                    + "emer_cont_phone = ?");
             findPatient.setString(1, keyword);
+            findPatient.setString(2, keyword);
+            findPatient.setString(3, keyword);
+            findPatient.setString(4, keyword);
+            findPatient.setString(5, keyword);
+            findPatient.setString(6, keyword);
+            findPatient.setString(7, keyword);
+            findPatient.setString(8, keyword);
+            findPatient.setString(9, keyword);
+            findPatient.setString(10, keyword);
             resultSet = findPatient.executeQuery();
             results = new ArrayList<Patient>();
 

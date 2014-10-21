@@ -23,6 +23,7 @@ public class PatientForm extends javax.swing.JFrame {
     private final String NEXTVAL = "seq_patient.nextval";
     private int toEdit;
     
+    private Patient patientData;
     
     //this access level is put in as a temporary measure. remove and replace
     //with value passed in from login when login complete.
@@ -40,7 +41,7 @@ public class PatientForm extends javax.swing.JFrame {
          */
         EDIT;
     }
-     private PatientForm.Action action;
+    private PatientForm.Action action;
     
     /**
      * Creates new form PatientForm
@@ -1216,11 +1217,39 @@ public class PatientForm extends javax.swing.JFrame {
     public void setToEdit(int toEdit) {
         this.toEdit = toEdit;
         System.out.println("toEdit value is " + toEdit);
+        Patient p = patientQuery.getPatientByID(toEdit);
+            System.out.println("Patient name is " + p.getFirstName());
+            if (p != null) {
+                this.givenNameField.setText(p.getFirstName());
+                this.surnameField.setText(p.getLastName());
+                this.genderComboBox.setSelectedItem((String) p.getGender());
+                this.birthdayField.setText(df.format(p.getDateOfBirth()));
+                this.streetAddressField.setText(p.getStreetAddress());
+                this.stateComboBox.setSelectedItem((String) p.getState());
+                this.suburbField.setText(p.getSuburb());
+                this.postcodeField.setText(p.getPostcode());
+                this.homePhoneField.setText(p.getHomePhone());
+                this.mobilePhoneField.setText(p.getMobilePhone());
+                this.referringDocField.setText(p.getReferringDoctor());
+                this.medicareNoField.setText(p.getMedicareNo());
+                this.emerContNameField.setText(p.getEmContactName());
+                this.emerContPhoneField.setText(p.getEmContactNo());
+                this.emerContRshipField.setText(p.getEmContactRelation());
+                this.funPointField.setText(p.getFunPoint());
+                this.patientAllergiesField.setText(p.getAllergies());
+                this.existingConditionsField.setText(p.getExistingConditions());
+                this.medicationsField.setText(p.getMedications());
+            } else {
+                //TODO the staff member does not exist
+                throw new UnsupportedOperationException("No such patient exists");
+            }
+        
     }
     
     private void formComponentShown(java.awt.event.ComponentEvent evt) {                                    
         if (action == Action.EDIT) {
             Patient p = patientQuery.getPatientByID(toEdit);
+            System.out.println("Patient name is " + p.getFirstName());
             if (p != null) {
                 this.givenNameField.setText(p.getFirstName());
                 this.surnameField.setText(p.getLastName());
