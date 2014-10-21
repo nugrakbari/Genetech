@@ -12,6 +12,7 @@ package project2assignment;
  */
 public class HomePage extends javax.swing.JFrame {
 
+    private String accessLevel;
     /**
      * Creates new form HomePage
      */
@@ -268,7 +269,9 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_billingButtonMouseClicked
 
     private void patientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientButtonMouseClicked
-    new PatientView().setVisible(true);
+    PatientView patient = new PatientView();
+    patient.setVisible(true);
+    patient.setAccessLevel(accessLevel);
     this.dispose();  // TODO add your handling code here:
     }//GEN-LAST:event_patientButtonMouseClicked
 
@@ -289,6 +292,15 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
+    /**
+     * @param accessLevel the accessLevel to set
+     */
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
+        System.out.println("(HomePage) accesslevel is " + accessLevel);
+    }
+    
+    
     /**
      * @param args the command line arguments
      */

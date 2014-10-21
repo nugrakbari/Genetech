@@ -11,6 +11,8 @@ package project2assignment;
  * @author GuestAccount
  */
 public class Billing extends javax.swing.JFrame {
+    
+    private String accessLevel;
 
     /**
      * Creates new form Billing
@@ -584,6 +586,12 @@ this.dispose();// TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_billingButtonMouseClicked
 
+    /**
+     * @param accessLevel the accessLevel to set
+     */
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
+    }
     /**
      * @param args the command line arguments
      */

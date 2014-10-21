@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package project2assignment;
 
 import java.text.DateFormat;
@@ -22,15 +21,13 @@ public class PatientForm extends javax.swing.JFrame {
     private DateFormat df;
     private final String NEXTVAL = "seq_patient.nextval";
     private int toEdit;
-    
+    private String accessLevel;
+
     private Patient patientData;
-    
+
     //this access level is put in as a temporary measure. remove and replace
     //with value passed in from login when login complete.
-    private final int ACCESS_LEVEL = 3; 
-    
     public enum Action {
-   
 
         /**
          *
@@ -42,16 +39,17 @@ public class PatientForm extends javax.swing.JFrame {
         EDIT;
     }
     private PatientForm.Action action;
-    
+
     /**
      * Creates new form PatientForm
      */
     public PatientForm() {
-        
+
         df = new SimpleDateFormat("dd/MM/yyyy");
         patientQuery = new PatientQuery();
-        
+
         initComponents();
+        
     }
 
     /**
@@ -188,6 +186,11 @@ public class PatientForm extends javax.swing.JFrame {
         jInternalFrame2.setTitle("Homepage");
         jInternalFrame2.setPreferredSize(new java.awt.Dimension(966, 966));
         jInternalFrame2.setVisible(true);
+        jInternalFrame2.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jInternalFrame2ComponentShown(evt);
+            }
+        });
         jInternalFrame2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Welcome.setBackground(new java.awt.Color(0, 0, 0));
@@ -320,6 +323,11 @@ public class PatientForm extends javax.swing.JFrame {
         jInternalFrame2.getContentPane().add(scheduleTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         Tabs.setBackground(new java.awt.Color(255, 255, 255));
+        Tabs.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                TabsComponentShown(evt);
+            }
+        });
 
         jLabel13.setText("Given Name:");
 
@@ -589,6 +597,12 @@ public class PatientForm extends javax.swing.JFrame {
         );
 
         Tabs.addTab("General", generalPanel);
+
+        medicalHistoryPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                medicalHistoryPanelComponentShown(evt);
+            }
+        });
 
         jLabel30.setText("Patient Allergies");
 
@@ -1030,17 +1044,17 @@ public class PatientForm extends javax.swing.JFrame {
 
         Tabs.addTab("Prescriptions", prescriptionsPanel);
 
-        /*if (ACCESS_LEVEL == 1) {
+        if (accessLevel.equals("3")) {
             Tabs.remove(medicalHistoryPanel);
             Tabs.remove(prescriptionsPanel);
             Tabs.remove(patientNotesPanel);
             Tabs.remove(currentVisitPanel);
         }
 
-        if (ACCESS_LEVEL == 2) {
+        if (accessLevel.equals("2")) {
             Tabs.remove(prescriptionsPanel);
             Tabs.remove(patientNotesPanel);
-        }*/
+        }
 
         jInternalFrame2.getContentPane().add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 1010, 470));
 
@@ -1062,7 +1076,7 @@ public class PatientForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void patientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientButtonActionPerformed
-    
+
     }//GEN-LAST:event_patientButtonActionPerformed
 
     private void billingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billingButtonActionPerformed
@@ -1117,7 +1131,7 @@ public class PatientForm extends javax.swing.JFrame {
                     givenNameField.getText(),
                     surnameField.getText(),
                     new java.sql.Date(df.parse(dobField).getTime()),
-                    (String) genderComboBox.getSelectedItem(),      
+                    (String) genderComboBox.getSelectedItem(),
                     streetAddressField.getText(),
                     suburbField.getText(),
                     (String) stateComboBox.getSelectedItem(),
@@ -1149,32 +1163,32 @@ public class PatientForm extends javax.swing.JFrame {
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void scheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleButtonActionPerformed
-    
+
     }//GEN-LAST:event_scheduleButtonActionPerformed
 
     private void scheduleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleButtonMouseClicked
-    new HomePage().setVisible(true);
-    this.dispose();    // TODO add your handling code here:
+        new HomePage().setVisible(true);
+        this.dispose();    // TODO add your handling code here:
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
     private void patientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientButtonMouseClicked
-    new PatientView().setVisible(true);
-    this.dispose();    // TODO add your handling code here:
+        new PatientView().setVisible(true);
+        this.dispose();    // TODO add your handling code here:
     }//GEN-LAST:event_patientButtonMouseClicked
 
     private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
-    new Billing().setVisible(true);
-    this.dispose();
+        new Billing().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_billingButtonMouseClicked
 
     private void messagesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButtonMouseClicked
-    new InstantMessaging().setVisible(true);
-    this.dispose();
+        new InstantMessaging().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_messagesButtonMouseClicked
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
-    new PatientView().setVisible(true);
-    this.dispose();
+        new PatientView().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_backButtonMouseClicked
 
     private void birthdayFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_birthdayFieldActionPerformed
@@ -1201,6 +1215,28 @@ public class PatientForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_medicationsFieldActionPerformed
 
+    private void medicalHistoryPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_medicalHistoryPanelComponentShown
+
+    }//GEN-LAST:event_medicalHistoryPanelComponentShown
+
+    private void jInternalFrame2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jInternalFrame2ComponentShown
+        
+    }//GEN-LAST:event_jInternalFrame2ComponentShown
+
+    private void TabsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_TabsComponentShown
+        if (accessLevel.equals("3")) {
+            Tabs.remove(medicalHistoryPanel);
+            Tabs.remove(prescriptionsPanel);
+            Tabs.remove(patientNotesPanel);
+            Tabs.remove(currentVisitPanel);
+        }
+
+        if (accessLevel.equals("2")) {
+            Tabs.remove(prescriptionsPanel);
+            Tabs.remove(patientNotesPanel);
+        }
+    }//GEN-LAST:event_TabsComponentShown
+
     /**
      *
      * @param action
@@ -1218,35 +1254,35 @@ public class PatientForm extends javax.swing.JFrame {
         this.toEdit = toEdit;
         System.out.println("toEdit value is " + toEdit);
         Patient p = patientQuery.getPatientByID(toEdit);
-            System.out.println("Patient name is " + p.getFirstName());
-            if (p != null) {
-                this.givenNameField.setText(p.getFirstName());
-                this.surnameField.setText(p.getLastName());
-                this.genderComboBox.setSelectedItem((String) p.getGender());
-                this.birthdayField.setText(df.format(p.getDateOfBirth()));
-                this.streetAddressField.setText(p.getStreetAddress());
-                this.stateComboBox.setSelectedItem((String) p.getState());
-                this.suburbField.setText(p.getSuburb());
-                this.postcodeField.setText(p.getPostcode());
-                this.homePhoneField.setText(p.getHomePhone());
-                this.mobilePhoneField.setText(p.getMobilePhone());
-                this.referringDocField.setText(p.getReferringDoctor());
-                this.medicareNoField.setText(p.getMedicareNo());
-                this.emerContNameField.setText(p.getEmContactName());
-                this.emerContPhoneField.setText(p.getEmContactNo());
-                this.emerContRshipField.setText(p.getEmContactRelation());
-                this.funPointField.setText(p.getFunPoint());
-                this.patientAllergiesField.setText(p.getAllergies());
-                this.existingConditionsField.setText(p.getExistingConditions());
-                this.medicationsField.setText(p.getMedications());
-            } else {
-                //TODO the staff member does not exist
-                throw new UnsupportedOperationException("No such patient exists");
-            }
-        
+        System.out.println("Patient name is " + p.getFirstName());
+        if (p != null) {
+            this.givenNameField.setText(p.getFirstName());
+            this.surnameField.setText(p.getLastName());
+            this.genderComboBox.setSelectedItem((String) p.getGender());
+            this.birthdayField.setText(df.format(p.getDateOfBirth()));
+            this.streetAddressField.setText(p.getStreetAddress());
+            this.stateComboBox.setSelectedItem((String) p.getState());
+            this.suburbField.setText(p.getSuburb());
+            this.postcodeField.setText(p.getPostcode());
+            this.homePhoneField.setText(p.getHomePhone());
+            this.mobilePhoneField.setText(p.getMobilePhone());
+            this.referringDocField.setText(p.getReferringDoctor());
+            this.medicareNoField.setText(p.getMedicareNo());
+            this.emerContNameField.setText(p.getEmContactName());
+            this.emerContPhoneField.setText(p.getEmContactNo());
+            this.emerContRshipField.setText(p.getEmContactRelation());
+            this.funPointField.setText(p.getFunPoint());
+            this.patientAllergiesField.setText(p.getAllergies());
+            this.existingConditionsField.setText(p.getExistingConditions());
+            this.medicationsField.setText(p.getMedications());
+        } else {
+            //TODO the staff member does not exist
+            throw new UnsupportedOperationException("No such patient exists");
+        }
+
     }
-    
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {                                    
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {
         if (action == Action.EDIT) {
             Patient p = patientQuery.getPatientByID(toEdit);
             System.out.println("Patient name is " + p.getFirstName());
@@ -1271,10 +1307,18 @@ public class PatientForm extends javax.swing.JFrame {
                 //TODO the staff member does not exist
                 throw new UnsupportedOperationException("No such patient exists");
             }
-            
+
         }
     }
-    
+
+    /**
+     * @param accessLevel the accessLevel to set
+     */
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
+        System.out.println("(PatientForm) access level is " + accessLevel);
+    }
+
     /**
      * @param args the command line arguments
      */

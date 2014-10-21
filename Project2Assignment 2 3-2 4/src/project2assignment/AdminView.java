@@ -11,6 +11,8 @@ package project2assignment;
  * @author GuestAccount
  */
 public class AdminView extends javax.swing.JFrame {
+    
+private String accessLevel;
 
     /**
      * Creates new form AdminForm
@@ -220,6 +222,12 @@ public class AdminView extends javax.swing.JFrame {
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_messagesButtonMouseClicked
 
+    /**
+     * @param accessLevel the accessLevel to set
+     */
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
+    }
     /**
      * @param args the command line arguments
      */

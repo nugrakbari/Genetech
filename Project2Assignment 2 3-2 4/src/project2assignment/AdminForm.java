@@ -11,6 +11,8 @@ package project2assignment;
  * @author GuestAccount
  */
 public class AdminForm extends javax.swing.JFrame {
+    
+private String accessLevel;
 
     /**
      * Creates new form AdminForm1
@@ -340,6 +342,13 @@ public class AdminForm extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    /**
+     * @param accessLevel the accessLevel to set
+     */
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
+    }
 
     /**
      * @param args the command line arguments

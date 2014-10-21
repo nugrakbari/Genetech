@@ -72,7 +72,7 @@ public class LoginCredentialsQuery {
 
         try {
             selectUser = conn.prepareStatement(
-                    "SELECT accesslevel FROM staff WHERE staff_id = ? AND password = ?");
+                    "SELECT access_level FROM staff WHERE staff_id = ? AND password = ?");
             selectUser.setInt(1, id);
             selectUser.setString(2, pass);
             rs = selectUser.executeQuery();

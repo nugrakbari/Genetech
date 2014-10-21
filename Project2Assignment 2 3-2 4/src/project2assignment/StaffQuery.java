@@ -140,7 +140,7 @@ public class StaffQuery {
         try {
 
             getAllDoctors = conn.prepareStatement(
-                    "SELECT * FROM staff WHERE access_level= 3");
+                    "SELECT * FROM staff WHERE access_level= 1");
             resultSet = getAllDoctors.executeQuery();
             results = new ArrayList<Staff>();
 
@@ -174,7 +174,7 @@ public class StaffQuery {
         try {
 
             getAllNurses = conn.prepareStatement(
-                    "SELECT * FROM app.staff WHERE access_level= 2");
+                    "SELECT * FROM staff WHERE access_level= 2");
             resultSet = getAllNurses.executeQuery();
             results = new ArrayList<Staff>();
 
@@ -208,7 +208,7 @@ public class StaffQuery {
         try {
 
             getAllReceptionist = conn.prepareStatement(
-                    "SELECT * FROM app.staff WHERE access_level= 1");
+                    "SELECT * FROM staff WHERE access_level= 3");
             resultSet = getAllReceptionist.executeQuery();
             results = new ArrayList<Staff>();
 
