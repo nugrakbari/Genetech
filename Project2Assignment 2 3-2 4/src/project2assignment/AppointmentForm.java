@@ -154,7 +154,7 @@ public class AppointmentForm extends javax.swing.JFrame {
         jInternalFrame1.getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 100, 40));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/ButtonClicked copy.png"))); // NOI18N
-        jInternalFrame1.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jInternalFrame1.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -50, 510, 460));
