@@ -85,11 +85,12 @@ public class HistoryForm extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList();
         jLabel13 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -377,7 +378,7 @@ public class HistoryForm extends javax.swing.JFrame {
         jInternalFrame1.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 150, 290, 90));
 
         jButton2.setText("Back");
-        jInternalFrame1.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 510, 100, 40));
+        jInternalFrame1.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 510, 100, 40));
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -400,6 +401,12 @@ public class HistoryForm extends javax.swing.JFrame {
         jLabel13.setText("Procedure List:");
         jInternalFrame1.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
 
+        jLabel16.setText("Next Appointment:");
+        jInternalFrame1.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 210, -1, -1));
+
+        jButton1.setText("Next");
+        jInternalFrame1.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 510, 100, 40));
+
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -415,9 +422,6 @@ public class HistoryForm extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, 1250, 670));
-
-        jLabel16.setText("Next Appointment:");
-        jInternalFrame1.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 210, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -520,6 +524,7 @@ public class HistoryForm extends javax.swing.JFrame {
     private javax.swing.JTextField bloodPressureField1;
     private javax.swing.JTextField fev1Field1;
     private javax.swing.JTextField heartRateField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JInternalFrame jInternalFrame1;
