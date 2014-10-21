@@ -205,14 +205,14 @@ public class HistoryForm extends javax.swing.JFrame {
 
         jLabel5.setText("Patient Name:");
         jInternalFrame1.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, 30));
-        jInternalFrame1.getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, 90, -1));
+        jInternalFrame1.getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, 110, -1));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jInternalFrame1.getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 290, -1));
+        jInternalFrame1.getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 310, -1));
         jInternalFrame1.getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 110, -1));
         jInternalFrame1.getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 110, -1));
 
@@ -386,7 +386,7 @@ public class HistoryForm extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jList1);
 
-        jInternalFrame1.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 290, 50));
+        jInternalFrame1.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 310, 50));
 
         jList2.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -405,7 +405,7 @@ public class HistoryForm extends javax.swing.JFrame {
                 jTextField5ActionPerformed(evt);
             }
         });
-        jInternalFrame1.getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 90, -1));
+        jInternalFrame1.getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 110, -1));
 
         jLabel9.setText("Prescribed Meds:");
         jInternalFrame1.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, -1, -1));
