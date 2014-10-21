@@ -52,7 +52,6 @@ public class HomePage extends javax.swing.JFrame {
         billingButton = new javax.swing.JButton();
         billingLabel = new javax.swing.JLabel();
         billingTab = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
         genetech = new javax.swing.JLabel();
         scheduleButton = new javax.swing.JButton();
@@ -116,7 +115,7 @@ public class HomePage extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jInternalFrame2.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 990, 420));
+        jInternalFrame2.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 1020, 440));
 
         Welcome.setBackground(new java.awt.Color(0, 0, 0));
         Welcome.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
@@ -203,10 +202,6 @@ public class HomePage extends javax.swing.JFrame {
 
         billingTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/button2.png"))); // NOI18N
         jInternalFrame2.getContentPane().add(billingTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/panel5.png"))); // NOI18N
-        jLabel8.setAlignmentY(0.0F);
-        jInternalFrame2.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 120, -1, -1));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/logo glow.png"))); // NOI18N
         jInternalFrame2.getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
@@ -338,7 +333,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame1;
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu4;
