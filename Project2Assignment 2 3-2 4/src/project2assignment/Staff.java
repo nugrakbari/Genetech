@@ -13,7 +13,7 @@ package project2assignment;
  */
 public class Staff {
     
-    private String patientId;
+    private int staffId;
     private String lastName;
     private String firstName;
     private String position;
@@ -24,13 +24,13 @@ public class Staff {
     private String prescriberNumber; 
     
     
-    public Staff(String id, String lname, String fname, String role, String access,
+    public Staff(int id, String lname, String fname, String role, String access,
             String user, String pass, String special, String prescriber) {
-        setPatientId(id);
+        setStaffId(id);
         setLastName(lname);
         setFirstName(fname);
         setPosition(role);
-        setAccessLevel(user);
+        setAccessLevel(access);
         setUsername(user);
         setPassword(pass);
         setSpecialty(special);
@@ -39,22 +39,18 @@ public class Staff {
         
     }
 
-    Staff(int aInt, String string, String string0, String string1, String string2, String string3, String string4, String string5, String string6, String string7) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * @return the staffId
+     */
+    public int getStaffId() {
+        return staffId;
     }
 
     /**
-     * @return the patientId
+     * @param staffId the staffId to set
      */
-    public String getPatientId() {
-        return patientId;
-    }
-
-    /**
-     * @param patientId the patientId to set
-     */
-    public void setPatientId(String patientId) {
-        this.patientId = patientId;
+    public void setStaffId(int staffId) {
+        this.staffId = staffId;
     }
 
     /**
@@ -168,7 +164,4 @@ public class Staff {
     public void setPrescriberNumber(String prescriberNumber) {
         this.prescriberNumber = prescriberNumber;
     }
-
-    
-    
 }
