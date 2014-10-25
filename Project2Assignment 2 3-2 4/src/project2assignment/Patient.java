@@ -14,6 +14,7 @@ import java.sql.Date;
  */
 public class Patient {
     
+    private String accessLevel;
     private String patientID;
     private String lastName;
     private String firstName;
@@ -361,5 +362,11 @@ public class Patient {
         this.funPoint = funPoint;
     }
     
-    
+    /**
+     * @param accessLevel the accessLevel to set
+     */
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
+    }
+
 }

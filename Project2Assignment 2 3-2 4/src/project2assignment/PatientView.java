@@ -29,6 +29,7 @@ public class PatientView extends javax.swing.JFrame {
     private DefaultTableModel patientTableModel;
     private DateFormat df;
     private String toSearch;
+    private String accessLevel;
 
     public enum Action {
 
@@ -119,10 +120,12 @@ public class PatientView extends javax.swing.JFrame {
             int patientElementToView = patientTable.getSelectedRow();
             String patientID = (String) patientTable.getValueAt(patientElementToView, 0);
             int id = Integer.parseInt(patientID);
+            
 
             if (patientElementToView != -1) {
                 System.out.println(id);
                 PatientForm form = new PatientForm();
+                form.setAccessLevel(accessLevel);
                 form.setAction(PatientForm.Action.EDIT);
                 form.setToEdit(id);
                 setVisible(false);
@@ -449,6 +452,13 @@ public class PatientView extends javax.swing.JFrame {
         System.out.println("Searching for " + toSearch);
     }
 
+    /**
+     * @param accessLevel the accessLevel to set
+     */
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
+        System.out.println("(PatientView) accesslevel is " + accessLevel);
+    }
     /**
      * @param args the command line arguments
      */

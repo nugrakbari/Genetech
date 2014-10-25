@@ -27,7 +27,6 @@ public class StaffQuery {
     private static final String URL = "jdbc:oracle:thin:@//sage.business.unsw.edu.au:1521/orcl01.asbpldb001.ad.unsw.edu.au";
     private static final String USERNAME = "Z3373928";
     private static final String PASSWORD = "fra5reDr";
-
     /**
      *
      */
@@ -68,15 +67,14 @@ public class StaffQuery {
             if (getAllDoctors != null) {
                 getAllDoctors.close();
             }
-            if (conn != null) {
-                conn.close();
-            }
         } catch (SQLException ex) {
             Logger.getLogger(StaffQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("close staff");
     }
 
+
+    
     /**
      * Get all doctors
      *
@@ -114,13 +112,12 @@ public class StaffQuery {
     }
     
     public List<Staff> searchDoctor(String keyword) {
-        System.out.println("searchPatient searching patient " + keyword);
         List<Staff> results = null;
         ResultSet resultSet = null;
         openConnection();
-        
         try {
-            findDoctor = conn.prepareStatement("SELECT * FROM staff WHERE access_level = 1 AND "
+        System.out.println("searchDoctor searching doctor " + keyword);
+        findDoctor = conn.prepareStatement("SELECT * FROM staff WHERE access_level = 1 AND "
                     + "UPPER(staff_firstname) = UPPER(?) OR "
                     + "UPPER(staff_lastname) = UPPER(?) OR "
                     + "UPPER(staff_id) = UPPER(?) OR "

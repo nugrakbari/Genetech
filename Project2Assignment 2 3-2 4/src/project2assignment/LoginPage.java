@@ -3,19 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package project2assignment;
+
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author gregjacobson
+ * @author erina ung
  */
 public class LoginPage extends javax.swing.JFrame {
+
+    private final LoginCredentialsQuery login;
+    private final StaffQuery staffQuery;
+    private String type;
 
     /**
      * Creates new form LoginPage
      */
     public LoginPage() {
+        login = new LoginCredentialsQuery();
+        staffQuery = new StaffQuery();
         initComponents();
     }
 
@@ -31,10 +38,10 @@ public class LoginPage extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         genetechLogo = new javax.swing.JLabel();
         logoImage = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
         usernameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         usernameField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
         backdrop = new javax.swing.JLabel();
 
@@ -50,6 +57,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         logoImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/logo glow.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(logoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        jInternalFrame1.getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 188, 210, 30));
 
         usernameLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         usernameLabel.setForeground(new java.awt.Color(238, 238, 238));
@@ -67,7 +75,6 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
         jInternalFrame1.getContentPane().add(usernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 210, 30));
-        jInternalFrame1.getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 210, 30));
 
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -102,9 +109,26 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameFieldActionPerformed
 
+    // get username field and password field and match it to an account from 
+    // database 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-    new HomePage().setVisible(true);
-    this.dispose();// TODO add your handling code here:
+
+        int id = Integer.parseInt(usernameField.getText());
+        String pass = new String(this.passwordField.getPassword());
+        type = login.getUserType(id, pass);
+        if (type != null) {
+            HomePage home = new HomePage();
+            home.setVisible(true);
+            home.setAccessLevel(type);
+            this.dispose();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Incorrect ID/Password combination");
+            passwordField.setText("");
+        }
+
+// TODO add your handling code here
+
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
@@ -148,9 +172,10 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel logoImage;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
+
 }
