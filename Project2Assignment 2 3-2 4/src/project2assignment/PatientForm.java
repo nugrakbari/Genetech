@@ -25,6 +25,7 @@ public class PatientForm extends javax.swing.JFrame {
 
     private Patient patientData;
 
+
     //this access level is put in as a temporary measure. remove and replace
     //with value passed in from login when login complete.
     public enum Action {
@@ -186,11 +187,6 @@ public class PatientForm extends javax.swing.JFrame {
         jInternalFrame2.setTitle("Homepage");
         jInternalFrame2.setPreferredSize(new java.awt.Dimension(966, 966));
         jInternalFrame2.setVisible(true);
-        jInternalFrame2.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                jInternalFrame2ComponentShown(evt);
-            }
-        });
         jInternalFrame2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Welcome.setBackground(new java.awt.Color(0, 0, 0));
@@ -323,11 +319,6 @@ public class PatientForm extends javax.swing.JFrame {
         jInternalFrame2.getContentPane().add(scheduleTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         Tabs.setBackground(new java.awt.Color(255, 255, 255));
-        Tabs.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                TabsComponentShown(evt);
-            }
-        });
 
         jLabel13.setText("Given Name:");
 
@@ -1050,7 +1041,6 @@ public class PatientForm extends javax.swing.JFrame {
             Tabs.remove(patientNotesPanel);
             Tabs.remove(currentVisitPanel);
         }
-
         if (accessLevel.equals("2")) {
             Tabs.remove(prescriptionsPanel);
             Tabs.remove(patientNotesPanel);
@@ -1218,24 +1208,6 @@ public class PatientForm extends javax.swing.JFrame {
     private void medicalHistoryPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_medicalHistoryPanelComponentShown
 
     }//GEN-LAST:event_medicalHistoryPanelComponentShown
-
-    private void jInternalFrame2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jInternalFrame2ComponentShown
-        
-    }//GEN-LAST:event_jInternalFrame2ComponentShown
-
-    private void TabsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_TabsComponentShown
-        if (accessLevel.equals("3")) {
-            Tabs.remove(medicalHistoryPanel);
-            Tabs.remove(prescriptionsPanel);
-            Tabs.remove(patientNotesPanel);
-            Tabs.remove(currentVisitPanel);
-        }
-
-        if (accessLevel.equals("2")) {
-            Tabs.remove(prescriptionsPanel);
-            Tabs.remove(patientNotesPanel);
-        }
-    }//GEN-LAST:event_TabsComponentShown
 
     /**
      *

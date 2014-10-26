@@ -48,9 +48,6 @@
         </Property>
         <Property name="visible" type="boolean" value="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jInternalFrame2ComponentShown"/>
-      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -359,11 +356,8 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="TabsComponentShown"/>
-          </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="if (accessLevel.equals(&quot;3&quot;)) {&#xa;    Tabs.remove(medicalHistoryPanel);&#xa;    Tabs.remove(prescriptionsPanel);&#xa;    Tabs.remove(patientNotesPanel);&#xa;    Tabs.remove(currentVisitPanel);&#xa;}&#xa;&#xa;if (accessLevel.equals(&quot;2&quot;)) {&#xa;    Tabs.remove(prescriptionsPanel);&#xa;    Tabs.remove(patientNotesPanel);&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="if (accessLevel.equals(&quot;3&quot;)) {&#xa;    Tabs.remove(medicalHistoryPanel);&#xa;    Tabs.remove(prescriptionsPanel);&#xa;    Tabs.remove(patientNotesPanel);&#xa;    Tabs.remove(currentVisitPanel);&#xa;} &#xa;if (accessLevel.equals(&quot;2&quot;)) {&#xa;    Tabs.remove(prescriptionsPanel);&#xa;    Tabs.remove(patientNotesPanel);&#xa;}"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

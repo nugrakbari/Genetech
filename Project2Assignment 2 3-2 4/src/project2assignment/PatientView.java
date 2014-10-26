@@ -106,6 +106,7 @@ public class PatientView extends javax.swing.JFrame {
         viewHistory = new JMenuItem("View past visits");
 
         viewPatient.addActionListener(viewPatientListener);
+        viewHistory.addActionListener(viewHistoryListener);
 
         popupMenu.add(viewPatient);
         popupMenu.add(viewMedicalRecord);
@@ -158,6 +159,12 @@ public class PatientView extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jPopupMenu3 = new javax.swing.JPopupMenu();
+        jPopupMenu4 = new javax.swing.JPopupMenu();
+        jPopupMenu5 = new javax.swing.JPopupMenu();
+        jPopupMenu6 = new javax.swing.JPopupMenu();
         internalFrame = new javax.swing.JInternalFrame();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -356,11 +363,7 @@ public class PatientView extends javax.swing.JFrame {
                 searchButtonMouseClicked(evt);
             }
         });
-        internalFrame.getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 90, -1, -1));
-
-        searchButton.setText("Search");
         internalFrame.getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1115, 90, 90, -1));
-
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
         internalFrame.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 650));
@@ -507,6 +510,12 @@ public class PatientView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JPopupMenu jPopupMenu3;
+    private javax.swing.JPopupMenu jPopupMenu4;
+    private javax.swing.JPopupMenu jPopupMenu5;
+    private javax.swing.JPopupMenu jPopupMenu6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton messagesButton;
     private javax.swing.JLabel messagesLabel;
