@@ -13,12 +13,14 @@ package project2assignment;
 public class ViewHistory extends javax.swing.JFrame {
     
     private String accessLevel;
+    private int toView;
 
     /**
      * Creates new form ViewHistory
      */
     public ViewHistory() {
         initComponents();
+        patientIDField.setText(String.valueOf(toView));
     }
 
     /**
@@ -49,7 +51,7 @@ public class ViewHistory extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        patientIDField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -68,7 +70,7 @@ public class ViewHistory extends javax.swing.JFrame {
         jInternalFrame1.setVisible(true);
         jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/logo glow.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/logo-glow.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 60)); // NOI18N
@@ -173,13 +175,18 @@ public class ViewHistory extends javax.swing.JFrame {
         jLabel5.setText("Patient Name:");
         jInternalFrame1.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, 30));
 
+        jTextField1.setEnabled(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
         jInternalFrame1.getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 290, -1));
-        jInternalFrame1.getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 140, -1));
+
+        patientIDField.setText(String.valueOf(toView)
+        );
+        patientIDField.setEnabled(false);
+        jInternalFrame1.getContentPane().add(patientIDField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 140, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -269,6 +276,12 @@ public class ViewHistory extends javax.swing.JFrame {
         this.accessLevel = accessLevel;
         System.out.println("accesslevel is " + accessLevel);
     }
+    
+    public void setToView(int toView) {
+        this.toView = toView;
+        System.out.println("Searching for " + toView);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -320,12 +333,12 @@ public class ViewHistory extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel logo;
     private javax.swing.JButton messagesButton;
     private javax.swing.JLabel messagesLabel;
     private javax.swing.JLabel messagesTab;
     private javax.swing.JButton patientButton;
+    private javax.swing.JTextField patientIDField;
     private javax.swing.JLabel patientLabel;
     private javax.swing.JLabel patientTab;
     private javax.swing.JButton scheduleButton;

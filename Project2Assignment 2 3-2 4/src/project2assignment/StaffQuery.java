@@ -38,7 +38,7 @@ public class StaffQuery {
 
             DatabaseMetaData dbmd = conn.getMetaData();
 
-            rs = dbmd.getTables(null, "APP", "PATIENT", null);
+            rs = dbmd.getTables(null, "APP", "STAFF", null);
 
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();

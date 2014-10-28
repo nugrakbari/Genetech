@@ -125,8 +125,8 @@ public class PatientView extends javax.swing.JFrame {
 
             if (patientElementToView != -1) {
                 System.out.println(id);
-                PatientForm form = new PatientForm();
-                form.setAccessLevel(accessLevel);
+                PatientForm form = new PatientForm(accessLevel);
+                //form.setAccessLevel(accessLevel);
                 form.setAction(PatientForm.Action.EDIT);
                 form.setToEdit(id);
                 setVisible(false);
@@ -147,6 +147,7 @@ public class PatientView extends javax.swing.JFrame {
             if (patientElementToView != -1) {
                 System.out.println(id);
                 history.setVisible(true);
+                history.setToView(id);
             }
         }
     };
@@ -219,7 +220,7 @@ public class PatientView extends javax.swing.JFrame {
         });
         internalFrame.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 250, 90));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/logo glow.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/logo-glow.png"))); // NOI18N
         internalFrame.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
         addButton.setText("Add");
@@ -414,12 +415,12 @@ public class PatientView extends javax.swing.JFrame {
     }//GEN-LAST:event_patientButtonActionPerformed
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
-        new PatientForm().setVisible(true);
+        new PatientForm(accessLevel).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_addButtonMouseClicked
 
     private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
-        new PatientForm().setVisible(true);
+        new PatientForm(accessLevel).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_viewButtonMouseClicked
 

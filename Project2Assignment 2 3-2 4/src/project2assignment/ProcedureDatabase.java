@@ -6,6 +6,9 @@
 
 package project2assignment;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author GuestAccount
@@ -15,8 +18,30 @@ public class ProcedureDatabase extends javax.swing.JFrame {
     /**
      * Creates new form ProcedureDatabase
      */
+    private DefaultTableModel procedureTableModel;
+    private ProcedureQuery procedureQuery;
+    
     public ProcedureDatabase() {
         initComponents();
+        procedureQuery = new ProcedureQuery();
+        procedureTableModel = new DefaultTableModel();
+        procedureTableModel.setColumnCount(3);
+        procedureTableModel.setColumnIdentifiers(new String[]{"Procedure Number", "Procedure",
+            "Price"});
+        procedureTable.setModel(procedureTableModel);
+        loadProcedureTable();
+    }
+    
+    private void loadProcedureTable() {
+        List<Procedure> entries = procedureQuery.getProcedures();
+        int tableRow = 0;
+        procedureTableModel.setNumRows(entries.size());
+        for (Procedure p : entries) {
+            procedureTableModel.setValueAt(p.getProcedureID(), tableRow, 0);
+            procedureTableModel.setValueAt(p.getProcedureName(), tableRow, 1);
+            procedureTableModel.setValueAt(p.getProcedurePrice(), tableRow, 2);
+            tableRow++;
+        }
     }
 
     /**
@@ -30,7 +55,7 @@ public class ProcedureDatabase extends javax.swing.JFrame {
 
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        procedureTable = new javax.swing.JTable();
         cancelButton1 = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         selectButton = new javax.swing.JButton();
@@ -50,7 +75,7 @@ public class ProcedureDatabase extends javax.swing.JFrame {
         jInternalFrame2.setVisible(true);
         jInternalFrame2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        procedureTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -61,7 +86,7 @@ public class ProcedureDatabase extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(procedureTable);
 
         jInternalFrame2.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 620, 300));
 
@@ -127,8 +152,8 @@ public class ProcedureDatabase extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButton1ActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        toSearch = searchField.getText();
-        searchDoctorTable();
+        /*toSearch = searchField.getText();
+        searchDoctorTable();*/
     }//GEN-LAST:event_searchButtonActionPerformed
 
     /**
@@ -172,7 +197,7 @@ public class ProcedureDatabase extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable procedureTable;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
     private javax.swing.JButton selectButton;
