@@ -230,7 +230,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="360" width="170" height="80"/>
+              <AbsoluteConstraints x="0" y="320" width="170" height="80"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -257,7 +257,7 @@
         <Component class="javax.swing.JLabel" name="messagingTab">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/project2assignment/button2.png"/>
+              <Image iconType="3" name="/project2assignment/buttonclicked 2.png"/>
             </Property>
           </Properties>
           <Constraints>

@@ -150,7 +150,7 @@ public class InstantMessaging extends javax.swing.JFrame {
                 messagingButtonActionPerformed(evt);
             }
         });
-        jInternalFrame2.getContentPane().add(messagingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 170, 80));
+        jInternalFrame2.getContentPane().add(messagingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 170, 80));
 
         messagingLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         messagingLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,7 +159,7 @@ public class InstantMessaging extends javax.swing.JFrame {
         messagingLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jInternalFrame2.getContentPane().add(messagingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, 70));
 
-        messagingTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/button2.png"))); // NOI18N
+        messagingTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/buttonclicked 2.png"))); // NOI18N
         jInternalFrame2.getContentPane().add(messagingTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, -1));
 
         billingButton.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
