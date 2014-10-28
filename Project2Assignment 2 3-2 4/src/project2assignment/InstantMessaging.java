@@ -29,6 +29,12 @@ public class InstantMessaging extends javax.swing.JFrame {
     private void initComponents() {
 
         jInternalFrame2 = new javax.swing.JInternalFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        selectButton = new javax.swing.JButton();
+        selectButton1 = new javax.swing.JButton();
         Welcome = new javax.swing.JLabel();
         patientButton = new javax.swing.JButton();
         patientLabel = new javax.swing.JLabel();
@@ -58,6 +64,43 @@ public class InstantMessaging extends javax.swing.JFrame {
         jInternalFrame2.setPreferredSize(new java.awt.Dimension(966, 966));
         jInternalFrame2.setVisible(true);
         jInternalFrame2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jInternalFrame2.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 950, 240));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jInternalFrame2.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 480, 130));
+
+        selectButton.setText("Refresh");
+        selectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectButtonActionPerformed(evt);
+            }
+        });
+        jInternalFrame2.getContentPane().add(selectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, 100, 40));
+
+        selectButton1.setText("Send");
+        selectButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectButton1ActionPerformed(evt);
+            }
+        });
+        jInternalFrame2.getContentPane().add(selectButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 490, 100, 40));
 
         Welcome.setBackground(new java.awt.Color(0, 0, 0));
         Welcome.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
@@ -240,6 +283,14 @@ new HomePage().setVisible(true);
 this.dispose();
     }//GEN-LAST:event_genetechMouseClicked
 
+    private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
+
+    }//GEN-LAST:event_selectButtonActionPerformed
+
+    private void selectButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -284,6 +335,10 @@ this.dispose();
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel logo;
     private javax.swing.JButton messagingButton;
     private javax.swing.JLabel messagingLabel;
@@ -294,5 +349,7 @@ this.dispose();
     private javax.swing.JButton scheduleButton;
     private javax.swing.JLabel scheduleLabel;
     private javax.swing.JLabel scheduleTab;
+    private javax.swing.JButton selectButton;
+    private javax.swing.JButton selectButton1;
     // End of variables declaration//GEN-END:variables
 }
