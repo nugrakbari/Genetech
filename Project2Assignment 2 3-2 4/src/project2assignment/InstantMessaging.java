@@ -60,7 +60,7 @@ public class InstantMessaging extends javax.swing.JFrame {
         jInternalFrame2.setIconifiable(true);
         jInternalFrame2.setMaximizable(true);
         jInternalFrame2.setResizable(true);
-        jInternalFrame2.setTitle("Homepage");
+        jInternalFrame2.setTitle("Message Board");
         jInternalFrame2.setPreferredSize(new java.awt.Dimension(966, 966));
         jInternalFrame2.setVisible(true);
         jInternalFrame2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

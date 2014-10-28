@@ -100,7 +100,7 @@ public class HistoryForm extends javax.swing.JFrame {
         jInternalFrame1.setIconifiable(true);
         jInternalFrame1.setMaximizable(true);
         jInternalFrame1.setResizable(true);
-        jInternalFrame1.setTitle("View History");
+        jInternalFrame1.setTitle("History");
         jInternalFrame1.setVisible(true);
         jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -269,7 +269,7 @@ public class HistoryForm extends javax.swing.JFrame {
                     .addComponent(jLabel36)
                     .addComponent(jLabel34)
                     .addComponent(jLabel35))
-                .addGap(0, 78, Short.MAX_VALUE))
+                .addGap(0, 68, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,7 +294,7 @@ public class HistoryForm extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jInternalFrame1.getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 360, 450, 140));
+        jInternalFrame1.getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 350, 440, 140));
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Clinical measurments"));
         jPanel9.setToolTipText("");
@@ -382,7 +382,7 @@ public class HistoryForm extends javax.swing.JFrame {
         jInternalFrame1.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 150, 290, 90));
 
         jButton2.setText("Back");
-        jInternalFrame1.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 510, 100, 40));
+        jInternalFrame1.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 500, 100, 40));
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -409,7 +409,7 @@ public class HistoryForm extends javax.swing.JFrame {
         jInternalFrame1.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 210, -1, -1));
 
         jButton1.setText("Next");
-        jInternalFrame1.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 510, 100, 40));
+        jInternalFrame1.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 500, 100, 40));
 
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -422,7 +422,7 @@ public class HistoryForm extends javax.swing.JFrame {
         jInternalFrame1.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/panel5.png"))); // NOI18N
-        jInternalFrame1.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
+        jInternalFrame1.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 1020, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, 1250, 670));

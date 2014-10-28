@@ -41,6 +41,7 @@
   <SubComponents>
     <Container class="javax.swing.JInternalFrame" name="jInternalFrame1">
       <Properties>
+        <Property name="title" type="java.lang.String" value="Login"/>
         <Property name="visible" type="boolean" value="true"/>
       </Properties>
 
