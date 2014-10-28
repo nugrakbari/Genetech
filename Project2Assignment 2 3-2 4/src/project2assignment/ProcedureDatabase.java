@@ -63,7 +63,7 @@ public class ProcedureDatabase extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jInternalFrame2.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 770, 330));
+        jInternalFrame2.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 620, 300));
 
         cancelButton1.setText("Cancel");
         cancelButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +71,7 @@ public class ProcedureDatabase extends javax.swing.JFrame {
                 cancelButton1ActionPerformed(evt);
             }
         });
-        jInternalFrame2.getContentPane().add(cancelButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 100, 40));
+        jInternalFrame2.getContentPane().add(cancelButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, 100, 40));
 
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class ProcedureDatabase extends javax.swing.JFrame {
                 searchButtonActionPerformed(evt);
             }
         });
-        jInternalFrame2.getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 30, -1, -1));
+        jInternalFrame2.getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, -1, -1));
 
         selectButton.setText("Select");
         selectButton.setVerifyInputWhenFocusTarget(false);
@@ -88,16 +88,16 @@ public class ProcedureDatabase extends javax.swing.JFrame {
                 selectButtonActionPerformed(evt);
             }
         });
-        jInternalFrame2.getContentPane().add(selectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, 100, 40));
+        jInternalFrame2.getContentPane().add(selectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 100, 40));
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Find Procedure:");
-        jInternalFrame2.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 110, 50));
-        jInternalFrame2.getContentPane().add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 181, 30));
+        jInternalFrame2.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 110, 50));
+        jInternalFrame2.getContentPane().add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 181, 30));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
-        jInternalFrame2.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-220, -60, -1, 980));
+        jInternalFrame2.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-210, -50, -1, 980));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,14 +105,14 @@ public class ProcedureDatabase extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, 867, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
