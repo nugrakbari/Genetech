@@ -56,8 +56,10 @@ public class LoginPage extends javax.swing.JFrame {
         genetechLogo.setText("Genetech");
         jInternalFrame1.getContentPane().add(genetechLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
 
+
         logoImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/logo-glow.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(logoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+
         jInternalFrame1.getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 188, 210, 30));
 
         usernameLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
