@@ -300,15 +300,15 @@ public class PatientView extends javax.swing.JFrame {
                 patientButtonActionPerformed(evt);
             }
         });
-        internalFrame.getContentPane().add(patientButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 199, 170, 80));
+        internalFrame.getContentPane().add(patientButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 170, 80));
 
         patientLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         patientLabel.setForeground(new java.awt.Color(255, 255, 255));
         patientLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/users.png"))); // NOI18N
         patientLabel.setText("Patient");
-        internalFrame.getContentPane().add(patientLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        internalFrame.getContentPane().add(patientLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
-        patientTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/button2.png"))); // NOI18N
+        patientTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/Untitled3.png"))); // NOI18N
         internalFrame.getContentPane().add(patientTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         billingButton.setBorderPainted(false);

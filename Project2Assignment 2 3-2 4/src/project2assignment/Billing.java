@@ -166,16 +166,16 @@ public class Billing extends javax.swing.JFrame {
                 billingButtonMouseClicked(evt);
             }
         });
-        jInternalFrame1.getContentPane().add(billingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 170, 80));
+        jInternalFrame1.getContentPane().add(billingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 160, 80));
 
         billingLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         billingLabel.setForeground(new java.awt.Color(255, 255, 255));
         billingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/credit_card.png"))); // NOI18N
         billingLabel.setText("Billing");
-        jInternalFrame1.getContentPane().add(billingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        jInternalFrame1.getContentPane().add(billingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
-        billingTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/button2.png"))); // NOI18N
-        jInternalFrame1.getContentPane().add(billingTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
+        billingTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/Untitled3.png"))); // NOI18N
+        jInternalFrame1.getContentPane().add(billingTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 170, -1));
 
         messagesButton.setBorderPainted(false);
         messagesButton.setOpaque(false);

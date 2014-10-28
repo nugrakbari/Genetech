@@ -262,9 +262,9 @@ public class PatientForm extends javax.swing.JFrame {
         patientLabel.setForeground(new java.awt.Color(255, 255, 255));
         patientLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/users.png"))); // NOI18N
         patientLabel.setText("Patients");
-        jInternalFrame2.getContentPane().add(patientLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 160, -1));
+        jInternalFrame2.getContentPane().add(patientLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 150, -1));
 
-        patientTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/button2.png"))); // NOI18N
+        patientTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/Untitled3.png"))); // NOI18N
         jInternalFrame2.getContentPane().add(patientTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 170, -1));
 
         billingButton.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
