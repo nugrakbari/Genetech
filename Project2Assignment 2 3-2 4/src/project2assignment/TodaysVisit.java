@@ -6,17 +6,55 @@
 
 package project2assignment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author nugrakbari
  */
 public class TodaysVisit extends javax.swing.JFrame {
 
+    private DefaultTableModel visitTableModel;
+    private VisitQuery visitQuery;
+    private DateFormat df;
+    private String accessLevel;
     /**
      * Creates new form TodaysVisit
      */
     public TodaysVisit() {
         initComponents();
+        df = new SimpleDateFormat("HH:mm");
+        visitQuery = new VisitQuery();
+        visitTableModel = new DefaultTableModel();
+        visitTableModel.setColumnCount(4);
+        visitTableModel.setColumnIdentifiers(new String[]{"Time", "Patient's Name",
+            "Doctor's Name", "Visit ID"});
+        procedureTable.setModel(visitTableModel);
+        loadTodaysVisitsTable();
+    }
+    
+     private void loadTodaysVisitsTable() {
+        List<VisitToday> entries = visitQuery.getTodaysVisits();
+        int tableRow = 0;
+        visitTableModel.setNumRows(entries.size());
+        for (VisitToday p : entries) {
+            visitTableModel.setValueAt(df.format(p.getVisitTime()),tableRow, 0);
+            visitTableModel.setValueAt(p.getPatientName(), tableRow, 1);
+            visitTableModel.setValueAt(p.getDoctorName(), tableRow, 2);
+            visitTableModel.setValueAt(p.getVisitID(), tableRow, 3);
+            tableRow++;
+        }
+    }
+     
+    /**
+     * @param accessLevel the accessLevel to set
+     */
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
+        System.out.println("(TodaysVisit) accesslevel is " + accessLevel);
     }
 
     /**
@@ -27,21 +65,108 @@ public class TodaysVisit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jInternalFrame2 = new javax.swing.JInternalFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        procedureTable = new javax.swing.JTable();
+        cancelButton1 = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
+        selectButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        searchField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jInternalFrame2.setBackground(new java.awt.Color(204, 204, 204));
+        jInternalFrame2.setClosable(true);
+        jInternalFrame2.setIconifiable(true);
+        jInternalFrame2.setMaximizable(true);
+        jInternalFrame2.setResizable(true);
+        jInternalFrame2.setTitle("Today's Visits");
+        jInternalFrame2.setPreferredSize(new java.awt.Dimension(966, 966));
+        jInternalFrame2.setVisible(true);
+        jInternalFrame2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        procedureTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(procedureTable);
+
+        jInternalFrame2.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 620, 300));
+
+        cancelButton1.setText("Cancel");
+        cancelButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButton1ActionPerformed(evt);
+            }
+        });
+        jInternalFrame2.getContentPane().add(cancelButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, 100, 40));
+
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+        jInternalFrame2.getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, -1, -1));
+
+        selectButton.setText("Select");
+        selectButton.setVerifyInputWhenFocusTarget(false);
+        selectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectButtonActionPerformed(evt);
+            }
+        });
+        jInternalFrame2.getContentPane().add(selectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 100, 40));
+
+        jLabel1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Find Procedure:");
+        jInternalFrame2.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 110, 50));
+        jInternalFrame2.getContentPane().add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 181, 30));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
+        jInternalFrame2.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-210, -50, -1, 980));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_cancelButton1ActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        /*toSearch = searchField.getText();
+        searchDoctorTable();*/
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
+
+    }//GEN-LAST:event_selectButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +204,14 @@ public class TodaysVisit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton1;
+    private javax.swing.JInternalFrame jInternalFrame2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable procedureTable;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JTextField searchField;
+    private javax.swing.JButton selectButton;
     // End of variables declaration//GEN-END:variables
 }

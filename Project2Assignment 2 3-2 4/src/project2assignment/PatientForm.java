@@ -1236,22 +1236,28 @@ public class PatientForm extends javax.swing.JFrame {
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void scheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleButtonActionPerformed
-
+        
     }//GEN-LAST:event_scheduleButtonActionPerformed
 
     private void scheduleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleButtonMouseClicked
-        new HomePage().setVisible(true);
-        this.dispose();    // TODO add your handling code here:
+        HomePage home = new HomePage();
+            home.setVisible(true);
+            home.setAccessLevel(accessLevel);
+            this.dispose();
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
     private void patientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientButtonMouseClicked
-        new PatientView().setVisible(true);
-        this.dispose();    // TODO add your handling code here:
+        PatientView patient = new PatientView();
+    patient.setVisible(true);
+    patient.setAccessLevel(accessLevel);
+    this.dispose();
     }//GEN-LAST:event_patientButtonMouseClicked
 
     private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
-        new Billing().setVisible(true);
-        this.dispose();
+    Billing billing = new Billing();
+    billing.setVisible(true);
+    billing.setAccessLevel(accessLevel);
+    this.dispose();
     }//GEN-LAST:event_billingButtonMouseClicked
 
     private void messagesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButtonMouseClicked

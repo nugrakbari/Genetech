@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +26,7 @@ public class VisitQuery {
     private PreparedStatement insertAppointment = null;
     private PreparedStatement insertBill = null;
     private PreparedStatement displayBills = null;
+    private PreparedStatement displayVisits = null;
     private ResultSet rs = null;
     private static final String URL = "jdbc:oracle:thin:@//sage.business.unsw.edu.au:1521/orcl01.asbpldb001.ad.unsw.edu.au";
     private static final String USERNAME = "Z3373928";
@@ -65,6 +67,12 @@ public class VisitQuery {
             }
             if (insertBill != null) {
                 insertBill.close();
+            }
+            if (displayVisits != null) {
+                displayVisits.close();
+            }
+            if (displayBills != null) {
+                displayBills.close();
             }
             if (conn != null) {
                 conn.close();
@@ -145,4 +153,29 @@ public class VisitQuery {
         return results;
     }
     
+    public List<VisitToday> getTodaysVisits() {
+        List<VisitToday> results = null;
+        ResultSet resultSet = null;
+        openConnection();
+        
+        try {
+            displayVisits = conn.prepareStatement("SELECT * FROM VISITS NATURAL JOIN PATIENT NATURAL JOIN STAFF WHERE "
+                    + "to_date(appointment_time, 'DD/MM/YYYY') = to_date(sysdate, 'DD/MM/YYYY')");
+            resultSet = displayVisits.executeQuery();
+            results = new ArrayList<VisitToday>();
+            
+            while (resultSet.next()) {
+                results.add(new VisitToday(
+                    resultSet.getDate("appointment_time"),
+                    resultSet.getString("patient_firstname") + " " + resultSet.getString("patient_lastname"),
+                    resultSet.getString("staff_firstname") + " " + resultSet.getString("staff_lastname"),
+                    resultSet.getInt("visit_id")));
+            }
+            
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        closeConnection();
+        return results;
+    }
 }

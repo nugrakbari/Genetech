@@ -69,7 +69,7 @@ public class Billing extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        browseVisitButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -371,13 +371,18 @@ public class Billing extends javax.swing.JFrame {
         });
         jInternalFrame1.getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 330, -1));
 
-        jButton1.setText("Browse");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        browseVisitButton.setText("Browse");
+        browseVisitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                browseVisitButtonMouseClicked(evt);
             }
         });
-        jInternalFrame1.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, -1));
+        browseVisitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                browseVisitButtonActionPerformed(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(browseVisitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Payment"));
 
@@ -539,13 +544,17 @@ public class Billing extends javax.swing.JFrame {
     }//GEN-LAST:event_patientButtonActionPerformed
 
     private void scheduleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleButtonMouseClicked
-new HomePage().setVisible(true);
-this.dispose();
+        HomePage home = new HomePage();
+        home.setVisible(true);
+        home.setAccessLevel(accessLevel);
+        this.dispose();
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
     private void patientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientButtonMouseClicked
-new PatientView().setVisible(true);
-this.dispose();
+    PatientView patient = new PatientView();
+    patient.setVisible(true);
+    patient.setAccessLevel(accessLevel);
+    this.dispose();
     }//GEN-LAST:event_patientButtonMouseClicked
 
     private void messagesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButtonMouseClicked
@@ -563,7 +572,7 @@ this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void browseProcedureButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseProcedureButtonActionPerformed
-       new ProcedureDatabase().setVisible(true);
+       //new ProcedureDatabase().setVisible(true);
     }//GEN-LAST:event_browseProcedureButtonActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -587,19 +596,29 @@ this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
-        new Billing().setVisible(true);
-        this.dispose();
+    Billing billing = new Billing();
+    billing.setVisible(true);
+    billing.setAccessLevel(accessLevel);
+    this.dispose();
     }//GEN-LAST:event_billingButtonMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new ProcedureDatabase().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void browseVisitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseVisitButtonActionPerformed
+        TodaysVisit visit = new TodaysVisit();
+        visit.setVisible(true);
+        visit.setAccessLevel(accessLevel);
+        this.dispose();
+    }//GEN-LAST:event_browseVisitButtonActionPerformed
+
+    private void browseVisitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_browseVisitButtonMouseClicked
+       
+    }//GEN-LAST:event_browseVisitButtonMouseClicked
 
     /**
      * @param accessLevel the accessLevel to set
      */
     public void setAccessLevel(String accessLevel) {
         this.accessLevel = accessLevel;
+        System.out.println("(Billing) accesslevel is " + accessLevel);
     }
     /**
      * @param args the command line arguments
@@ -642,9 +661,9 @@ this.dispose();// TODO add your handling code here:
     private javax.swing.JLabel billingLabel;
     private javax.swing.JLabel billingTab;
     private javax.swing.JButton browseProcedureButton;
+    private javax.swing.JButton browseVisitButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel discountPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox jComboBox1;

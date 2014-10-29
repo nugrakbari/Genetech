@@ -248,7 +248,7 @@ public class InstantMessaging extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void patientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientButtonMouseClicked
-        new PatientForm().setVisible(true);
+        //new PatientForm().setVisible(true);
         this.dispose();  // TODO add your handling code here:
     }//GEN-LAST:event_patientButtonMouseClicked
 

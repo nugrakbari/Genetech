@@ -55,8 +55,8 @@ public class AppointmentEntry extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         notesTextArea = new javax.swing.JTextArea();
         browsePatientButton1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        createButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -84,7 +84,7 @@ public class AppointmentEntry extends javax.swing.JFrame {
 
         appointmentMinuteComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "30" }));
 
-        appointmentMonthComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/2014", "12/2014", "01/2015", "02/2015", "03/2015", "04/2015", "05/2015" }));
+        appointmentMonthComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10/2014", "11/2014", "12/2014", "01/2015", "02/2015", "03/2015", "04/2015", "05/2015" }));
         appointmentMonthComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 appointmentMonthComboBoxActionPerformed(evt);
@@ -115,9 +115,14 @@ public class AppointmentEntry extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Create");
+        createButton.setText("Create");
+        createButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createButtonMouseClicked(evt);
+            }
+        });
 
-        jButton2.setText("Cancel");
+        cancelButton.setText("Cancel");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -164,9 +169,9 @@ public class AppointmentEntry extends javax.swing.JFrame {
                         .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(cancelButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(createButton)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -198,8 +203,8 @@ public class AppointmentEntry extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(createButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jInternalFrame1.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 300, 340));
@@ -239,6 +244,27 @@ public class AppointmentEntry extends javax.swing.JFrame {
     private void browsePatientButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browsePatientButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_browsePatientButton1ActionPerformed
+
+    private void createButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createButtonMouseClicked
+        String day = (String) appointmentDayComboBox.getSelectedItem();
+        String month = (String) appointmentMonthComboBox.getSelectedItem();
+        String hour = (String) appointmentHourComboBox.getSelectedItem();
+        String minute = (String) appointmentMinuteComboBox.getSelectedItem();
+        String appointment = day + "/" + month + " " + hour + ":" + minute;
+        System.out.println(appointment);
+        
+        try {
+            Appointment a = new Appointment(
+                    -1,
+                    Integer.parseInt(patientIDField.getText()),
+                    Integer.parseInt(doctorIDField.getText()),
+                    new java.sql.Date(df.parse(appointment).getTime()),
+                    notesTextArea.getText());
+            visitQuery.createAppointment(a);
+        } catch (ParseException ex) {
+            Logger.getLogger(PatientForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_createButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -282,9 +308,9 @@ public class AppointmentEntry extends javax.swing.JFrame {
     private javax.swing.JComboBox appointmentMonthComboBox;
     private javax.swing.JButton browsePatientButton;
     private javax.swing.JButton browsePatientButton1;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JButton createButton;
     private javax.swing.JTextField doctorIDField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -264,7 +264,9 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_billingButtonActionPerformed
 
     private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
-    new Billing().setVisible(true);
+    Billing billing = new Billing();
+    billing.setVisible(true);
+    billing.setAccessLevel(accessLevel);
     this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_billingButtonMouseClicked
 

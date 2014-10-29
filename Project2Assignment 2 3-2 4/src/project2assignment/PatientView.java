@@ -396,12 +396,16 @@ public class PatientView extends javax.swing.JFrame {
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void scheduleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleButtonMouseClicked
-        new HomePage().setVisible(true);
-        this.dispose();
+        HomePage home = new HomePage();
+            home.setVisible(true);
+            home.setAccessLevel(accessLevel);
+            this.dispose();
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
     private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
-        new Billing().setVisible(true);
+        Billing billing = new Billing();
+        billing.setVisible(true);
+        billing.setAccessLevel(accessLevel);
         this.dispose();
     }//GEN-LAST:event_billingButtonMouseClicked
 
@@ -430,7 +434,10 @@ public class PatientView extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void scheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleButtonActionPerformed
-        // TODO add your handling code here:
+        HomePage home = new HomePage();
+            home.setVisible(true);
+            home.setAccessLevel(accessLevel);
+            this.dispose();
     }//GEN-LAST:event_scheduleButtonActionPerformed
 
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked

@@ -94,7 +94,7 @@ public class AdminQuery {
      * Get all staff
      * @return ResultSet
      */
-    public List<Staff> getStaff() {
+    /*public List<Staff> getStaff() {
 
         List<Staff> results = null;
         ResultSet resultSet = null;
@@ -119,9 +119,9 @@ public class AdminQuery {
         }
         closeConnection();
         return results;
-    }
+    }*/
     
-    public List<Staff> searchStaff(String keyword) {
+    /*public List<Staff> searchStaff(String keyword) {
         System.out.println("searchStaff searching staff " + keyword);
         List<Staff> results = null;
         ResultSet resultSet = null;
@@ -155,7 +155,7 @@ public class AdminQuery {
         }
         closeConnection();
         return results;
-    }
+    }*/
     
     
     
@@ -164,7 +164,7 @@ public class AdminQuery {
      * @param id Patient ID
      * @return ResultSet
      */
-    public Staff getStaffByID(int id) {
+    /*public Staff getStaffByID(int id) {
         Staff p = null;
         ResultSet resultSet = null;
         openConnection();
@@ -195,7 +195,7 @@ public class AdminQuery {
      * Add a Staff/Admin
      * @param staff Staff to be added
      */
-    public void add (Staff staff) {
+    /*public void add (Staff staff) {
         openConnection();
 
         try {
@@ -235,5 +235,5 @@ public class AdminQuery {
             Logger.getLogger(PatientQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         closeConnection();
-    }
+    }*/
 }
