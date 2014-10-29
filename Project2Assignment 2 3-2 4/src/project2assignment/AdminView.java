@@ -13,6 +13,7 @@ package project2assignment;
 public class AdminView extends javax.swing.JFrame {
     
 private String accessLevel;
+private int userID;
 
     /**
      * Creates new form AdminForm
@@ -222,6 +223,15 @@ private String accessLevel;
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_messagesButtonMouseClicked
 
+    
+    /**
+     * @param userID the userID to set
+     */
+    public void setUserID(int userID) {
+        this.userID = userID;
+        System.out.println("(InstantMessaging) user is " + userID);
+    }
+    
     /**
      * @param accessLevel the accessLevel to set
      */

@@ -13,6 +13,8 @@ package project2assignment;
 public class AdminForm extends javax.swing.JFrame {
     
 private String accessLevel;
+private int userID;
+
 
     /**
      * Creates new form AdminForm1
@@ -343,6 +345,15 @@ private String accessLevel;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    
+    /**
+     * @param userID the userID to set
+     */
+    public void setUserID(int userID) {
+        this.userID = userID;
+        System.out.println("(InstantMessaging) user is " + userID);
+    }
+    
     /**
      * @param accessLevel the accessLevel to set
      */
