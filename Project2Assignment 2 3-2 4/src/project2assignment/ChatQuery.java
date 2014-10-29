@@ -106,7 +106,7 @@ public class ChatQuery {
             while (resultSet.next()){
                 results.add(new Chat(
                     resultSet.getInt("user_id"),
-                    resultSet.getString("staff_firstname") + " " + resultSet.getString("staff_lastname"),
+                    resultSet.getString("staff_firstname"),
                     resultSet.getString("message"),
                     resultSet.getDate("timestamp")));
             }

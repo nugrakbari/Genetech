@@ -31,8 +31,8 @@ public class InstantMessaging extends javax.swing.JFrame {
         initComponents();
         chatTableModel = new DefaultTableModel();
         chatTableModel.setColumnCount(3);
-        chatTableModel.setColumnIdentifiers(new String[]{"Sender", "Message",
-            "Time"});
+        chatTableModel.setColumnIdentifiers(new String[]{"Time", "Sender", "Message"
+            });
         chatTable.setModel(chatTableModel);
         loadChatTable();
     }
@@ -42,9 +42,9 @@ public class InstantMessaging extends javax.swing.JFrame {
         int tableRow = 0;
         chatTableModel.setNumRows(entries.size());
         for (Chat p : entries) {
-            chatTableModel.setValueAt(p.getUsername(), tableRow, 0);
-            chatTableModel.setValueAt(p.getMessage(), tableRow, 1);
-            chatTableModel.setValueAt(df.format(p.getTimestamp()), tableRow, 2);
+            chatTableModel.setValueAt(df.format(p.getTimestamp()), tableRow, 0);
+            chatTableModel.setValueAt(p.getUsername(), tableRow, 1);
+            chatTableModel.setValueAt(p.getMessage(), tableRow, 2);   
             tableRow++;
         }
     }
