@@ -21,6 +21,7 @@ public class TodaysVisit extends javax.swing.JFrame {
     private VisitQuery visitQuery;
     private DateFormat df;
     private String accessLevel;
+    private int userID;
     /**
      * Creates new form TodaysVisit
      */
@@ -182,6 +183,15 @@ public class TodaysVisit extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_selectButtonActionPerformed
 
+    
+    /**
+     * @param userID the userID to set
+     */
+    public void setUserID(int userID) {
+        this.userID = userID;
+        System.out.println("(InstantMessaging) user is " + userID);
+    }
+    
     /**
      * @param args the command line arguments
      */

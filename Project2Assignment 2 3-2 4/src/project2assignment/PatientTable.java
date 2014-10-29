@@ -21,6 +21,9 @@ public class PatientTable extends javax.swing.JFrame {
     private DefaultTableModel patientTableModel;
     private DateFormat df;
     
+    private int userID;
+    private String accessLevel;
+    
     /**
      * Creates new form PatientTable
      */
@@ -124,6 +127,23 @@ public class PatientTable extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+        /**
+     * @param accessLevel the accessLevel to set
+     */
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
+        System.out.println("(InstantMessaging) access level is " + accessLevel);
+    }
+    
+    /**
+     * @param userID the userID to set
+     */
+    public void setUserID(int userID) {
+        this.userID = userID;
+        System.out.println("(InstantMessaging) user is " + userID);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -30,6 +30,7 @@ public class PatientView extends javax.swing.JFrame {
     private DateFormat df;
     private String toSearch;
     private String accessLevel;
+    private int userID;
 
     public enum Action {
 
@@ -469,6 +470,14 @@ public class PatientView extends javax.swing.JFrame {
     public void setAccessLevel(String accessLevel) {
         this.accessLevel = accessLevel;
         System.out.println("(PatientView) accesslevel is " + accessLevel);
+    }
+    
+    /**
+     * @param userID the userID to set
+     */
+    public void setUserID(int userID) {
+        this.userID = userID;
+        System.out.println("(InstantMessaging) user is " + userID);
     }
     /**
      * @param args the command line arguments

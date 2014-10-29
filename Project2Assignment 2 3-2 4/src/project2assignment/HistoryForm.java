@@ -13,6 +13,7 @@ package project2assignment;
 public class HistoryForm extends javax.swing.JFrame {
     
     private String accessLevel;
+    private int userID;
 
     /**
      * Creates new form HistoryPopup
@@ -496,6 +497,16 @@ public class HistoryForm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+  
+    
+    /**
+     * @param userID the userID to set
+     */
+    public void setUserID(int userID) {
+        this.userID = userID;
+        System.out.println("(InstantMessaging) user is " + userID);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

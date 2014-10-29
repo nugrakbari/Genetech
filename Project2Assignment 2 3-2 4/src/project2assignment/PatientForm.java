@@ -24,6 +24,7 @@ public class PatientForm extends javax.swing.JFrame {
     private final String NEXTVAL = "seq_patient.nextval";
     private int toEdit;
     private String accessLevel;
+    private int userID;
     private DefaultTableModel procedureTableModel;
     private ProcedureQuery procedureQuery;
 
@@ -1428,6 +1429,15 @@ public class PatientForm extends javax.swing.JFrame {
     public void setAccessLevel(String accessLevel) {
         this.accessLevel = accessLevel;
         System.out.println("(PatientForm) access level is " + accessLevel);
+    }
+    
+    
+    /**
+     * @param userID the userID to set
+     */
+    public void setUserID(int userID) {
+        this.userID = userID;
+        System.out.println("(InstantMessaging) user is " + userID);
     }
 
 

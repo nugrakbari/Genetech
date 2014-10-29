@@ -20,6 +20,8 @@ public class ProcedureDatabase extends javax.swing.JFrame {
      */
     private DefaultTableModel procedureTableModel;
     private ProcedureQuery procedureQuery;
+    private int userID;
+    private String accessLevel;
     
     public ProcedureDatabase() {
         initComponents();
@@ -156,6 +158,22 @@ public class ProcedureDatabase extends javax.swing.JFrame {
         searchDoctorTable();*/
     }//GEN-LAST:event_searchButtonActionPerformed
 
+        /**
+     * @param accessLevel the accessLevel to set
+     */
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
+        System.out.println("(InstantMessaging) access level is " + accessLevel);
+    }
+    
+    /**
+     * @param userID the userID to set
+     */
+    public void setUserID(int userID) {
+        this.userID = userID;
+        System.out.println("(InstantMessaging) user is " + userID);
+    }
+    
     /**
      * @param args the command line arguments
      */

@@ -14,6 +14,7 @@ public class ViewHistory extends javax.swing.JFrame {
     
     private String accessLevel;
     private int toView;
+    private int userID;
 
     /**
      * Creates new form ViewHistory
@@ -280,6 +281,15 @@ public class ViewHistory extends javax.swing.JFrame {
     public void setToView(int toView) {
         this.toView = toView;
         System.out.println("Searching for " + toView);
+    }
+   
+    
+    /**
+     * @param userID the userID to set
+     */
+    public void setUserID(int userID) {
+        this.userID = userID;
+        System.out.println("(InstantMessaging) user is " + userID);
     }
     
     /**
