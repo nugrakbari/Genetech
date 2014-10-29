@@ -123,6 +123,7 @@ public class LoginPage extends javax.swing.JFrame {
             HomePage home = new HomePage();
             home.setVisible(true);
             home.setAccessLevel(type);
+            home.setUserID(id);
             this.dispose();
 
         } else {

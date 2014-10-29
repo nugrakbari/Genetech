@@ -13,6 +13,7 @@ package project2assignment;
 public class HomePage extends javax.swing.JFrame {
 
     private String accessLevel;
+    private int userID;
     /**
      * Creates new form HomePage
      */
@@ -278,7 +279,10 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_patientButtonMouseClicked
 
     private void messagingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagingButtonMouseClicked
-    new InstantMessaging().setVisible(true);
+    InstantMessaging im = new InstantMessaging();
+    im.setVisible(true);
+    im.setAccessLevel(accessLevel);
+    im.setUserID(userID);
     this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_messagingButtonMouseClicked
 
@@ -300,6 +304,14 @@ public class HomePage extends javax.swing.JFrame {
     public void setAccessLevel(String accessLevel) {
         this.accessLevel = accessLevel;
         System.out.println("(HomePage) accesslevel is " + accessLevel);
+    }
+    
+    /**
+     * @param userID the userID to set
+     */
+    public void setUserID(int userID) {
+        this.userID = userID;
+        System.out.println("(InstantMessaging) user is " + userID);
     }
     
     
