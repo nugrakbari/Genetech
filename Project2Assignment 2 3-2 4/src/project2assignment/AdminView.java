@@ -213,7 +213,7 @@ private String accessLevel;
     }//GEN-LAST:event_patientButtonActionPerformed
 
     private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
-        new Billing().setVisible(true);
+        new Billing(0).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_billingButtonMouseClicked
 

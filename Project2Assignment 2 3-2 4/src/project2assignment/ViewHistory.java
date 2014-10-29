@@ -242,7 +242,7 @@ public class ViewHistory extends javax.swing.JFrame {
     }//GEN-LAST:event_messagesButtonMouseClicked
 
     private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
-        new Billing().setVisible(true);
+        new Billing(0).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_billingButtonMouseClicked
 

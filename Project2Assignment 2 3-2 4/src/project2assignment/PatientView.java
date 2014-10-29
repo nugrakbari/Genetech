@@ -403,7 +403,7 @@ public class PatientView extends javax.swing.JFrame {
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
     private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
-        Billing billing = new Billing();
+        Billing billing = new Billing(0);
         billing.setVisible(true);
         billing.setAccessLevel(accessLevel);
         this.dispose();

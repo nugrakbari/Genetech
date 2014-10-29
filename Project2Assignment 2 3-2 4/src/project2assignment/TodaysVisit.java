@@ -32,7 +32,7 @@ public class TodaysVisit extends javax.swing.JFrame {
         visitTableModel.setColumnCount(4);
         visitTableModel.setColumnIdentifiers(new String[]{"Time", "Patient's Name",
             "Doctor's Name", "Visit ID"});
-        procedureTable.setModel(visitTableModel);
+        visitTable.setModel(visitTableModel);
         loadTodaysVisitsTable();
     }
     
@@ -67,8 +67,8 @@ public class TodaysVisit extends javax.swing.JFrame {
 
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
-        procedureTable = new javax.swing.JTable();
-        cancelButton1 = new javax.swing.JButton();
+        visitTable = new javax.swing.JTable();
+        cancelButton = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         selectButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -87,7 +87,7 @@ public class TodaysVisit extends javax.swing.JFrame {
         jInternalFrame2.setVisible(true);
         jInternalFrame2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        procedureTable.setModel(new javax.swing.table.DefaultTableModel(
+        visitTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -98,17 +98,17 @@ public class TodaysVisit extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(procedureTable);
+        jScrollPane1.setViewportView(visitTable);
 
         jInternalFrame2.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 620, 300));
 
-        cancelButton1.setText("Cancel");
-        cancelButton1.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelButton1ActionPerformed(evt);
+                cancelButtonActionPerformed(evt);
             }
         });
-        jInternalFrame2.getContentPane().add(cancelButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, 100, 40));
+        jInternalFrame2.getContentPane().add(cancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, 100, 40));
 
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -155,9 +155,12 @@ public class TodaysVisit extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButton1ActionPerformed
-        dispose();
-    }//GEN-LAST:event_cancelButton1ActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        Billing billing = new Billing(0);
+        billing.setVisible(true);
+        billing.setAccessLevel(accessLevel);
+        this.dispose(); 
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         /*toSearch = searchField.getText();
@@ -165,7 +168,18 @@ public class TodaysVisit extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
+            int patientElementToView = visitTable.getSelectedRow();
+            int visitID = (int) visitTable.getValueAt(patientElementToView, 3);
+            //int id = Integer.parseInt(visitID);
+            Billing billing = new Billing(visitID);
+            billing.setVisible(true);
 
+            if (patientElementToView != -1) {
+                System.out.println(visitID);
+                billing.setAccessLevel(accessLevel);
+                billing.setVisitID(visitID);
+                this.dispose();
+            }
     }//GEN-LAST:event_selectButtonActionPerformed
 
     /**
@@ -204,14 +218,14 @@ public class TodaysVisit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancelButton1;
+    private javax.swing.JButton cancelButton;
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable procedureTable;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
     private javax.swing.JButton selectButton;
+    private javax.swing.JTable visitTable;
     // End of variables declaration//GEN-END:variables
 }

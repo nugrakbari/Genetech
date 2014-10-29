@@ -266,7 +266,7 @@ public class InstantMessaging extends javax.swing.JFrame {
     }//GEN-LAST:event_messagingButtonActionPerformed
 
     private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
-        new Billing().setVisible(true);
+        new Billing(0).setVisible(true);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_billingButtonMouseClicked
 
