@@ -29,6 +29,7 @@ public class VisitQuery {
     private PreparedStatement insertBill = null;
     private PreparedStatement displayBills = null;
     private PreparedStatement displayVisits = null;
+    private PreparedStatement displaySelectedVisits = null;
     private ResultSet rs = null;
     private static final String URL = "jdbc:oracle:thin:@//sage.business.unsw.edu.au:1521/orcl01.asbpldb001.ad.unsw.edu.au";
     private static final String USERNAME = "Z3373928";
@@ -72,6 +73,9 @@ public class VisitQuery {
             }
             if (displayVisits != null) {
                 displayVisits.close();
+            }
+            if (displaySelectedVisits != null) {
+                displaySelectedVisits.close();
             }
             if (displayBills != null) {
                 displayBills.close();
@@ -182,15 +186,17 @@ public class VisitQuery {
     }
     
     public List<VisitToday> getVisits(String date) {
+        System.out.println("in get visits" + date);
+       
         List<VisitToday> results = null;
         ResultSet resultSet = null;
         openConnection();
         
         try {
-            displayVisits = conn.prepareStatement("SELECT * FROM VISITS NATURAL JOIN PATIENT NATURAL JOIN STAFF WHERE "
+            displaySelectedVisits = conn.prepareStatement("SELECT * FROM VISITS NATURAL JOIN PATIENT NATURAL JOIN STAFF WHERE "
                     + "to_date(appointment_time, 'DD/MM/YYYY') = to_date(?, 'DD/MM/YYYY')");
-            displayVisits.setString(1, date);
-            resultSet = displayVisits.executeQuery();
+            displaySelectedVisits.setString(1, date);
+            resultSet = displaySelectedVisits.executeQuery();
             results = new ArrayList<VisitToday>();
             
             while (resultSet.next()) {
@@ -216,19 +222,20 @@ public class VisitQuery {
         try {
 
             returnInvoiceByID = conn.prepareStatement(
-                    "SELECT * FROM VISITS NATURAL JOIN PATIENT NATURAL JOIN BILLS NATURAL JOIN PROCEDURES WHERE visit_id = ?");
+                    "SELECT * FROM BILLS b INNER JOIN PROCEDURES p ON b.procedure_id = p.procedure_id"
+                            + " INNER JOIN VISITS v ON b.visit_id = v.visit_id INNER JOIN PATIENT p ON v.patient_id = p.patient_id WHERE v.visit_id = ?");
             returnInvoiceByID.setInt(1, id);
             resultSet = returnInvoiceByID.executeQuery();
 
             if (resultSet.next()) {
                 i = new Invoice(
-                        resultSet.getString("patient_firstname" + " " + resultSet.getString("patient_lastname")),
-                        resultSet.getInt("visit_id"),
-                        resultSet.getString("medicare_number"),
-                        resultSet.getString("street_address"),
-                        resultSet.getString("suburb"),
-                        resultSet.getString("postcode"),
-                        resultSet.getString("state"));
+                        resultSet.getString("p.patient_firstname" + " " + resultSet.getString("p.patient_lastname")),
+                        resultSet.getInt("v.visit_id"),
+                        resultSet.getString("p.medicare_number"),
+                        resultSet.getString("p.street_address"),
+                        resultSet.getString("p.suburb"),
+                        resultSet.getString("p.postcode"),
+                        resultSet.getString("p.state"));
             }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();

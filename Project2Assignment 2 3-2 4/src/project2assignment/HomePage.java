@@ -92,15 +92,19 @@ public class HomePage extends javax.swing.JFrame {
                     if (appointmentTableModel.getColumnName(i).equals(v.getDoctorName()) & df.format(v.getVisitTime()) != null & appointmentTableModel.getValueAt(j, 0).equals(df.format(v.getVisitTime()))) {
                         
                         appointmentTableModel.setValueAt(v.getPatientName(), j, i);
+                    } else {
+                        appointmentTableModel.setValueAt("", j, i);
                     }
                 }
             }
         }
         loadPopupMenu();
     }
-
     
     public void loadOtherAppointments(String d) {
+        System.out.println("we in");
+        System.out.println(d);
+        
         appointmentTableModel.setValueAt("09:00", 0, 0);
         appointmentTableModel.setValueAt("09:15", 1, 0);
         appointmentTableModel.setValueAt("09:30", 2, 0);
@@ -142,6 +146,8 @@ public class HomePage extends javax.swing.JFrame {
                     if (appointmentTableModel.getColumnName(i).equals(v.getDoctorName()) & df.format(v.getVisitTime()) != null & appointmentTableModel.getValueAt(j, 0).equals(df.format(v.getVisitTime()))) {
                         
                         appointmentTableModel.setValueAt(v.getPatientName(), j, i);
+                    } else {
+                        appointmentTableModel.setValueAt("", j, i);
                     }
                 }
             }
@@ -542,7 +548,10 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_appointmentMonthComboBoxActionPerformed
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
-        loadOtherAppointments(appointmentDayComboBox.getSelectedItem() + "/" + (String) appointmentMonthComboBox.getSelectedItem());        
+        System.out.println("gobutton");
+      System.out.println(appointmentDayComboBox.getSelectedItem() + "/" + (String) appointmentMonthComboBox.getSelectedItem());
+        loadOtherAppointments(appointmentDayComboBox.getSelectedItem() + "/" + (String) appointmentMonthComboBox.getSelectedItem());
+       // System.out.println(appointmentDayComboBox.getSelectedItem() + "/" + (String) appointmentMonthComboBox.getSelectedItem());
     }//GEN-LAST:event_goButtonActionPerformed
 
     /**
