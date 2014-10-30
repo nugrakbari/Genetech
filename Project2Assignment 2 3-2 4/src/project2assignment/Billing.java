@@ -135,6 +135,9 @@ public class Billing extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         payableTextField = new javax.swing.JTextField();
+        adminButton1 = new javax.swing.JButton();
+        adminLabel1 = new javax.swing.JLabel();
+        adminTab1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -600,6 +603,31 @@ public class Billing extends javax.swing.JFrame {
 
         jInternalFrame1.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 390, 360));
 
+        adminButton1.setBorderPainted(false);
+        scheduleButton.setOpaque(false);
+        scheduleButton.setContentAreaFilled(false);
+        adminButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminButton1MouseClicked(evt);
+            }
+        });
+        adminButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminButton1ActionPerformed(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(adminButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
+
+        adminLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        adminLabel1.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        adminLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        adminLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/id_card.png"))); // NOI18N
+        adminLabel1.setText("Admin");
+        jInternalFrame1.getContentPane().add(adminLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
+
+        adminTab1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/button2.png"))); // NOI18N
+        jInternalFrame1.getContentPane().add(adminTab1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/panel5.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 119, -1, -1));
 
@@ -743,6 +771,14 @@ public class Billing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_totalCostTextFieldActionPerformed
 
+    private void adminButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButton1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminButton1MouseClicked
+
+    private void adminButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminButton1ActionPerformed
+
     /**
      * @param accessLevel the accessLevel to set
      */
@@ -758,6 +794,9 @@ public class Billing extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adminButton1;
+    private javax.swing.JLabel adminLabel1;
+    private javax.swing.JLabel adminTab1;
     private javax.swing.JButton applyDiscountButton;
     private javax.swing.JPanel billableItemPanel;
     private javax.swing.JTextField billableItemsTextField;

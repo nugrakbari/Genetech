@@ -47,6 +47,11 @@ private int userID;
         messagesLabel = new javax.swing.JLabel();
         messagesTab = new javax.swing.JLabel();
         welcome = new javax.swing.JLabel();
+        adminButton = new javax.swing.JButton();
+        adminLabel = new javax.swing.JLabel();
+        adminTab = new javax.swing.JLabel();
+        addButton = new javax.swing.JButton();
+        viewButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -57,7 +62,7 @@ private int userID;
         jInternalFrame1.setIconifiable(true);
         jInternalFrame1.setMaximizable(true);
         jInternalFrame1.setResizable(true);
-        jInternalFrame1.setTitle("Billing");
+        jInternalFrame1.setTitle("Admin");
         jInternalFrame1.setVisible(true);
         jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -160,6 +165,52 @@ private int userID;
         welcome.setText("Welcome,");
         jInternalFrame1.getContentPane().add(welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 0, -1, 30));
 
+        adminButton.setBorderPainted(false);
+        scheduleButton.setOpaque(false);
+        scheduleButton.setContentAreaFilled(false);
+        adminButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminButtonMouseClicked(evt);
+            }
+        });
+        adminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminButtonActionPerformed(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
+
+        adminLabel.setBackground(new java.awt.Color(255, 255, 255));
+        adminLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        adminLabel.setForeground(new java.awt.Color(255, 255, 255));
+        adminLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/id_card.png"))); // NOI18N
+        adminLabel.setText("Admin");
+        jInternalFrame1.getContentPane().add(adminLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+
+        adminTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/Buttonclicked3.png"))); // NOI18N
+        jInternalFrame1.getContentPane().add(adminTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
+
+        addButton.setText("Add");
+        addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addButtonMouseClicked(evt);
+            }
+        });
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 560, 100, 40));
+
+        viewButton.setText("View");
+        viewButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewButtonMouseClicked(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 560, 100, 40));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -173,7 +224,7 @@ private int userID;
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jInternalFrame1.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 1020, 440));
+        jInternalFrame1.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 1020, 430));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, 1250, 670));
@@ -195,17 +246,26 @@ private int userID;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        new HomePage().setVisible(true);
+        HomePage home = new HomePage();
+        home.setVisible(true);
+        home.setAccessLevel(accessLevel);
+        home.setUserID(userID);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void scheduleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleButtonMouseClicked
-        new HomePage().setVisible(true);
+        HomePage home = new HomePage();
+        home.setVisible(true);
+        home.setAccessLevel(accessLevel);
+        home.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
     private void patientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientButtonMouseClicked
-        new PatientView().setVisible(true);
+        PatientView patient = new PatientView();
+        patient.setVisible(true);
+        patient.setAccessLevel(accessLevel);
+        patient.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_patientButtonMouseClicked
 
@@ -219,9 +279,40 @@ private int userID;
     }//GEN-LAST:event_billingButtonMouseClicked
 
     private void messagesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButtonMouseClicked
-        new InstantMessaging().setVisible(true);
+        InstantMessaging im = new InstantMessaging();
+        im.setVisible(true);
+        im.setAccessLevel(accessLevel);
+        im.setUserID(userID);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_messagesButtonMouseClicked
+
+    private void adminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminButtonMouseClicked
+
+    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminButtonActionPerformed
+
+    private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
+        AdminForm adminForm = new AdminForm();
+        adminForm.setVisible(true);
+        adminForm.setAccessLevel(accessLevel);
+        adminForm.setUserID(userID);
+        this.dispose();
+    }//GEN-LAST:event_addButtonMouseClicked
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
+        AdminForm adminForm = new AdminForm();
+        adminForm.setVisible(true);
+        adminForm.setAccessLevel(accessLevel);
+        adminForm.setUserID(userID);
+        this.dispose();
+    }//GEN-LAST:event_viewButtonMouseClicked
 
     
     /**
@@ -274,6 +365,10 @@ private int userID;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton adminButton;
+    private javax.swing.JLabel adminLabel;
+    private javax.swing.JLabel adminTab;
     private javax.swing.JButton billingButton;
     private javax.swing.JLabel billingLabel;
     private javax.swing.JLabel billingTab;
@@ -292,6 +387,7 @@ private int userID;
     private javax.swing.JButton scheduleButton;
     private javax.swing.JLabel scheduleLabel;
     private javax.swing.JLabel scheduleTab;
+    private javax.swing.JButton viewButton;
     private javax.swing.JLabel welcome;
     // End of variables declaration//GEN-END:variables
 }

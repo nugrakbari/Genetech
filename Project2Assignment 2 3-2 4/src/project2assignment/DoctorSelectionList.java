@@ -90,6 +90,9 @@ public class DoctorSelectionList extends javax.swing.JFrame {
         scheduleButton = new javax.swing.JButton();
         scheduleLabel = new javax.swing.JLabel();
         scheduleTab = new javax.swing.JLabel();
+        adminButton = new javax.swing.JButton();
+        adminLabel = new javax.swing.JLabel();
+        adminTab = new javax.swing.JLabel();
         Welcome1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -242,6 +245,31 @@ public class DoctorSelectionList extends javax.swing.JFrame {
         scheduleTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/button2.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(scheduleTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
+        adminButton.setBorderPainted(false);
+        scheduleButton.setOpaque(false);
+        scheduleButton.setContentAreaFilled(false);
+        adminButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminButtonMouseClicked(evt);
+            }
+        });
+        adminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminButtonActionPerformed(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
+
+        adminLabel.setBackground(new java.awt.Color(255, 255, 255));
+        adminLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        adminLabel.setForeground(new java.awt.Color(255, 255, 255));
+        adminLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/id_card.png"))); // NOI18N
+        adminLabel.setText("Admin");
+        jInternalFrame1.getContentPane().add(adminLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+
+        adminTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/Buttonclicked3.png"))); // NOI18N
+        jInternalFrame1.getContentPane().add(adminTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
+
         Welcome1.setBackground(new java.awt.Color(0, 0, 0));
         Welcome1.setForeground(new java.awt.Color(255, 255, 255));
         Welcome1.setText("Welcome, ");
@@ -282,17 +310,26 @@ public class DoctorSelectionList extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        new HomePage().setVisible(true);
+        HomePage home = new HomePage();
+        home.setVisible(true);
+        home.setAccessLevel(accessLevel);
+        home.setUserID(userID);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void scheduleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleButtonMouseClicked
-        new HomePage().setVisible(true);
+        HomePage home = new HomePage();
+        home.setVisible(true);
+        home.setAccessLevel(accessLevel);
+        home.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
     private void patientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientButtonMouseClicked
-        new PatientView().setVisible(true);
+        PatientView patient = new PatientView();
+        patient.setVisible(true);
+        patient.setAccessLevel(accessLevel);
+        patient.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_patientButtonMouseClicked
 
@@ -306,9 +343,20 @@ public class DoctorSelectionList extends javax.swing.JFrame {
     }//GEN-LAST:event_billingButtonMouseClicked
 
     private void messagesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButtonMouseClicked
-        new InstantMessaging().setVisible(true);
+        InstantMessaging im = new InstantMessaging();
+        im.setVisible(true);
+        im.setAccessLevel(accessLevel);
+        im.setUserID(userID);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_messagesButtonMouseClicked
+
+    private void adminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminButtonMouseClicked
+
+    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,6 +413,9 @@ public class DoctorSelectionList extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Welcome;
     private javax.swing.JLabel Welcome1;
+    private javax.swing.JButton adminButton;
+    private javax.swing.JLabel adminLabel;
+    private javax.swing.JLabel adminTab;
     private javax.swing.JButton billingButton;
     private javax.swing.JLabel billingLabel;
     private javax.swing.JLabel billingTab;

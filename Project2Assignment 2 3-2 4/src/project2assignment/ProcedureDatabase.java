@@ -124,7 +124,7 @@ public class ProcedureDatabase extends javax.swing.JFrame {
         jInternalFrame2.getContentPane().add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 181, 30));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
-        jInternalFrame2.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-210, -50, -1, 980));
+        jInternalFrame2.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-540, -150, -1, 980));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
