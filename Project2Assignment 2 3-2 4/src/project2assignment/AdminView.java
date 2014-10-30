@@ -62,7 +62,7 @@ private int userID;
         jInternalFrame1.setIconifiable(true);
         jInternalFrame1.setMaximizable(true);
         jInternalFrame1.setResizable(true);
-        jInternalFrame1.setTitle("Billing");
+        jInternalFrame1.setTitle("Admin");
         jInternalFrame1.setVisible(true);
         jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -246,17 +246,26 @@ private int userID;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        new HomePage().setVisible(true);
+        HomePage home = new HomePage();
+        home.setVisible(true);
+        home.setAccessLevel(accessLevel);
+        home.setUserID(userID);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void scheduleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleButtonMouseClicked
-        new HomePage().setVisible(true);
+        HomePage home = new HomePage();
+        home.setVisible(true);
+        home.setAccessLevel(accessLevel);
+        home.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
     private void patientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientButtonMouseClicked
-        new PatientView().setVisible(true);
+        PatientView patient = new PatientView();
+        patient.setVisible(true);
+        patient.setAccessLevel(accessLevel);
+        patient.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_patientButtonMouseClicked
 
@@ -270,7 +279,10 @@ private int userID;
     }//GEN-LAST:event_billingButtonMouseClicked
 
     private void messagesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButtonMouseClicked
-        new InstantMessaging().setVisible(true);
+        InstantMessaging im = new InstantMessaging();
+        im.setVisible(true);
+        im.setAccessLevel(accessLevel);
+        im.setUserID(userID);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_messagesButtonMouseClicked
 
@@ -283,7 +295,10 @@ private int userID;
     }//GEN-LAST:event_adminButtonActionPerformed
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
-        new PatientForm(accessLevel).setVisible(true);
+        AdminForm adminForm = new AdminForm();
+        adminForm.setVisible(true);
+        adminForm.setAccessLevel(accessLevel);
+        adminForm.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_addButtonMouseClicked
 
@@ -292,7 +307,10 @@ private int userID;
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
-        new PatientForm(accessLevel).setVisible(true);
+        AdminForm adminForm = new AdminForm();
+        adminForm.setVisible(true);
+        adminForm.setAccessLevel(accessLevel);
+        adminForm.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_viewButtonMouseClicked
 
