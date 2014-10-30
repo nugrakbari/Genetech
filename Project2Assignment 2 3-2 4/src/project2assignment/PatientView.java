@@ -428,6 +428,7 @@ public class PatientView extends javax.swing.JFrame {
         HomePage home = new HomePage();
             home.setVisible(true);
             home.setAccessLevel(accessLevel);
+            home.setUserID(userID);
             this.dispose();
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
@@ -439,7 +440,10 @@ public class PatientView extends javax.swing.JFrame {
     }//GEN-LAST:event_billingButtonMouseClicked
 
     private void messagesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButtonMouseClicked
-        new InstantMessaging().setVisible(true);
+        InstantMessaging im = new InstantMessaging();
+        im.setVisible(true);
+        im.setAccessLevel(accessLevel);
+        im.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_messagesButtonMouseClicked
 
@@ -448,25 +452,35 @@ public class PatientView extends javax.swing.JFrame {
     }//GEN-LAST:event_patientButtonActionPerformed
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
-        new PatientForm(accessLevel).setVisible(true);
+        PatientForm patient = new PatientForm(accessLevel);
+        patient.setVisible(true);
+        patient.setAccessLevel(accessLevel);
+        patient.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_addButtonMouseClicked
 
     private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
-        new PatientForm(accessLevel).setVisible(true);
+        PatientForm patient = new PatientForm(accessLevel);
+        patient.setVisible(true);
+        patient.setAccessLevel(accessLevel);
+        patient.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_viewButtonMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        new HomePage().setVisible(true);
+        HomePage home = new HomePage();
+        home.setVisible(true);
+        home.setAccessLevel(accessLevel);
+        home.setUserID(userID);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void scheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleButtonActionPerformed
         HomePage home = new HomePage();
-            home.setVisible(true);
-            home.setAccessLevel(accessLevel);
-            this.dispose();
+        home.setVisible(true);
+        home.setAccessLevel(accessLevel);
+        home.setUserID(userID);
+        this.dispose();
     }//GEN-LAST:event_scheduleButtonActionPerformed
 
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
