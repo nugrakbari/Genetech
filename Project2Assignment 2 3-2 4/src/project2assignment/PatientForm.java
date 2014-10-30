@@ -1272,6 +1272,7 @@ public class PatientForm extends javax.swing.JFrame {
         HomePage home = new HomePage();
             home.setVisible(true);
             home.setAccessLevel(accessLevel);
+            home.setUserID(userID);
             this.dispose();
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
@@ -1279,6 +1280,7 @@ public class PatientForm extends javax.swing.JFrame {
         PatientView patient = new PatientView();
     patient.setVisible(true);
     patient.setAccessLevel(accessLevel);
+    patient.setUserID(userID);
     this.dispose();
     }//GEN-LAST:event_patientButtonMouseClicked
 
@@ -1290,12 +1292,18 @@ public class PatientForm extends javax.swing.JFrame {
     }//GEN-LAST:event_billingButtonMouseClicked
 
     private void messagesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButtonMouseClicked
-        new InstantMessaging().setVisible(true);
+        InstantMessaging im = new InstantMessaging();
+        im.setVisible(true);
+        im.setAccessLevel(accessLevel);
+        im.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_messagesButtonMouseClicked
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
-        new PatientView().setVisible(true);
+        PatientView patient = new PatientView();
+        patient.setVisible(true);
+        patient.setAccessLevel(accessLevel);
+        patient.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_backButtonMouseClicked
 

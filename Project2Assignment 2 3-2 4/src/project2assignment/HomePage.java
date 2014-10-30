@@ -303,6 +303,7 @@ public class HomePage extends javax.swing.JFrame {
     PatientView patient = new PatientView();
     patient.setVisible(true);
     patient.setAccessLevel(accessLevel);
+    patient.setUserID(userID);
     this.dispose();  // TODO add your handling code here:
     }//GEN-LAST:event_patientButtonMouseClicked
 
