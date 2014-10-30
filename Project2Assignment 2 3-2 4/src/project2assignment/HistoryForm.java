@@ -173,6 +173,11 @@ public class HistoryForm extends javax.swing.JFrame {
                 billingButtonMouseClicked(evt);
             }
         });
+        billingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                billingButtonActionPerformed(evt);
+            }
+        });
         jInternalFrame1.getContentPane().add(billingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 170, 80));
 
         billingLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
@@ -527,12 +532,20 @@ public class HistoryForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void adminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButtonMouseClicked
-        // TODO add your handling code here:
+   AdminView admin = new AdminView();
+        admin.setVisible(true);
+        admin.setAccessLevel(accessLevel);
+        admin.setUserID(userID);
+        this.dispose(); 
     }//GEN-LAST:event_adminButtonMouseClicked
 
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_adminButtonActionPerformed
+
+    private void billingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billingButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_billingButtonActionPerformed
 
     /**
      * @param accessLevel the accessLevel to set

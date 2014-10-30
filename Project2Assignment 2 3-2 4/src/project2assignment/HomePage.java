@@ -453,6 +453,11 @@ public class HomePage extends javax.swing.JFrame {
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setEnabled(false);
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jInternalFrame2.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
 
         adminLabel.setBackground(new java.awt.Color(255, 255, 255));
@@ -535,6 +540,14 @@ public class HomePage extends javax.swing.JFrame {
         loadOtherAppointments(appointmentDayComboBox.getSelectedItem() + "/" + (String) appointmentMonthComboBox.getSelectedItem());
        // System.out.println(appointmentDayComboBox.getSelectedItem() + "/" + (String) appointmentMonthComboBox.getSelectedItem());
     }//GEN-LAST:event_goButtonActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        AdminView admin = new AdminView();
+        admin.setVisible(true);
+        admin.setAccessLevel(accessLevel);
+        admin.setUserID(userID);
+        this.dispose();
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param accessLevel the accessLevel to set

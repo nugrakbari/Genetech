@@ -1386,7 +1386,11 @@ public class PatientForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void adminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButtonMouseClicked
-        // TODO add your handling code here:
+        AdminView admin = new AdminView();
+        admin.setVisible(true);
+        admin.setAccessLevel(accessLevel);
+        admin.setUserID(userID);
+        this.dispose();
     }//GEN-LAST:event_adminButtonMouseClicked
 
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed

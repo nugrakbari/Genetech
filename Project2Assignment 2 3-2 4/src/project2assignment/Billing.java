@@ -772,7 +772,10 @@ public class Billing extends javax.swing.JFrame {
     }//GEN-LAST:event_totalCostTextFieldActionPerformed
 
     private void adminButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButton1MouseClicked
-        // TODO add your handling code here:
+        AdminView admin = new AdminView();
+        admin.setVisible(true);
+        admin.setAccessLevel(accessLevel);
+        this.dispose();      
     }//GEN-LAST:event_adminButton1MouseClicked
 
     private void adminButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButton1ActionPerformed

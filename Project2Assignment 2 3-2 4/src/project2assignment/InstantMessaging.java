@@ -269,6 +269,11 @@ public class InstantMessaging extends javax.swing.JFrame {
 
         adminButton.setBorderPainted(false);
         adminButton.setContentAreaFilled(false);
+        adminButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminButtonMouseClicked(evt);
+            }
+        });
         jInternalFrame2.getContentPane().add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
 
         adminLabel.setBackground(new java.awt.Color(255, 255, 255));
@@ -361,6 +366,14 @@ public class InstantMessaging extends javax.swing.JFrame {
     private void sendButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendButtonMouseClicked
 
     }//GEN-LAST:event_sendButtonMouseClicked
+
+    private void adminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButtonMouseClicked
+    AdminView admin = new AdminView();
+        admin.setVisible(true);
+        admin.setAccessLevel(accessLevel);
+        admin.setUserID(userID);
+        this.dispose();          // TODO add your handling code here:
+    }//GEN-LAST:event_adminButtonMouseClicked
 
     /**
      * @param accessLevel the accessLevel to set
