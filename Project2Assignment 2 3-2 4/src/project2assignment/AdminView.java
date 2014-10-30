@@ -3,25 +3,97 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package project2assignment;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author GuestAccount
  */
 public class AdminView extends javax.swing.JFrame {
-    
-private String accessLevel;
-private int userID;
 
+    private StaffQuery staffQuery;
+    private DefaultTableModel staffTableModel;
+    private String accessLevel;
+    private int userID;
+    private JPopupMenu popupMenu;
+    private JMenuItem viewStaff;
     /**
      * Creates new form AdminForm
      */
     public AdminView() {
+        System.out.println("loading AdminView");
         initComponents();
+
+        staffQuery = new StaffQuery();
+
+        staffTableModel = new DefaultTableModel();
+        staffTableModel.setColumnCount(9);
+        staffTableModel.setColumnIdentifiers(new String[]{"Staff ID", "First Name", "Last Name",
+            "Position", "Access Level", "Username", "Password", "Specialty",
+            "Prescriber Number"});
+        staffTable.setModel(staffTableModel);
+        loadStaffTable();
     }
 
+    private void loadStaffTable() {
+        List<Staff> entries = staffQuery.getStaff();
+        int tableRow = 0;
+        staffTableModel.setNumRows(entries.size());
+        for (Staff b : entries) {
+            staffTableModel.setValueAt(b.getStaffId(), tableRow, 0);
+            staffTableModel.setValueAt(b.getFirstName(), tableRow, 1);
+            staffTableModel.setValueAt(b.getLastName(), tableRow, 2);
+            staffTableModel.setValueAt(b.getPosition(), tableRow, 3);
+            staffTableModel.setValueAt(b.getAccessLevel(), tableRow, 4);
+            staffTableModel.setValueAt(b.getUsername(), tableRow, 5);
+            staffTableModel.setValueAt(b.getPassword(), tableRow, 6);
+            staffTableModel.setValueAt(b.getSpecialty(), tableRow, 7);
+            staffTableModel.setValueAt(b.getPrescriberNumber(), tableRow, 8);
+            tableRow++;
+        }
+        //loadPopupMenu();
+
+    }
+    private void loadPopupMenu() {
+        popupMenu = new JPopupMenu();
+        viewStaff = new JMenuItem("Get Info");
+
+        viewStaff.addActionListener(viewStaffListener);
+
+
+        popupMenu.add(viewStaff);
+
+
+        staffTable.setComponentPopupMenu(popupMenu);
+    }
+
+    private final ActionListener viewStaffListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            int staffElementToView = staffTable.getSelectedRow();
+            String StaffID = (String) staffTable.getValueAt(staffElementToView, 0);
+            int id = Integer.parseInt(staffID);
+            
+
+            if (staffElementToView != -1) {
+                System.out.println(id);
+                AdminForm form = new AdminForm();
+                //form.setAccessLevel(accessLevel);
+                form.setAction(AdminForm.Action.EDIT);
+                form.setToEdit(id);
+                setVisible(false);
+                form.setVisible(true);
+            }
+        }
+    };
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,7 +125,7 @@ private int userID;
         addButton = new javax.swing.JButton();
         viewButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        staffTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -211,7 +283,7 @@ private int userID;
         });
         jInternalFrame1.getContentPane().add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 560, 100, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        staffTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -222,7 +294,7 @@ private int userID;
                 "Staff ID", "First Name", "Surname", "Position"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(staffTable);
 
         jInternalFrame1.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 1020, 430));
 
@@ -314,7 +386,6 @@ private int userID;
         this.dispose();
     }//GEN-LAST:event_viewButtonMouseClicked
 
-    
     /**
      * @param userID the userID to set
      */
@@ -322,13 +393,14 @@ private int userID;
         this.userID = userID;
         System.out.println("(InstantMessaging) user is " + userID);
     }
-    
+
     /**
      * @param accessLevel the accessLevel to set
      */
     public void setAccessLevel(String accessLevel) {
         this.accessLevel = accessLevel;
     }
+
     /**
      * @param args the command line arguments
      */
@@ -376,7 +448,6 @@ private int userID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel logo;
     private javax.swing.JButton messagesButton;
     private javax.swing.JLabel messagesLabel;
@@ -387,6 +458,7 @@ private int userID;
     private javax.swing.JButton scheduleButton;
     private javax.swing.JLabel scheduleLabel;
     private javax.swing.JLabel scheduleTab;
+    private javax.swing.JTable staffTable;
     private javax.swing.JButton viewButton;
     private javax.swing.JLabel welcome;
     // End of variables declaration//GEN-END:variables

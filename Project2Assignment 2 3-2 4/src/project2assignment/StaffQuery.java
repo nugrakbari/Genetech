@@ -21,6 +21,8 @@ public class StaffQuery {
     private Connection conn = null;
     private PreparedStatement findDoctor = null;
     private PreparedStatement getAllDoctors = null;
+    private PreparedStatement getAllStaff = null;
+    private PreparedStatement returnStaffByID = null;
     private ResultSet rs = null;
     
     private static final String URL = "jdbc:oracle:thin:@//sage.business.unsw.edu.au:1521/orcl01.asbpldb001.ad.unsw.edu.au";
@@ -148,6 +150,67 @@ public class StaffQuery {
         }
         closeConnection();
         return results;
-        
+    }
+    
+    public List<Staff> getStaff() {
+
+        List<Staff> results = null;
+        ResultSet resultSet = null;
+        openConnection();
+
+        try {
+            
+            getAllStaff = conn.prepareStatement("SELECT * FROM STAFF");
+            resultSet = getAllStaff.executeQuery();
+            results = new ArrayList<Staff>();
+
+            while (resultSet.next()) {
+                results.add(new Staff(
+                        resultSet.getInt("staff_id"),
+                        resultSet.getString("staff_firstname"),
+                        resultSet.getString("staff_lastname"),
+                        resultSet.getString("position"),
+                        resultSet.getString("access_level"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("specialty"),
+                        resultSet.getString("prescriber_number")));
+            }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        closeConnection();
+        return results;
+    }
+    
+     public Staff getStaffByID(int id) {
+        Staff s = null;
+        ResultSet resultSet = null;
+        openConnection();
+
+        try {
+
+            returnStaffByID = conn.prepareStatement(
+                    "SELECT * FROM STAFF WHERE staff_id = ?");
+            returnStaffByID.setInt(1, id);
+            resultSet = returnStaffByID.executeQuery();
+
+            if (resultSet.next()) {
+                s = new Staff(
+                        resultSet.getInt("staff_id"),
+                        resultSet.getString("staff_lastname"),
+                        resultSet.getString("staff_firstname"),
+                        resultSet.getString("position"),
+                        resultSet.getString("access_level"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("specialty"),
+                        resultSet.getString("prescriber_number"));
+                        }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        closeConnection();
+        return s;
     }
 }
