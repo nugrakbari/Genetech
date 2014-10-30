@@ -151,9 +151,9 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="appointmentTable">
               <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor" postCode="TableColumn column = null;&#xa;for (int i = 0; i &lt; 4; i++) {&#xa;    column = appointmentTable.getColumnModel().getColumn(i);&#xa;    if (i == 0) {&#xa;        column.setPreferredWidth(10);&#xa;    } else {&#xa;        column.setPreferredWidth(50);&#xa;    }&#xa;}">
                   <Table columnCount="4" rowCount="4">
                     <Column editable="true" title="Appointment Time" type="java.lang.Object"/>
                     <Column editable="true" title="Patient Lastname" type="java.lang.Object"/>
@@ -161,6 +161,7 @@
                     <Column editable="true" title="Title 4" type="java.lang.Object"/>
                   </Table>
                 </Property>
+                <Property name="cellSelectionEnabled" type="boolean" value="true"/>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">

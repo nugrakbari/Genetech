@@ -3,8 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package project2assignment;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -14,17 +23,119 @@ public class HomePage extends javax.swing.JFrame {
 
     private String accessLevel;
     private int userID;
+    private DefaultTableModel appointmentTableModel;
+    private final int NUM_ROWS = 32;
+    private final int NUM_COLS = 3;
+    private VisitQuery visitQuery;
+    private DateFormat df;
+    private JPopupMenu popupMenu;
+    private JMenuItem viewPatient;
+    private JMenuItem viewMedicalRecord;
+    private JMenuItem viewHistory;
+
     /**
      * Creates new form HomePage
      */
     public HomePage() {
         initComponents();
+        visitQuery = new VisitQuery();
+        df = new SimpleDateFormat("HH:mm");
+        appointmentTableModel = new DefaultTableModel();
+        appointmentTableModel.setColumnCount(NUM_COLS);
+        appointmentTableModel.setNumRows(NUM_ROWS);
+        appointmentTableModel.setColumnIdentifiers(new String[]{"Time", "Alexandrou Constantinides", "Jan Ivanovic"});
+        appointmentTable.setModel(appointmentTableModel);
+        loadAppointments();
     }
 
+    public void loadAppointments() {
+        appointmentTableModel.setValueAt("09:00", 0, 0);
+        appointmentTableModel.setValueAt("09:15", 1, 0);
+        appointmentTableModel.setValueAt("09:30", 2, 0);
+        appointmentTableModel.setValueAt("09:45", 3, 0);
+        appointmentTableModel.setValueAt("10:00", 4, 0);
+        appointmentTableModel.setValueAt("10:15", 5, 0);
+        appointmentTableModel.setValueAt("10:30", 6, 0);
+        appointmentTableModel.setValueAt("10:45", 7, 0);
+        appointmentTableModel.setValueAt("11:00", 8, 0);
+        appointmentTableModel.setValueAt("11:15", 9, 0);
+        appointmentTableModel.setValueAt("11:30", 10, 0);
+        appointmentTableModel.setValueAt("11:45", 11, 0);
+        appointmentTableModel.setValueAt("12:00", 12, 0);
+        appointmentTableModel.setValueAt("12:15", 13, 0);
+        appointmentTableModel.setValueAt("12:30", 14, 0);
+        appointmentTableModel.setValueAt("12:45", 15, 0);
+        appointmentTableModel.setValueAt("13:00", 16, 0);
+        appointmentTableModel.setValueAt("13:15", 17, 0);
+        appointmentTableModel.setValueAt("13:30", 18, 0);
+        appointmentTableModel.setValueAt("13:45", 19, 0);
+        appointmentTableModel.setValueAt("14:00", 20, 0);
+        appointmentTableModel.setValueAt("14:15", 21, 0);
+        appointmentTableModel.setValueAt("14:30", 22, 0);
+        appointmentTableModel.setValueAt("14:45", 23, 0);
+        appointmentTableModel.setValueAt("15:00", 24, 0);
+        appointmentTableModel.setValueAt("15:15", 25, 0);
+        appointmentTableModel.setValueAt("15:30", 26, 0);
+        appointmentTableModel.setValueAt("15:45", 27, 0);
+        appointmentTableModel.setValueAt("16:00", 28, 0);
+        appointmentTableModel.setValueAt("16:15", 29, 0);
+        appointmentTableModel.setValueAt("16:30", 30, 0);
+        appointmentTableModel.setValueAt("16:45", 31, 0);
+        
+        List<VisitToday> entries = visitQuery.getTodaysVisits();
+
+        for (int i = 1; i < NUM_COLS; i++) {
+            for (int j = 0; j < NUM_ROWS; j++) {
+                for (VisitToday v : entries) {
+                    if (appointmentTableModel.getColumnName(i).equals(v.getDoctorName()) & df.format(v.getVisitTime()) != null & appointmentTableModel.getValueAt(j, 0).equals(df.format(v.getVisitTime()))) {
+                        
+                        appointmentTableModel.setValueAt(v.getPatientName(), j, i);
+                    }
+                }
+            }
+        }
+        loadPopupMenu();
+    }
+
+    
+    private void loadPopupMenu() {
+        popupMenu = new JPopupMenu();
+        viewPatient = new JMenuItem("Get Info");
+        viewMedicalRecord = new JMenuItem("View Medical Record");
+        viewHistory = new JMenuItem("View past visits");
+
+        viewPatient.addActionListener(viewPatientListener);
+
+        popupMenu.add(viewPatient);
+        popupMenu.add(viewMedicalRecord);
+        popupMenu.add(viewHistory);
+
+        appointmentTable.setComponentPopupMenu(popupMenu);
+    }
+    
+    private final ActionListener viewPatientListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            int patientElementToView = appointmentTable.getSelectedRow();
+            String patientID = (String) appointmentTable.getValueAt(patientElementToView, 0);
+            int id = Integer.parseInt(patientID);
+            
+
+            if (patientElementToView != -1) {
+                System.out.println(id);
+                PatientForm form = new PatientForm(accessLevel);
+                //form.setAccessLevel(accessLevel);
+                form.setAction(PatientForm.Action.EDIT);
+                form.setToEdit(id);
+                setVisible(false);
+                form.setVisible(true);
+            }
+        }
+    };
+
     /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
+     * This method is called from within the constructor to initialize the form. WARNING: Do NOT
+     * modify this code. The content of this method is always regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -43,7 +154,7 @@ public class HomePage extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        appointmentTable = new javax.swing.JTable();
         Welcome = new javax.swing.JLabel();
         patientButton = new javax.swing.JButton();
         patientLabel = new javax.swing.JLabel();
@@ -104,7 +215,7 @@ public class HomePage extends javax.swing.JFrame {
         jInternalFrame2.setVisible(true);
         jInternalFrame2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        appointmentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -115,7 +226,17 @@ public class HomePage extends javax.swing.JFrame {
                 "Appointment Time", "Patient Lastname", "Patient First Name", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        TableColumn column = null;
+        for (int i = 0; i < 4; i++) {
+            column = appointmentTable.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(10);
+            } else {
+                column.setPreferredWidth(50);
+            }
+        }
+        appointmentTable.setCellSelectionEnabled(true);
+        jScrollPane1.setViewportView(appointmentTable);
 
         jInternalFrame2.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 1020, 440));
 
@@ -265,25 +386,25 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_billingButtonActionPerformed
 
     private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
-    Billing billing = new Billing(0);
-    billing.setVisible(true);
-    billing.setAccessLevel(accessLevel);
-    this.dispose();        // TODO add your handling code here:
+        Billing billing = new Billing(0);
+        billing.setVisible(true);
+        billing.setAccessLevel(accessLevel);
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_billingButtonMouseClicked
 
     private void patientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientButtonMouseClicked
-    PatientView patient = new PatientView();
-    patient.setVisible(true);
-    patient.setAccessLevel(accessLevel);
-    this.dispose();  // TODO add your handling code here:
+        PatientView patient = new PatientView();
+        patient.setVisible(true);
+        patient.setAccessLevel(accessLevel);
+        this.dispose();  // TODO add your handling code here:
     }//GEN-LAST:event_patientButtonMouseClicked
 
     private void messagingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagingButtonMouseClicked
-    InstantMessaging im = new InstantMessaging();
-    im.setVisible(true);
-    im.setAccessLevel(accessLevel);
-    im.setUserID(userID);
-    this.dispose();        // TODO add your handling code here:
+        InstantMessaging im = new InstantMessaging();
+        im.setVisible(true);
+        im.setAccessLevel(accessLevel);
+        im.setUserID(userID);
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_messagingButtonMouseClicked
 
     private void messagingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagingButtonActionPerformed
@@ -305,7 +426,7 @@ public class HomePage extends javax.swing.JFrame {
         this.accessLevel = accessLevel;
         System.out.println("(HomePage) accesslevel is " + accessLevel);
     }
-    
+
     /**
      * @param userID the userID to set
      */
@@ -313,8 +434,7 @@ public class HomePage extends javax.swing.JFrame {
         this.userID = userID;
         System.out.println("(InstantMessaging) user is " + userID);
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -352,6 +472,7 @@ public class HomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Welcome;
+    private javax.swing.JTable appointmentTable;
     private javax.swing.JButton billingButton;
     private javax.swing.JLabel billingLabel;
     private javax.swing.JLabel billingTab;
@@ -370,7 +491,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel logo;
     private javax.swing.JButton messagingButton;
     private javax.swing.JLabel messagingLabel;
@@ -383,5 +503,3 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel scheduleTab;
     // End of variables declaration//GEN-END:variables
 }
-
-

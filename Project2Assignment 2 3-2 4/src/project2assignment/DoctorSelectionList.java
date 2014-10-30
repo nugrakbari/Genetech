@@ -220,7 +220,7 @@ public class DoctorSelectionList extends javax.swing.JFrame {
         messagesTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/button2.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(messagesTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, -1));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/logo glow.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/logo-glow.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
         scheduleButton.setBorderPainted(false);

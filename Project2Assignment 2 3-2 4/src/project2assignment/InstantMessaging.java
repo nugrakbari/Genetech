@@ -5,9 +5,12 @@
  */
 package project2assignment;
 
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,7 +35,7 @@ public class InstantMessaging extends javax.swing.JFrame {
         chatTableModel = new DefaultTableModel();
         chatTableModel.setColumnCount(3);
         chatTableModel.setColumnIdentifiers(new String[]{"Time", "Sender", "Message"
-            });
+        });
         chatTable.setModel(chatTableModel);
         loadChatTable();
     }
@@ -44,10 +47,11 @@ public class InstantMessaging extends javax.swing.JFrame {
         for (Chat p : entries) {
             chatTableModel.setValueAt(df.format(p.getTimestamp()), tableRow, 0);
             chatTableModel.setValueAt(p.getUsername(), tableRow, 1);
-            chatTableModel.setValueAt(p.getMessage(), tableRow, 2);   
+            chatTableModel.setValueAt(p.getMessage(), tableRow, 2);
             tableRow++;
         }
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form. WARNING: Do NOT
@@ -339,7 +343,7 @@ public class InstantMessaging extends javax.swing.JFrame {
         this.accessLevel = accessLevel;
         System.out.println("(InstantMessaging) access level is " + accessLevel);
     }
-    
+
     /**
      * @param userID the userID to set
      */
@@ -347,7 +351,7 @@ public class InstantMessaging extends javax.swing.JFrame {
         this.userID = userID;
         System.out.println("(InstantMessaging) user is " + userID);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -382,7 +386,7 @@ public class InstantMessaging extends javax.swing.JFrame {
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Welcome;
