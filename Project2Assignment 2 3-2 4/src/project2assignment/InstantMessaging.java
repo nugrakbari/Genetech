@@ -268,18 +268,7 @@ public class InstantMessaging extends javax.swing.JFrame {
         jInternalFrame2.getContentPane().add(scheduleTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         adminButton.setBorderPainted(false);
-        scheduleButton.setOpaque(false);
-        scheduleButton.setContentAreaFilled(false);
-        adminButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                adminButtonMouseClicked(evt);
-            }
-        });
-        adminButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminButtonActionPerformed(evt);
-            }
-        });
+        adminButton.setContentAreaFilled(false);
         jInternalFrame2.getContentPane().add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
 
         adminLabel.setBackground(new java.awt.Color(255, 255, 255));
@@ -372,14 +361,6 @@ public class InstantMessaging extends javax.swing.JFrame {
     private void sendButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendButtonMouseClicked
 
     }//GEN-LAST:event_sendButtonMouseClicked
-
-    private void adminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adminButtonMouseClicked
-
-    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adminButtonActionPerformed
 
     /**
      * @param accessLevel the accessLevel to set

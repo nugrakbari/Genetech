@@ -7,21 +7,21 @@
 
 package project2assignment;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
+ import com.itextpdf.text.Document;
+ import com.itextpdf.text.Paragraph;
+ import com.itextpdf.text.pdf.PdfWriter;
+ import com.itextpdf.text.Font;
+ import com.itextpdf.text.FontFactory;
 
-import java.io.FileOutputStream;
+ import java.io.FileOutputStream;
 
 
-/**
+ /**
  *
  * @author gregjacobson
  */
 public class PDFOutput {
-    
+
     private String patientName;
     private int visitID;
     private int receiptNumber;
@@ -33,83 +33,80 @@ public class PDFOutput {
     private float billableSum;
     private float discountAmount;
     private float amountDue;
-    
+
     private VisitQuery visitQuery;
-    
+
     public PDFOutput(int visit) {
         setVisitID(visit);
-        
+
         visitQuery = new VisitQuery();
-        
+
         Invoice invoice = visitQuery.getInvoice(visit);
-        
+
         Document document = new Document();
-        try{ 
-        PdfWriter.getInstance(document, new FileOutputStream("Receipt.pdf"));
-        document.open();
-        
-        //title
-        Font titleFont = new Font(Font.FontFamily. HELVETICA, 25, Font.BOLD);
-        Font regularText = new Font(Font.FontFamily. HELVETICA, 16, Font.NORMAL);
-        Font italicText = new Font(Font.FontFamily. HELVETICA, 14, Font.ITALIC);
-        
-        Paragraph receiptTitle = new Paragraph();
-        receiptTitle.setFont(titleFont);
-        receiptTitle.add("Patient Treatment Receipt");
-        document.add(receiptTitle);
-        
-        Paragraph receiptNumberObject = new Paragraph();
-        receiptNumberObject.add("Receipt Number: " + invoice.getReceiptNumber());
-        receiptNumberObject.setFont(regularText);
-        document.add(receiptNumberObject);
-        
-        Paragraph patientNameObject = new Paragraph();
-        patientNameObject.add("Patient Name:" + invoice.getPatientName());
-        patientNameObject.setFont(regularText);
-        document.add(patientNameObject);
-        
-        Paragraph medicareNumberObject = new Paragraph();
-        medicareNumberObject.add("Medicare number: " + invoice.getMedicareNumber());
-        medicareNumberObject.setFont(regularText);
-        document.add(medicareNumberObject);
-        
-        Paragraph patientAddress = new Paragraph();
-        patientAddress.add("Address:" + invoice.getStreetAddress() + ", " + 
-                invoice.getSuburb() + " " + invoice.getState() + " " + invoice.getPostcode());
-        patientAddress.setFont(regularText);
-        document.add(patientAddress);
-        
-        Paragraph billableSumObject = new Paragraph();
-        billableSumObject.add("Billable sum: $" + billableSum);
-        billableSumObject.setFont(regularText);
-        document.add(billableSumObject);
-        
-        Paragraph discountAmountObject = new Paragraph();
-        discountAmountObject.add("Discount amount: $" + discountAmount);
-        discountAmountObject.setFont(regularText);
-        document.add(discountAmountObject);
-        
-        Paragraph payableAmountObject = new Paragraph();
-        payableAmountObject.add("Amount Due: $" + amountDue);
-        payableAmountObject.setFont(regularText);
-        document.add(payableAmountObject);
-        
-        Paragraph paymentDisclaimer = new Paragraph();
-        paymentDisclaimer.setFont(italicText);
-        paymentDisclaimer.add("All accounts are to please be paid in full on the"
-                + " same day as consultation. Thank you!");
-        paymentDisclaimer.setFont(italicText);
-        document.add(paymentDisclaimer);
-        
-        
-        
-        document.close();
-        
-        
-        } catch (Exception e){
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("Receipt.pdf"));
+            document.open();
+
+            //title
+            Font titleFont = new Font(Font.FontFamily.HELVETICA, 25, Font.BOLD);
+            Font regularText = new Font(Font.FontFamily.HELVETICA, 16, Font.NORMAL);
+            Font italicText = new Font(Font.FontFamily.HELVETICA, 14, Font.ITALIC);
+
+            Paragraph receiptTitle = new Paragraph();
+            receiptTitle.setFont(titleFont);
+            receiptTitle.add("Patient Treatment Receipt");
+            document.add(receiptTitle);
+
+            Paragraph receiptNumberObject = new Paragraph();
+            receiptNumberObject.add("Receipt Number: " + invoice.getReceiptNumber());
+            receiptNumberObject.setFont(regularText);
+            document.add(receiptNumberObject);
+
+            Paragraph patientNameObject = new Paragraph();
+            patientNameObject.add("Patient Name:" + invoice.getPatientName());
+            patientNameObject.setFont(regularText);
+            document.add(patientNameObject);
+
+            Paragraph medicareNumberObject = new Paragraph();
+            medicareNumberObject.add("Medicare number: " + invoice.getMedicareNumber());
+            medicareNumberObject.setFont(regularText);
+            document.add(medicareNumberObject);
+
+            Paragraph patientAddress = new Paragraph();
+            patientAddress.add("Address:" + invoice.getStreetAddress() + ", "
+                    + invoice.getSuburb() + " " + invoice.getState() + " " + invoice.getPostcode());
+            patientAddress.setFont(regularText);
+            document.add(patientAddress);
+
+            Paragraph billableSumObject = new Paragraph();
+            billableSumObject.add("Billable sum: $" + billableSum);
+            billableSumObject.setFont(regularText);
+            document.add(billableSumObject);
+
+            Paragraph discountAmountObject = new Paragraph();
+            discountAmountObject.add("Discount amount: $" + discountAmount);
+            discountAmountObject.setFont(regularText);
+            document.add(discountAmountObject);
+
+            Paragraph payableAmountObject = new Paragraph();
+            payableAmountObject.add("Amount Due: $" + amountDue);
+            payableAmountObject.setFont(regularText);
+            document.add(payableAmountObject);
+
+            Paragraph paymentDisclaimer = new Paragraph();
+            paymentDisclaimer.setFont(italicText);
+            paymentDisclaimer.add("All accounts are to please be paid in full on the"
+                    + " same day as consultation. Thank you!");
+            paymentDisclaimer.setFont(italicText);
+            document.add(paymentDisclaimer);
+
+            document.close();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-       
+
     }
 
     /**
@@ -181,7 +178,7 @@ public class PDFOutput {
     public void setAmountDue(float amountDue) {
         this.amountDue = amountDue;
     }
-    
+
     public void setVisitID(int visitID) {
         this.visitID = visitID;
         System.out.println("(Billing) visitID is " + visitID);

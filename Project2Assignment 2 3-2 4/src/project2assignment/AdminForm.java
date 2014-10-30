@@ -300,18 +300,7 @@ public enum Action {
         jInternalFrame1.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, 520, 230));
 
         adminButton.setBorderPainted(false);
-        scheduleButton.setOpaque(false);
-        scheduleButton.setContentAreaFilled(false);
-        adminButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                adminButtonMouseClicked(evt);
-            }
-        });
-        adminButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminButtonActionPerformed(evt);
-            }
-        });
+        adminButton.setContentAreaFilled(false);
         jInternalFrame1.getContentPane().add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
 
         adminLabel.setBackground(new java.awt.Color(255, 255, 255));
@@ -406,14 +395,6 @@ public enum Action {
     private void staffIDTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffIDTextfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_staffIDTextfieldActionPerformed
-
-    private void adminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adminButtonMouseClicked
-
-    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adminButtonActionPerformed
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         new PatientView().setVisible(true);
