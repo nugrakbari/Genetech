@@ -106,7 +106,6 @@ public class PDFOutput {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     /**
