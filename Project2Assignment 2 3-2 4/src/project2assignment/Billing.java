@@ -219,14 +219,8 @@ public class Billing extends javax.swing.JFrame {
         jInternalFrame1.getContentPane().add(patientTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         billingButton.setBorderPainted(false);
-        billingButton.setOpaque(false);
         billingButton.setContentAreaFilled(false);
-        billingButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                billingButtonMouseClicked(evt);
-            }
-        });
-        jInternalFrame1.getContentPane().add(billingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 160, 80));
+        jInternalFrame1.getContentPane().add(billingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 170, 80));
 
         billingLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         billingLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -612,6 +606,7 @@ public class Billing extends javax.swing.JFrame {
         jInternalFrame1.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 390, 360));
 
         adminButton1.setBorderPainted(false);
+        adminButton1.setContentAreaFilled(false);
         scheduleButton.setOpaque(false);
         scheduleButton.setContentAreaFilled(false);
         adminButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -730,13 +725,6 @@ public class Billing extends javax.swing.JFrame {
         pdf.setAmountDue(Float.valueOf(payableTextField.getText()));
         
     }//GEN-LAST:event_printInvoiceActionPerformed
-
-    private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
-        Billing billing = new Billing(0);
-        billing.setVisible(true);
-        billing.setAccessLevel(accessLevel);
-        this.dispose();
-    }//GEN-LAST:event_billingButtonMouseClicked
 
     private void browseVisitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseVisitButtonActionPerformed
         TodaysVisit visit = new TodaysVisit();
