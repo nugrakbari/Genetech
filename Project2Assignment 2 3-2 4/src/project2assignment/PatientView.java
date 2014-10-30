@@ -371,6 +371,7 @@ public class PatientView extends javax.swing.JFrame {
         internalFrame.getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1115, 90, 90, -1));
 
         adminButton.setBorderPainted(false);
+        adminButton.setContentAreaFilled(false);
         scheduleButton.setOpaque(false);
         scheduleButton.setContentAreaFilled(false);
         adminButton.addMouseListener(new java.awt.event.MouseAdapter() {

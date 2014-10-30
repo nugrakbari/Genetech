@@ -221,6 +221,11 @@ public class AdminView extends javax.swing.JFrame {
                 messagesButtonMouseClicked(evt);
             }
         });
+        messagesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messagesButtonActionPerformed(evt);
+            }
+        });
         jInternalFrame1.getContentPane().add(messagesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 170, 80));
 
         messagesLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
@@ -238,13 +243,10 @@ public class AdminView extends javax.swing.JFrame {
         jInternalFrame1.getContentPane().add(welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 0, -1, 30));
 
         adminButton.setBorderPainted(false);
-        scheduleButton.setOpaque(false);
-        scheduleButton.setContentAreaFilled(false);
-        adminButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                adminButtonMouseClicked(evt);
-            }
-        });
+        adminButton.setOpaque(false);
+        adminButton.setContentAreaFilled(false);
+        adminButton.setBorderPainted(false);
+        adminButton.setContentAreaFilled(false);
         adminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminButtonActionPerformed(evt);
@@ -358,14 +360,6 @@ public class AdminView extends javax.swing.JFrame {
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_messagesButtonMouseClicked
 
-    private void adminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adminButtonMouseClicked
-
-    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adminButtonActionPerformed
-
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         AdminForm adminForm = new AdminForm();
         adminForm.setVisible(true);
@@ -385,6 +379,14 @@ public class AdminView extends javax.swing.JFrame {
         adminForm.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_viewButtonMouseClicked
+
+    private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_messagesButtonActionPerformed
+
+    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminButtonActionPerformed
 
     /**
      * @param userID the userID to set

@@ -6,13 +6,14 @@
  */
 package project2assignment;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
+ import com.itextpdf.text.Document;
+ import com.itextpdf.text.Paragraph;
+ import com.itextpdf.text.pdf.PdfWriter;
+ import com.itextpdf.text.Font;
+ import com.itextpdf.text.FontFactory;
 
-import java.io.FileOutputStream;
+ import java.io.FileOutputStream;
+
 
 /**
  *
@@ -40,6 +41,7 @@ public class PDFOutput {
         visitQuery = new VisitQuery();
 
         Invoice invoice = visitQuery.getInvoice(visit);
+
         if (invoice.getPatientName() == null) {
             System.out.println("Patient is null");
         }
@@ -107,7 +109,6 @@ public class PDFOutput {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     /**

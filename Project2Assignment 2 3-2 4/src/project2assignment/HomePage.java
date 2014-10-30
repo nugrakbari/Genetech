@@ -231,7 +231,7 @@ public class HomePage extends javax.swing.JFrame {
         scheduleButton = new javax.swing.JButton();
         scheduleLabel = new javax.swing.JLabel();
         scheduleTab = new javax.swing.JLabel();
-        adminButton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         adminLabel = new javax.swing.JLabel();
         adminTab = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -450,20 +450,10 @@ public class HomePage extends javax.swing.JFrame {
         scheduleTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/Untitled3.png"))); // NOI18N
         jInternalFrame2.getContentPane().add(scheduleTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
-        adminButton.setBorderPainted(false);
-        scheduleButton.setOpaque(false);
-        scheduleButton.setContentAreaFilled(false);
-        adminButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                adminButtonMouseClicked(evt);
-            }
-        });
-        adminButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminButtonActionPerformed(evt);
-            }
-        });
-        jInternalFrame2.getContentPane().add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setEnabled(false);
+        jInternalFrame2.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
 
         adminLabel.setBackground(new java.awt.Color(255, 255, 255));
         adminLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
@@ -535,14 +525,6 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
-    private void adminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adminButtonMouseClicked
-
-    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adminButtonActionPerformed
-
     private void appointmentMonthComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentMonthComboBoxActionPerformed
 
     }//GEN-LAST:event_appointmentMonthComboBoxActionPerformed
@@ -608,7 +590,6 @@ public class HomePage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Welcome;
     private javax.swing.JLabel Welcome1;
-    private javax.swing.JButton adminButton;
     private javax.swing.JLabel adminLabel;
     private javax.swing.JLabel adminTab;
     private javax.swing.JComboBox appointmentDayComboBox;
@@ -619,6 +600,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel billingTab;
     private javax.swing.JLabel genetech;
     private javax.swing.JButton goButton;
+    private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JLabel jLabel6;
