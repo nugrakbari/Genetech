@@ -529,6 +529,7 @@ public class PatientView extends javax.swing.JFrame {
         this.userID = userID;
         System.out.println("(InstantMessaging) user is " + userID);
     }
+    
     /**
      * @param args the command line arguments
      */

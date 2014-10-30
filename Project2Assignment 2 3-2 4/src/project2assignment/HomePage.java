@@ -7,6 +7,7 @@ package project2assignment;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -45,10 +46,11 @@ public class HomePage extends javax.swing.JFrame {
         appointmentTableModel.setNumRows(NUM_ROWS);
         appointmentTableModel.setColumnIdentifiers(new String[]{"Time", "Alexandrou Constantinides", "Jan Ivanovic"});
         appointmentTable.setModel(appointmentTableModel);
-        loadAppointments();
+        loadTableModel();
+        //loadTodaysAppointments();
     }
 
-    public void loadAppointments() {
+    public void loadTableModel() {
         appointmentTableModel.setValueAt("09:00", 0, 0);
         appointmentTableModel.setValueAt("09:15", 1, 0);
         appointmentTableModel.setValueAt("09:30", 2, 0);
@@ -98,6 +100,55 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     
+    public void loadOtherAppointments(String d) {
+        appointmentTableModel.setValueAt("09:00", 0, 0);
+        appointmentTableModel.setValueAt("09:15", 1, 0);
+        appointmentTableModel.setValueAt("09:30", 2, 0);
+        appointmentTableModel.setValueAt("09:45", 3, 0);
+        appointmentTableModel.setValueAt("10:00", 4, 0);
+        appointmentTableModel.setValueAt("10:15", 5, 0);
+        appointmentTableModel.setValueAt("10:30", 6, 0);
+        appointmentTableModel.setValueAt("10:45", 7, 0);
+        appointmentTableModel.setValueAt("11:00", 8, 0);
+        appointmentTableModel.setValueAt("11:15", 9, 0);
+        appointmentTableModel.setValueAt("11:30", 10, 0);
+        appointmentTableModel.setValueAt("11:45", 11, 0);
+        appointmentTableModel.setValueAt("12:00", 12, 0);
+        appointmentTableModel.setValueAt("12:15", 13, 0);
+        appointmentTableModel.setValueAt("12:30", 14, 0);
+        appointmentTableModel.setValueAt("12:45", 15, 0);
+        appointmentTableModel.setValueAt("13:00", 16, 0);
+        appointmentTableModel.setValueAt("13:15", 17, 0);
+        appointmentTableModel.setValueAt("13:30", 18, 0);
+        appointmentTableModel.setValueAt("13:45", 19, 0);
+        appointmentTableModel.setValueAt("14:00", 20, 0);
+        appointmentTableModel.setValueAt("14:15", 21, 0);
+        appointmentTableModel.setValueAt("14:30", 22, 0);
+        appointmentTableModel.setValueAt("14:45", 23, 0);
+        appointmentTableModel.setValueAt("15:00", 24, 0);
+        appointmentTableModel.setValueAt("15:15", 25, 0);
+        appointmentTableModel.setValueAt("15:30", 26, 0);
+        appointmentTableModel.setValueAt("15:45", 27, 0);
+        appointmentTableModel.setValueAt("16:00", 28, 0);
+        appointmentTableModel.setValueAt("16:15", 29, 0);
+        appointmentTableModel.setValueAt("16:30", 30, 0);
+        appointmentTableModel.setValueAt("16:45", 31, 0);
+        
+        List<VisitToday> entries = visitQuery.getVisits(d);
+
+        for (int i = 1; i < NUM_COLS; i++) {
+            for (int j = 0; j < NUM_ROWS; j++) {
+                for (VisitToday v : entries) {
+                    if (appointmentTableModel.getColumnName(i).equals(v.getDoctorName()) & df.format(v.getVisitTime()) != null & appointmentTableModel.getValueAt(j, 0).equals(df.format(v.getVisitTime()))) {
+                        
+                        appointmentTableModel.setValueAt(v.getPatientName(), j, i);
+                    }
+                }
+            }
+        }
+        loadPopupMenu();
+    }
+
     private void loadPopupMenu() {
         popupMenu = new JPopupMenu();
         viewPatient = new JMenuItem("Get Info");
@@ -156,6 +207,10 @@ public class HomePage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         appointmentTable = new javax.swing.JTable();
         Welcome = new javax.swing.JLabel();
+        Welcome1 = new javax.swing.JLabel();
+        goButton = new javax.swing.JButton();
+        appointmentDayComboBox = new javax.swing.JComboBox();
+        appointmentMonthComboBox = new javax.swing.JComboBox();
         patientButton = new javax.swing.JButton();
         patientLabel = new javax.swing.JLabel();
         patientTab = new javax.swing.JLabel();
@@ -246,8 +301,34 @@ public class HomePage extends javax.swing.JFrame {
         Welcome.setBackground(new java.awt.Color(0, 0, 0));
         Welcome.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         Welcome.setForeground(new java.awt.Color(255, 255, 255));
-        Welcome.setText("Welcome, ");
-        jInternalFrame2.getContentPane().add(Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 0, -1, 30));
+        Welcome.setText("View another date:");
+        jInternalFrame2.getContentPane().add(Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 70, -1, 40));
+
+        Welcome1.setBackground(new java.awt.Color(0, 0, 0));
+        Welcome1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        Welcome1.setForeground(new java.awt.Color(255, 255, 255));
+        Welcome1.setText("Welcome, ");
+        jInternalFrame2.getContentPane().add(Welcome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 0, -1, 30));
+
+        goButton.setText("Go");
+        goButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goButtonActionPerformed(evt);
+            }
+        });
+        jInternalFrame2.getContentPane().add(goButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 80, 50, -1));
+
+        appointmentDayComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        appointmentDayComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jInternalFrame2.getContentPane().add(appointmentDayComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 80, 60, -1));
+
+        appointmentMonthComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10/2014", "11/2014", "12/2014", "01/2015", "02/2015", "03/2015", "04/2015", "05/2015" }));
+        appointmentMonthComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appointmentMonthComboBoxActionPerformed(evt);
+            }
+        });
+        jInternalFrame2.getContentPane().add(appointmentMonthComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, -1, -1));
 
         patientButton.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         patientButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -456,6 +537,14 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_adminButtonActionPerformed
 
+    private void appointmentMonthComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentMonthComboBoxActionPerformed
+
+    }//GEN-LAST:event_appointmentMonthComboBoxActionPerformed
+
+    private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
+        loadOtherAppointments(appointmentDayComboBox.getSelectedItem() + "/" + (String) appointmentMonthComboBox.getSelectedItem());        
+    }//GEN-LAST:event_goButtonActionPerformed
+
     /**
      * @param accessLevel the accessLevel to set
      */
@@ -509,14 +598,18 @@ public class HomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Welcome;
-    private javax.swing.JTable appointmentTable;
+    private javax.swing.JLabel Welcome1;
     private javax.swing.JButton adminButton;
     private javax.swing.JLabel adminLabel;
     private javax.swing.JLabel adminTab;
+    private javax.swing.JComboBox appointmentDayComboBox;
+    private javax.swing.JComboBox appointmentMonthComboBox;
+    private javax.swing.JTable appointmentTable;
     private javax.swing.JButton billingButton;
     private javax.swing.JLabel billingLabel;
     private javax.swing.JLabel billingTab;
     private javax.swing.JLabel genetech;
+    private javax.swing.JButton goButton;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JLabel jLabel6;

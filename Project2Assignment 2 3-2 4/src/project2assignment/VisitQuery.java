@@ -8,6 +8,7 @@ package project2assignment;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,6 +25,7 @@ import java.util.logging.Logger;
 public class VisitQuery {
     private Connection conn = null;
     private PreparedStatement insertAppointment = null;
+    private PreparedStatement returnInvoiceByID = null;
     private PreparedStatement insertBill = null;
     private PreparedStatement displayBills = null;
     private PreparedStatement displayVisits = null;
@@ -177,5 +179,61 @@ public class VisitQuery {
         }
         closeConnection();
         return results;
+    }
+    
+    public List<VisitToday> getVisits(String date) {
+        List<VisitToday> results = null;
+        ResultSet resultSet = null;
+        openConnection();
+        
+        try {
+            displayVisits = conn.prepareStatement("SELECT * FROM VISITS NATURAL JOIN PATIENT NATURAL JOIN STAFF WHERE "
+                    + "to_date(appointment_time, 'DD/MM/YYYY') = to_date(?, 'DD/MM/YYYY')");
+            displayVisits.setString(1, date);
+            resultSet = displayVisits.executeQuery();
+            results = new ArrayList<VisitToday>();
+            
+            while (resultSet.next()) {
+                results.add(new VisitToday(
+                    resultSet.getDate("appointment_time"),
+                    resultSet.getString("patient_firstname") + " " + resultSet.getString("patient_lastname"),
+                    resultSet.getString("staff_firstname") + " " + resultSet.getString("staff_lastname"),
+                    resultSet.getInt("visit_id")));
+            }
+            
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        closeConnection();
+        return results;
+    }
+    
+    public Invoice getInvoice(int id) {
+        Invoice i = null;
+        ResultSet resultSet = null;
+        openConnection();
+
+        try {
+
+            returnInvoiceByID = conn.prepareStatement(
+                    "SELECT * FROM VISITS NATURAL JOIN PATIENT NATURAL JOIN BILLS NATURAL JOIN PROCEDURE WHERE patient_id = ?");
+            returnInvoiceByID.setInt(1, id);
+            resultSet = returnInvoiceByID.executeQuery();
+
+            if (resultSet.next()) {
+                i = new Invoice(
+                        i.getPatientName(),
+                        i.getReceiptNumber(),
+                        i.getMedicareNumber(),
+                        i.getStreetAddress(),
+                        i.getSuburb(),
+                        i.getPostcode(),
+                        i.getState());
+            }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        closeConnection();
+        return i;
     }
 }

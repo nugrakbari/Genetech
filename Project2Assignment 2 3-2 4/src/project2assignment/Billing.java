@@ -14,6 +14,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Billing extends javax.swing.JFrame {
 
+    private String patientName;
+    private int receiptNumber;
+    private int medicareNumber;
+    private String streetAddress;
+    private String suburb;
+    private String postcode;
+    private String state;
+    
     private String accessLevel;
     private int visitID;
     private DefaultTableModel procedureTableModel;
@@ -131,7 +139,7 @@ public class Billing extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel15 = new javax.swing.JLabel();
         gstTextField = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        printInvoice = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         payableTextField = new javax.swing.JTextField();
@@ -491,10 +499,10 @@ public class Billing extends javax.swing.JFrame {
 
         gstTextField.setEditable(false);
 
-        jButton4.setText("Print Invoice");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        printInvoice.setText("Print Invoice");
+        printInvoice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                printInvoiceActionPerformed(evt);
             }
         });
 
@@ -508,7 +516,7 @@ public class Billing extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(printInvoice)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -597,7 +605,7 @@ public class Billing extends javax.swing.JFrame {
                     .addComponent(payableTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(printInvoice)
                 .addGap(4, 4, 4))
         );
 
@@ -715,9 +723,13 @@ public class Billing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void printInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printInvoiceActionPerformed
+        PDFOutput pdf = new PDFOutput(visitID);
+        pdf.setBillableSum(Float.valueOf(billableItemsTextField.getText()));
+        pdf.setDiscountAmount(Float.valueOf(discountTextField.getText()));
+        pdf.setAmountDue(Float.valueOf(payableTextField.getText()));
+        
+    }//GEN-LAST:event_printInvoiceActionPerformed
 
     private void billingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingButtonMouseClicked
         Billing billing = new Billing(0);
@@ -791,8 +803,7 @@ public class Billing extends javax.swing.JFrame {
         this.visitID = visitID;
         System.out.println("(Billing) visitID is " + visitID);
     }
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminButton1;
     private javax.swing.JLabel adminLabel1;
@@ -809,7 +820,6 @@ public class Billing extends javax.swing.JFrame {
     private javax.swing.JPanel discountPanel;
     private javax.swing.JTextField discountTextField;
     private javax.swing.JTextField gstTextField;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
@@ -847,6 +857,7 @@ public class Billing extends javax.swing.JFrame {
     private javax.swing.JLabel patientLabel;
     private javax.swing.JLabel patientTab;
     private javax.swing.JTextField payableTextField;
+    private javax.swing.JButton printInvoice;
     private javax.swing.JTextField procedureCostTextField;
     private javax.swing.JTable procedureTable;
     private javax.swing.JButton scheduleButton;

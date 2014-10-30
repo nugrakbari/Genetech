@@ -181,6 +181,7 @@ public class TodaysVisit extends javax.swing.JFrame {
                 billing.setVisitID(visitID);
                 this.dispose();
             }
+            
     }//GEN-LAST:event_selectButtonActionPerformed
 
     

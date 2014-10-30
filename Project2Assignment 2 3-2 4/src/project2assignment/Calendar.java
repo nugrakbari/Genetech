@@ -48,8 +48,8 @@ public class Calendar{
         lblMonth = new JLabel ("January");
         lblYear = new JLabel ("Change year:");
         cmbYear = new JComboBox();
-        btnPrev = new JButton ("Back");
-        btnNext = new JButton ("Next");
+        btnPrev = new JButton ("<<");
+        btnNext = new JButton (">>");
         mtblCalendar = new DefaultTableModel(){public boolean isCellEditable(int rowIndex, int mColIndex){return false;}};
         tblCalendar = new JTable(mtblCalendar);
         stblCalendar = new JScrollPane(tblCalendar);
