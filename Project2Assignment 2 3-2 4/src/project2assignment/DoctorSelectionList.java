@@ -310,17 +310,26 @@ public class DoctorSelectionList extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        new HomePage().setVisible(true);
+        HomePage home = new HomePage();
+        home.setVisible(true);
+        home.setAccessLevel(accessLevel);
+        home.setUserID(userID);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void scheduleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleButtonMouseClicked
-        new HomePage().setVisible(true);
+        HomePage home = new HomePage();
+        home.setVisible(true);
+        home.setAccessLevel(accessLevel);
+        home.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
     private void patientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientButtonMouseClicked
-        new PatientView().setVisible(true);
+        PatientView patient = new PatientView();
+        patient.setVisible(true);
+        patient.setAccessLevel(accessLevel);
+        patient.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_patientButtonMouseClicked
 
@@ -334,7 +343,10 @@ public class DoctorSelectionList extends javax.swing.JFrame {
     }//GEN-LAST:event_billingButtonMouseClicked
 
     private void messagesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButtonMouseClicked
-        new InstantMessaging().setVisible(true);
+        InstantMessaging im = new InstantMessaging();
+        im.setVisible(true);
+        im.setAccessLevel(accessLevel);
+        im.setUserID(userID);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_messagesButtonMouseClicked
 
