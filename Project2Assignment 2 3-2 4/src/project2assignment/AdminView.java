@@ -50,6 +50,8 @@ private int userID;
         adminButton = new javax.swing.JButton();
         adminLabel = new javax.swing.JLabel();
         adminTab = new javax.swing.JLabel();
+        addButton = new javax.swing.JButton();
+        viewButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -188,6 +190,27 @@ private int userID;
         adminTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/Buttonclicked3.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(adminTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
 
+        addButton.setText("Add");
+        addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addButtonMouseClicked(evt);
+            }
+        });
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 560, 100, 40));
+
+        viewButton.setText("View");
+        viewButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewButtonMouseClicked(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 560, 100, 40));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -201,7 +224,7 @@ private int userID;
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jInternalFrame1.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 1020, 440));
+        jInternalFrame1.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 1020, 430));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, 1250, 670));
@@ -259,6 +282,20 @@ private int userID;
         // TODO add your handling code here:
     }//GEN-LAST:event_adminButtonActionPerformed
 
+    private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
+        new PatientForm(accessLevel).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_addButtonMouseClicked
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
+        new PatientForm(accessLevel).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_viewButtonMouseClicked
+
     
     /**
      * @param userID the userID to set
@@ -310,6 +347,7 @@ private int userID;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addButton;
     private javax.swing.JButton adminButton;
     private javax.swing.JLabel adminLabel;
     private javax.swing.JLabel adminTab;
@@ -331,6 +369,7 @@ private int userID;
     private javax.swing.JButton scheduleButton;
     private javax.swing.JLabel scheduleLabel;
     private javax.swing.JLabel scheduleTab;
+    private javax.swing.JButton viewButton;
     private javax.swing.JLabel welcome;
     // End of variables declaration//GEN-END:variables
 }

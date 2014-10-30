@@ -65,6 +65,7 @@ private int userID;
         adminButton = new javax.swing.JButton();
         adminLabel = new javax.swing.JLabel();
         adminTab = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -310,6 +311,14 @@ private int userID;
         adminTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/Buttonclicked3.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(adminTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
 
+        backButton.setText("Back");
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backButtonMouseClicked(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 570, 100, 40));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/panel5.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
 
@@ -381,6 +390,11 @@ private int userID;
         // TODO add your handling code here:
     }//GEN-LAST:event_adminButtonActionPerformed
 
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
+        new PatientView().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backButtonMouseClicked
+
     
     /**
      * @param userID the userID to set
@@ -436,6 +450,7 @@ private int userID;
     private javax.swing.JButton adminButton;
     private javax.swing.JLabel adminLabel;
     private javax.swing.JLabel adminTab;
+    private javax.swing.JButton backButton;
     private javax.swing.JButton billingButton;
     private javax.swing.JLabel billingLabel;
     private javax.swing.JLabel billingTab;
