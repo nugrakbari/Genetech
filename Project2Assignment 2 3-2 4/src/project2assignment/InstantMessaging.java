@@ -314,7 +314,10 @@ public class InstantMessaging extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void patientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientButtonMouseClicked
-        //new PatientForm().setVisible(true);
+        PatientView patient = new PatientView();
+        patient.setVisible(true);
+        patient.setAccessLevel(accessLevel);
+        patient.setUserID(userID);
         this.dispose();  // TODO add your handling code here:
     }//GEN-LAST:event_patientButtonMouseClicked
 
@@ -323,7 +326,10 @@ public class InstantMessaging extends javax.swing.JFrame {
     }//GEN-LAST:event_patientButtonActionPerformed
 
     private void messagingButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagingButtonMouseClicked
-        new InstantMessaging().setVisible(true);
+        InstantMessaging im = new InstantMessaging();
+        im.setVisible(true);
+        im.setAccessLevel(accessLevel);
+        im.setUserID(userID);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_messagingButtonMouseClicked
 
@@ -345,7 +351,10 @@ public class InstantMessaging extends javax.swing.JFrame {
     }//GEN-LAST:event_scheduleButtonActionPerformed
 
     private void genetechMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_genetechMouseClicked
-        new HomePage().setVisible(true);
+        HomePage home = new HomePage();
+        home.setVisible(true);
+        home.setAccessLevel(accessLevel);
+        home.setUserID(userID);
         this.dispose();
     }//GEN-LAST:event_genetechMouseClicked
 
