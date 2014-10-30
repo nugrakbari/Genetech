@@ -59,7 +59,7 @@ public class AdminView extends javax.swing.JFrame {
             staffTableModel.setValueAt(b.getPrescriberNumber(), tableRow, 8);
             tableRow++;
         }
-        //loadPopupMenu();
+        loadPopupMenu();
 
     }
     private void loadPopupMenu() {
@@ -79,9 +79,8 @@ public class AdminView extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent ae) {
             int staffElementToView = staffTable.getSelectedRow();
-            String StaffID = (String) staffTable.getValueAt(staffElementToView, 0);
+            String staffID = (String) staffTable.getValueAt(staffElementToView, 0);
             int id = Integer.parseInt(staffID);
-            
 
             if (staffElementToView != -1) {
                 System.out.println(id);
@@ -138,7 +137,7 @@ public class AdminView extends javax.swing.JFrame {
         jInternalFrame1.setVisible(true);
         jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/logo glow.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/logo-glow.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 60)); // NOI18N

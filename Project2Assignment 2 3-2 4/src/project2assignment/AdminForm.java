@@ -419,7 +419,7 @@ public enum Action {
         new PatientView().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backButtonMouseClicked
-  public void setAction(PatientForm.Action action) {
+  public void setAction(AdminForm.Action action) {
         this.action = action;
         System.out.println("(Staff) setting action as " + action);
     }
@@ -434,10 +434,10 @@ public enum Action {
         Staff s = staffQuery.getStaffByID(toEdit);
         System.out.println("Staff name is " + s.getFirstName());
         if (s != null) {
-            this.staffIDTextfield.setText(s.get());
-            this.firstNameTextfield.setText(s.getLastName());
-            this.lastnameTextfield.settext(s.getGen());
-            this.accesslevelTextfield.setText(s.getStreetAddress());
+            this.staffIDTextfield.setText(String.valueOf(s.getStaffId()));
+            this.firstNameTextfield.setText(s.getFirstName());
+            this.lastnameTextfield.setText(s.getLastName());
+            this.accesslevelTextfield.setText(s.getAccessLevel());
           
         } else {
             //TODO the staff member does not exist
