@@ -79,15 +79,16 @@ public class AdminView extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent ae) {
             int staffElementToView = staffTable.getSelectedRow();
-            String staffID = (String) staffTable.getValueAt(staffElementToView, 0);
-            int id = Integer.parseInt(staffID);
+            int staffID = (int) staffTable.getValueAt(staffElementToView, 0);
+            System.out.println("STAFFID HERE: " + staffID);
+            //int id = Integer.parseInt(staffID);
 
             if (staffElementToView != -1) {
-                System.out.println(id);
+               // System.out.println(id);
                 AdminForm form = new AdminForm();
-                //form.setAccessLevel(accessLevel);
+                form.setAccessLevel(accessLevel);
                 form.setAction(AdminForm.Action.EDIT);
-                form.setToEdit(id);
+                form.setToEdit(staffID);
                 setVisible(false);
                 form.setVisible(true);
             }
