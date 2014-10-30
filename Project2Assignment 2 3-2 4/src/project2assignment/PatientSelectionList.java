@@ -99,13 +99,22 @@ public class PatientSelectionList extends javax.swing.JFrame {
         patientTable = new javax.swing.JTable();
         selectButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        searchField1 = new javax.swing.JTextField();
+        searchButton1 = new javax.swing.JButton();
+        cancelButton1 = new javax.swing.JButton();
+        selectButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jInternalFrame1.setTitle("Browse Patient");
         jInternalFrame1.setVisible(true);
+        jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Find patient");
+        jInternalFrame1.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1026, 26, -1, -1));
+        jInternalFrame1.getContentPane().add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1113, 20, 181, -1));
 
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +122,7 @@ public class PatientSelectionList extends javax.swing.JFrame {
                 searchButtonActionPerformed(evt);
             }
         });
+        jInternalFrame1.getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 21, -1, -1));
 
         patientTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -127,12 +137,15 @@ public class PatientSelectionList extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(patientTable);
 
+        jInternalFrame1.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 620, 300));
+
         selectButton.setText("Select");
         selectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectButtonActionPerformed(evt);
             }
         });
+        jInternalFrame1.getContentPane().add(selectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1278, 380, 104, -1));
 
         cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -140,62 +153,53 @@ public class PatientSelectionList extends javax.swing.JFrame {
                 cancelButtonActionPerformed(evt);
             }
         });
+        jInternalFrame1.getContentPane().add(cancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1168, 380, 104, -1));
 
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(cancelButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap(253, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchButton)
-                .addGap(247, 247, 247))
-        );
+        jLabel2.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Find Patient:");
+        jInternalFrame1.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 110, 50));
+        jInternalFrame1.getContentPane().add(searchField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 181, 30));
 
-        jInternalFrame1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cancelButton, selectButton});
+        searchButton1.setText("Search");
+        searchButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButton1ActionPerformed(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(searchButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, -1, -1));
 
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectButton)
-                    .addComponent(cancelButton))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+        cancelButton1.setText("Cancel");
+        cancelButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButton1ActionPerformed(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(cancelButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, 100, 40));
+
+        selectButton1.setText("Select");
+        selectButton1.setVerifyInputWhenFocusTarget(false);
+        selectButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectButton1ActionPerformed(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(selectButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 100, 40));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
+        jInternalFrame1.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-540, -160, -1, 980));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1)
+            .addComponent(jInternalFrame1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
         );
 
         pack();
@@ -213,6 +217,19 @@ public class PatientSelectionList extends javax.swing.JFrame {
         toSearch = searchField.getText();
         searchPatientTable();
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
+        /*toSearch = searchField.getText();
+        searchDoctorTable();*/
+    }//GEN-LAST:event_searchButton1ActionPerformed
+
+    private void cancelButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_cancelButton1ActionPerformed
+
+    private void selectButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButton1ActionPerformed
+
+    }//GEN-LAST:event_selectButton1ActionPerformed
 
         /**
      * @param accessLevel the accessLevel to set
@@ -267,13 +284,19 @@ public class PatientSelectionList extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
+    private javax.swing.JButton cancelButton1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable patientTable;
     private javax.swing.JButton searchButton;
+    private javax.swing.JButton searchButton1;
     private javax.swing.JTextField searchField;
+    private javax.swing.JTextField searchField1;
     private javax.swing.JButton selectButton;
+    private javax.swing.JButton selectButton1;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -59,6 +59,9 @@ public class HomePage extends javax.swing.JFrame {
         scheduleButton = new javax.swing.JButton();
         scheduleLabel = new javax.swing.JLabel();
         scheduleTab = new javax.swing.JLabel();
+        adminButton = new javax.swing.JButton();
+        adminLabel = new javax.swing.JLabel();
+        adminTab = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
@@ -239,6 +242,31 @@ public class HomePage extends javax.swing.JFrame {
         scheduleTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/Untitled3.png"))); // NOI18N
         jInternalFrame2.getContentPane().add(scheduleTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
+        adminButton.setBorderPainted(false);
+        scheduleButton.setOpaque(false);
+        scheduleButton.setContentAreaFilled(false);
+        adminButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminButtonMouseClicked(evt);
+            }
+        });
+        adminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminButtonActionPerformed(evt);
+            }
+        });
+        jInternalFrame2.getContentPane().add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
+
+        adminLabel.setBackground(new java.awt.Color(255, 255, 255));
+        adminLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        adminLabel.setForeground(new java.awt.Color(255, 255, 255));
+        adminLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/id_card.png"))); // NOI18N
+        adminLabel.setText("Admin");
+        jInternalFrame2.getContentPane().add(adminLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
+
+        adminTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/button2.png"))); // NOI18N
+        jInternalFrame2.getContentPane().add(adminTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
         jInternalFrame2.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, -200, -1, 980));
 
@@ -298,6 +326,14 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_scheduleButtonMouseClicked
 
+    private void adminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminButtonMouseClicked
+
+    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminButtonActionPerformed
+
     /**
      * @param accessLevel the accessLevel to set
      */
@@ -352,6 +388,9 @@ public class HomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Welcome;
+    private javax.swing.JButton adminButton;
+    private javax.swing.JLabel adminLabel;
+    private javax.swing.JLabel adminTab;
     private javax.swing.JButton billingButton;
     private javax.swing.JLabel billingLabel;
     private javax.swing.JLabel billingTab;

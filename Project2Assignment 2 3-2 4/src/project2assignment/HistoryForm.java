@@ -93,6 +93,9 @@ public class HistoryForm extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
+        adminButton = new javax.swing.JButton();
+        adminLabel = new javax.swing.JLabel();
+        adminTab = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -424,6 +427,31 @@ public class HistoryForm extends javax.swing.JFrame {
         jInternalFrame1.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 290, -1, -1));
         jInternalFrame1.getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 250, 300, -1));
 
+        adminButton.setBorderPainted(false);
+        scheduleButton.setOpaque(false);
+        scheduleButton.setContentAreaFilled(false);
+        adminButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminButtonMouseClicked(evt);
+            }
+        });
+        adminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminButtonActionPerformed(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
+
+        adminLabel.setBackground(new java.awt.Color(255, 255, 255));
+        adminLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        adminLabel.setForeground(new java.awt.Color(255, 255, 255));
+        adminLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/id_card.png"))); // NOI18N
+        adminLabel.setText("Admin");
+        jInternalFrame1.getContentPane().add(adminLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
+
+        adminTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/button2.png"))); // NOI18N
+        jInternalFrame1.getContentPane().add(adminTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/panel5.png"))); // NOI18N
         jInternalFrame1.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 1020, -1));
 
@@ -489,6 +517,14 @@ public class HistoryForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
+    private void adminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminButtonMouseClicked
+
+    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminButtonActionPerformed
+
     /**
      * @param accessLevel the accessLevel to set
      */
@@ -542,6 +578,9 @@ public class HistoryForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adminButton;
+    private javax.swing.JLabel adminLabel;
+    private javax.swing.JLabel adminTab;
     private javax.swing.JButton billingButton;
     private javax.swing.JLabel billingLabel;
     private javax.swing.JLabel billingTab;
