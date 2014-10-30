@@ -43,7 +43,9 @@ public class PDFOutput {
         
         Invoice invoice = visitQuery.getInvoice(visit);
         
-        Document document = new Document();
+        System.out.println("Patient is " + invoice.getPatientName());
+        
+        /*Document document = new Document();
         try{ 
         PdfWriter.getInstance(document, new FileOutputStream("Receipt.pdf"));
         document.open();
@@ -108,7 +110,7 @@ public class PDFOutput {
         
         } catch (Exception e){
             e.printStackTrace();
-        }
+        }*/
        
     }
 

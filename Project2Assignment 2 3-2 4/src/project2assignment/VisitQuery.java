@@ -216,19 +216,19 @@ public class VisitQuery {
         try {
 
             returnInvoiceByID = conn.prepareStatement(
-                    "SELECT * FROM VISITS NATURAL JOIN PATIENT NATURAL JOIN BILLS NATURAL JOIN PROCEDURE WHERE patient_id = ?");
+                    "SELECT * FROM VISITS NATURAL JOIN PATIENT NATURAL JOIN BILLS NATURAL JOIN PROCEDURES WHERE visit_id = ?");
             returnInvoiceByID.setInt(1, id);
             resultSet = returnInvoiceByID.executeQuery();
 
             if (resultSet.next()) {
                 i = new Invoice(
-                        i.getPatientName(),
-                        i.getReceiptNumber(),
-                        i.getMedicareNumber(),
-                        i.getStreetAddress(),
-                        i.getSuburb(),
-                        i.getPostcode(),
-                        i.getState());
+                        resultSet.getString("patient_firstname" + " " + resultSet.getString("patient_lastname")),
+                        resultSet.getInt("visit_id"),
+                        resultSet.getString("medicare_number"),
+                        resultSet.getString("street_address"),
+                        resultSet.getString("suburb"),
+                        resultSet.getString("postcode"),
+                        resultSet.getString("state"));
             }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
