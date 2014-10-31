@@ -360,6 +360,11 @@ public class PatientView extends javax.swing.JFrame {
                 viewButtonMouseClicked(evt);
             }
         });
+        viewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewButtonActionPerformed(evt);
+            }
+        });
         internalFrame.getContentPane().add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 560, 100, 40));
 
         searchButton.setText("Search");
@@ -500,6 +505,23 @@ public class PatientView extends javax.swing.JFrame {
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_adminButtonActionPerformed
+
+    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
+        int patientElementToView = patientTable.getSelectedRow();
+            String patientID = (String) patientTable.getValueAt(patientElementToView, 0);
+            int id = Integer.parseInt(patientID);
+            
+
+            if (patientElementToView != -1) {
+                System.out.println(id);
+                PatientForm form = new PatientForm(accessLevel);
+                //form.setAccessLevel(accessLevel);
+                form.setAction(PatientForm.Action.EDIT);
+                form.setToEdit(id);
+                setVisible(false);
+                form.setVisible(true);
+            }
+    }//GEN-LAST:event_viewButtonActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {
         loadPopupMenu();

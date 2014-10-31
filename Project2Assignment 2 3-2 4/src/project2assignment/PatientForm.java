@@ -1260,6 +1260,8 @@ public class PatientForm extends javax.swing.JFrame {
             Logger.getLogger(PatientForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         PatientView patientList = new PatientView();
+        patientList.setAccessLevel(accessLevel);
+        patientList.setUserID(userID);
         this.setVisible(false);
         patientList.setVisible(true);
     }//GEN-LAST:event_saveButtonActionPerformed
