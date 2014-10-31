@@ -228,7 +228,18 @@ public class PatientSelectionList extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButton1ActionPerformed
 
     private void selectButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButton1ActionPerformed
+        int patientElementToView = patientTable.getSelectedRow();
+            int patientID = (int) patientTable.getValueAt(patientElementToView, 0);
+            //int id = Integer.parseInt(patientID);
+            AppointmentEntry a = new AppointmentEntry(patientID);
+            a.setVisible(true);
 
+            if (patientElementToView != -1) {
+                System.out.println(patientID);
+                a.setAccessLevel(accessLevel);
+                a.setPatientID(patientID);
+                this.dispose();
+            }
     }//GEN-LAST:event_selectButton1ActionPerformed
 
         /**
