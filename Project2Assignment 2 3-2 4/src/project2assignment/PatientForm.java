@@ -104,7 +104,7 @@ public class PatientForm extends javax.swing.JFrame {
         genetechLabel = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
-        messagesButton = new javax.swing.JButton();
+        messagesButton1 = new javax.swing.JButton();
         messagesLabel = new javax.swing.JLabel();
         messagesTab = new javax.swing.JLabel();
         patientButton = new javax.swing.JButton();
@@ -115,8 +115,8 @@ public class PatientForm extends javax.swing.JFrame {
         billingTab = new javax.swing.JLabel();
         scheduleButton = new javax.swing.JButton();
         scheduleLabel = new javax.swing.JLabel();
+        messagesButton = new javax.swing.JButton();
         scheduleTab = new javax.swing.JLabel();
-        adminButton = new javax.swing.JButton();
         adminLabel = new javax.swing.JLabel();
         adminTab = new javax.swing.JLabel();
         Tabs = new javax.swing.JTabbedPane();
@@ -263,17 +263,17 @@ public class PatientForm extends javax.swing.JFrame {
         });
         jInternalFrame2.getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 580, 100, 40));
 
-        messagesButton.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
-        messagesButton.setForeground(new java.awt.Color(255, 255, 255));
-        messagesButton.setBorderPainted(false);
-        messagesButton.setContentAreaFilled(false);
+        messagesButton1.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        messagesButton1.setForeground(new java.awt.Color(255, 255, 255));
+        messagesButton1.setBorderPainted(false);
+        messagesButton1.setContentAreaFilled(false);
         messagesButton.setOpaque(false);
-        messagesButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        messagesButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                messagesButtonMouseClicked(evt);
+                messagesButton1MouseClicked(evt);
             }
         });
-        jInternalFrame2.getContentPane().add(messagesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 170, 80));
+        jInternalFrame2.getContentPane().add(messagesButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 170, 80));
 
         messagesLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         messagesLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -359,23 +359,20 @@ public class PatientForm extends javax.swing.JFrame {
         scheduleLabel.setText("Schedule");
         jInternalFrame2.getContentPane().add(scheduleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
+        messagesButton.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        messagesButton.setForeground(new java.awt.Color(255, 255, 255));
+        messagesButton.setBorderPainted(false);
+        messagesButton.setContentAreaFilled(false);
+        messagesButton.setOpaque(false);
+        messagesButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                messagesButtonMouseClicked(evt);
+            }
+        });
+        jInternalFrame2.getContentPane().add(messagesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
+
         scheduleTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/button2.png"))); // NOI18N
         jInternalFrame2.getContentPane().add(scheduleTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
-
-        adminButton.setBorderPainted(false);
-        scheduleButton.setOpaque(false);
-        scheduleButton.setContentAreaFilled(false);
-        adminButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                adminButtonMouseClicked(evt);
-            }
-        });
-        adminButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminButtonActionPerformed(evt);
-            }
-        });
-        jInternalFrame2.getContentPane().add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
 
         adminLabel.setBackground(new java.awt.Color(255, 255, 255));
         adminLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
@@ -1364,17 +1361,9 @@ public class PatientForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_givenNameFieldActionPerformed
 
-    private void adminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminButtonMouseClicked
-        AdminView admin = new AdminView();
-        admin.setVisible(true);
-        admin.setAccessLevel(accessLevel);
-        admin.setUserID(userID);
-        this.dispose();
-    }//GEN-LAST:event_adminButtonMouseClicked
-
-    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
+    private void messagesButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButton1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_adminButtonActionPerformed
+    }//GEN-LAST:event_messagesButton1MouseClicked
 
     /**
      *
@@ -1473,7 +1462,6 @@ public class PatientForm extends javax.swing.JFrame {
     private javax.swing.JTabbedPane Tabs;
     private javax.swing.JLabel Welcome;
     private javax.swing.JButton addButton;
-    private javax.swing.JButton adminButton;
     private javax.swing.JLabel adminLabel;
     private javax.swing.JLabel adminTab;
     private javax.swing.JButton backButton;
@@ -1567,6 +1555,7 @@ public class PatientForm extends javax.swing.JFrame {
     private javax.swing.JTextField medicareNoField;
     private javax.swing.JTextField medicationsField;
     private javax.swing.JButton messagesButton;
+    private javax.swing.JButton messagesButton1;
     private javax.swing.JLabel messagesLabel;
     private javax.swing.JLabel messagesTab;
     private javax.swing.JTextField mobilePhoneField;
