@@ -20,17 +20,21 @@ public class AppointmentEntry extends javax.swing.JFrame {
     private DateFormat df;
     private Appointment apt;
     private VisitQuery visitQuery;
-    
+    private int patientID;
     private int userID;
     private String accessLevel;
 
     /**
      * Creates new form AppointmentEntry
      */
-    public AppointmentEntry() {
+    public AppointmentEntry(int patient) {
+        setPatientID(patient);
         df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         visitQuery = new VisitQuery();
         initComponents();
+        if (patient != 0) {
+            patientIDField.setText(String.valueOf(patient));
+        }
     }
 
     /**
@@ -74,6 +78,12 @@ public class AppointmentEntry extends javax.swing.JFrame {
         jLabel1.setText("Patient ID:");
 
         jLabel2.setText("Date:");
+
+        patientIDField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patientIDFieldActionPerformed(evt);
+            }
+        });
 
         browsePatientButton.setText("Browse");
         browsePatientButton.addActionListener(new java.awt.event.ActionListener() {
@@ -244,6 +254,7 @@ public class AppointmentEntry extends javax.swing.JFrame {
 
     private void browsePatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browsePatientButtonActionPerformed
         new PatientSelectionList().setVisible(true);
+        dispose();
     }//GEN-LAST:event_browsePatientButtonActionPerformed
 
     private void appointmentMonthComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentMonthComboBoxActionPerformed
@@ -312,37 +323,6 @@ public class AppointmentEntry extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AppointmentEntry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AppointmentEntry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AppointmentEntry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AppointmentEntry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AppointmentEntry().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox appointmentDayComboBox;
@@ -367,4 +347,11 @@ public class AppointmentEntry extends javax.swing.JFrame {
     private javax.swing.JTextArea notesTextArea;
     private javax.swing.JTextField patientIDField;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @param patientID the patientID to set
+     */
+    public void setPatientID(int patientID) {
+        this.patientID = patientID;
+    }
 }

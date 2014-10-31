@@ -6,9 +6,13 @@
 
 package project2assignment;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,6 +28,8 @@ public class ViewHistory extends javax.swing.JFrame {
     private DateFormat df;
     private DefaultTableModel historyTableModel;
     private VisitQuery visitQuery;
+    private JPopupMenu popupMenu;
+    private JMenuItem viewPatient;
     /**
      * Creates new form ViewHistory
      */
@@ -39,9 +45,9 @@ public class ViewHistory extends javax.swing.JFrame {
         visitQuery = new VisitQuery();
         
         historyTableModel = new DefaultTableModel();
-        historyTableModel.setColumnCount(4);
-        historyTableModel.setColumnIdentifiers(new String[]{"Date", "Doctor", "Procedure Done",
-            "Visit Number"});
+        historyTableModel.setColumnCount(10);
+        historyTableModel.setColumnIdentifiers(new String[]{"Visit Number", "Date", "Doctor",
+            "Weight" , "Blood Pressure", "Heart Rate", "Oxygen saturation", "FEV1", "Lung Capacity", "Tidal Lung Flow"});
         historyTable.setModel(historyTableModel);
         loadHistoryTable();
     }
@@ -51,14 +57,51 @@ public class ViewHistory extends javax.swing.JFrame {
         int tableRow = 0;
         historyTableModel.setNumRows(entries.size());
         for (VisitHistory v : entries) {
-            historyTableModel.setValueAt(df.format(v.getVisitDate()), tableRow, 0);
-            historyTableModel.setValueAt(v.getDoctorsName(), tableRow, 1);
-            historyTableModel.setValueAt(v.getProcedure(), tableRow, 2);
-            historyTableModel.setValueAt(v.getVisitID(), tableRow, 3);
+            historyTableModel.setValueAt(v.getVisitID(), tableRow, 0);
+            historyTableModel.setValueAt(df.format(v.getVisitDate()), tableRow, 1);
+            historyTableModel.setValueAt(v.getDoctorsName(), tableRow, 2);
+            historyTableModel.setValueAt(v.getCurrentWeight(), tableRow, 3);
+            historyTableModel.setValueAt(v.getBloodPressure(), tableRow, 4);
+            historyTableModel.setValueAt(v.getHeartRate(), tableRow, 5);
+            historyTableModel.setValueAt(v.getOxygenLevel(), tableRow, 6);
+            historyTableModel.setValueAt(v.getVisitID(), tableRow, 7);
+            historyTableModel.setValueAt(v.getVisitID(), tableRow, 8);
             tableRow++;
         }
-        //loadPopupMenu();
+        loadPopupMenu();
     }
+    
+    private void loadPopupMenu() {
+        popupMenu = new JPopupMenu();
+        viewPatient = new JMenuItem("Get Info");
+
+        viewPatient.addActionListener(viewVisitListener);
+
+        popupMenu.add(viewPatient);
+
+        historyTable.setComponentPopupMenu(popupMenu);
+        
+    }
+    
+    private final ActionListener viewVisitListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            int patientElementToView = historyTable.getSelectedRow();
+            String patientID = (String) historyTable.getValueAt(patientElementToView, 3);
+            int id = Integer.parseInt(patientID);
+            
+
+            if (patientElementToView != -1) {
+                System.out.println(id);
+                PatientForm form = new PatientForm(accessLevel);
+                //form.setAccessLevel(accessLevel);
+                form.setAction(PatientForm.Action.HISTORY);
+                form.setToEdit(id);
+                setVisible(false);
+                form.setVisible(true);
+            }
+        }
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.

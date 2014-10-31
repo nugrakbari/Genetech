@@ -302,7 +302,15 @@ public class VisitQuery {
                     resultSet.getDate("appointment_time"),
                     resultSet.getString("staff_firstname") + " " + resultSet.getString("staff_lastname"),
                     resultSet.getString("procedure_done"),
-                    resultSet.getInt("visit_id")));
+                    resultSet.getInt("visit_id"),
+                    resultSet.getFloat("current_weight"),
+                    resultSet.getString("blood_pressure"),
+                    resultSet.getInt("heart_rate"),
+                    resultSet.getInt("oxy_level"),
+                    resultSet.getString("prescribed_meds"),
+                    resultSet.getInt("fev1"),
+                    resultSet.getInt("lung_capacity"),
+                    resultSet.getInt("tidal_lung_flow")));
             }
             
         } catch (SQLException sqlException) {

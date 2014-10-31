@@ -42,7 +42,11 @@ public class PatientForm extends javax.swing.JFrame {
         /**
          *
          */
-        EDIT;
+        EDIT,
+        /**
+         *
+         */
+        HISTORY;
     }
     private PatientForm.Action action;
 
@@ -1254,6 +1258,10 @@ public class PatientForm extends javax.swing.JFrame {
                         int id = Integer.parseInt(procedureID);
                         System.out.println("PatientID is " + id);
                     }
+                }
+                
+                if (action == Action.HISTORY) {
+                    
                 }
             } else {
                 patientQuery.add(p);

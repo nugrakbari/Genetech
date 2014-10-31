@@ -561,7 +561,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void createAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createAppointmentMouseClicked
-    AppointmentEntry appt = new AppointmentEntry();
+    AppointmentEntry appt = new AppointmentEntry(0);
     appt.setVisible(true);
     appt.setAccessLevel(accessLevel);
     appt.setUserID(userID);
