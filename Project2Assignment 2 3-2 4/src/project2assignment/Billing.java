@@ -221,6 +221,11 @@ public class Billing extends javax.swing.JFrame {
 
         billingButton.setBorderPainted(false);
         billingButton.setContentAreaFilled(false);
+        billingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                billingButtonActionPerformed(evt);
+            }
+        });
         jInternalFrame1.getContentPane().add(billingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 170, 80));
 
         billingLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
@@ -796,6 +801,10 @@ public class Billing extends javax.swing.JFrame {
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_messagesButtonActionPerformed
 
+    private void billingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billingButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_billingButtonActionPerformed
+
     /**
      * @param accessLevel the accessLevel to set
      */
@@ -807,6 +816,14 @@ public class Billing extends javax.swing.JFrame {
     public void setVisitID(int visitID) {
         this.visitID = visitID;
         System.out.println("(Billing) visitID is " + visitID);
+    }
+    
+     /**
+     * @param userID the userID to set
+     */
+    public void setUserID(int userID) {
+        this.userID = userID;
+        System.out.println("(Billing) user is " + userID);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

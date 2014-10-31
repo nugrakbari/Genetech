@@ -324,6 +324,11 @@ public class PatientView extends javax.swing.JFrame {
                 billingButtonMouseClicked(evt);
             }
         });
+        billingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                billingButtonActionPerformed(evt);
+            }
+        });
         internalFrame.getContentPane().add(billingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 170, 80));
 
         billingLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
@@ -341,6 +346,11 @@ public class PatientView extends javax.swing.JFrame {
         messagesButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 messagesButtonMouseClicked(evt);
+            }
+        });
+        messagesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messagesButtonActionPerformed(evt);
             }
         });
         internalFrame.getContentPane().add(messagesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 170, 80));
@@ -503,7 +513,11 @@ public class PatientView extends javax.swing.JFrame {
     }//GEN-LAST:event_adminButtonMouseClicked
 
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
-        // TODO add your handling code here:
+        AdminView admin = new AdminView();
+        admin.setVisible(true);
+        admin.setAccessLevel(accessLevel);
+        admin.setUserID(userID);
+        this.dispose();
     }//GEN-LAST:event_adminButtonActionPerformed
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
@@ -522,6 +536,22 @@ public class PatientView extends javax.swing.JFrame {
                 form.setVisible(true);
             }
     }//GEN-LAST:event_viewButtonActionPerformed
+
+    private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
+        InstantMessaging im = new InstantMessaging();
+        im.setVisible(true);
+        im.setAccessLevel(accessLevel);
+        im.setUserID(userID);
+        this.dispose();
+    }//GEN-LAST:event_messagesButtonActionPerformed
+
+    private void billingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billingButtonActionPerformed
+        Billing bill = new Billing(0);
+        bill.setVisible(true);
+        bill.setAccessLevel(accessLevel);
+        bill.setUserID(userID);
+        this.dispose();
+    }//GEN-LAST:event_billingButtonActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {
         loadPopupMenu();

@@ -273,6 +273,11 @@ public class PatientForm extends javax.swing.JFrame {
                 messagesButton1MouseClicked(evt);
             }
         });
+        messagesButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messagesButton1ActionPerformed(evt);
+            }
+        });
         jInternalFrame2.getContentPane().add(messagesButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 170, 80));
 
         messagesLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
@@ -367,6 +372,11 @@ public class PatientForm extends javax.swing.JFrame {
         messagesButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 messagesButtonMouseClicked(evt);
+            }
+        });
+        messagesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messagesButtonActionPerformed(evt);
             }
         });
         jInternalFrame2.getContentPane().add(messagesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 170, 80));
@@ -1181,11 +1191,19 @@ public class PatientForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void patientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientButtonActionPerformed
-
+        PatientView pat = new PatientView();
+        pat.setVisible(true);
+        pat.setAccessLevel(accessLevel);
+        pat.setUserID(userID);
+        this.dispose();
     }//GEN-LAST:event_patientButtonActionPerformed
 
     private void billingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billingButtonActionPerformed
-        // TODO add your handling code here:
+        Billing bill = new Billing(0);
+        bill.setVisible(true);
+        bill.setAccessLevel(accessLevel);
+        bill.setUserID(userID);
+        this.dispose();
     }//GEN-LAST:event_billingButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
@@ -1364,6 +1382,18 @@ public class PatientForm extends javax.swing.JFrame {
     private void messagesButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_messagesButton1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_messagesButton1MouseClicked
+
+    private void messagesButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButton1ActionPerformed
+        InstantMessaging im = new InstantMessaging();
+        im.setVisible(true);
+        im.setAccessLevel(accessLevel);
+        im.setUserID(userID);
+        this.dispose();
+    }//GEN-LAST:event_messagesButton1ActionPerformed
+
+    private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_messagesButtonActionPerformed
 
     /**
      *
