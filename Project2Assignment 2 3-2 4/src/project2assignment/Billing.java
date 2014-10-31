@@ -23,6 +23,7 @@ public class Billing extends javax.swing.JFrame {
     private String state;
     
     private String accessLevel;
+    private int userID; 
     private int visitID;
     private DefaultTableModel procedureTableModel;
     private ProcedureQuery procedureQuery;
@@ -237,6 +238,11 @@ public class Billing extends javax.swing.JFrame {
         messagesButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 messagesButtonMouseClicked(evt);
+            }
+        });
+        messagesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messagesButtonActionPerformed(evt);
             }
         });
         jInternalFrame1.getContentPane().add(messagesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 170, 80));
@@ -781,6 +787,14 @@ public class Billing extends javax.swing.JFrame {
     private void adminButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_adminButton1ActionPerformed
+
+    private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
+        InstantMessaging im = new InstantMessaging();
+        im.setVisible(true);
+        im.setAccessLevel(accessLevel);
+        im.setUserID(userID);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_messagesButtonActionPerformed
 
     /**
      * @param accessLevel the accessLevel to set

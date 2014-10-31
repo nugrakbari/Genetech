@@ -175,6 +175,11 @@ public enum Action {
                 messagesButtonMouseClicked(evt);
             }
         });
+        messagesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messagesButtonActionPerformed(evt);
+            }
+        });
         jInternalFrame1.getContentPane().add(messagesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 170, 80));
 
         messagesLabel.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
@@ -400,6 +405,14 @@ public enum Action {
         new PatientView().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backButtonMouseClicked
+
+    private void messagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesButtonActionPerformed
+        InstantMessaging im = new InstantMessaging();
+        im.setVisible(true);
+        im.setAccessLevel(accessLevel);
+        im.setUserID(userID);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_messagesButtonActionPerformed
   public void setAction(AdminForm.Action action) {
         this.action = action;
         System.out.println("(Staff) setting action as " + action);
