@@ -90,10 +90,7 @@ public class HomePage extends javax.swing.JFrame {
             for (int j = 0; j < NUM_ROWS; j++) {
                 for (VisitToday v : entries) {
                     if (appointmentTableModel.getColumnName(i).equals(v.getDoctorName()) & df.format(v.getVisitTime()) != null & appointmentTableModel.getValueAt(j, 0).equals(df.format(v.getVisitTime()))) {
-                        
                         appointmentTableModel.setValueAt(v.getPatientName(), j, i);
-                    } else {
-                        appointmentTableModel.setValueAt("", j, i);
                     }
                 }
             }
@@ -234,6 +231,7 @@ public class HomePage extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         adminLabel = new javax.swing.JLabel();
         adminTab = new javax.swing.JLabel();
+        createAppointment = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
@@ -470,6 +468,19 @@ public class HomePage extends javax.swing.JFrame {
         adminTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/button2.png"))); // NOI18N
         jInternalFrame2.getContentPane().add(adminTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
 
+        createAppointment.setText("Create Appointment");
+        createAppointment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createAppointmentMouseClicked(evt);
+            }
+        });
+        createAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAppointmentActionPerformed(evt);
+            }
+        });
+        jInternalFrame2.getContentPane().add(createAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 570, 150, 40));
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2assignment/backdrop.png"))); // NOI18N
         jInternalFrame2.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, -200, -1, 980));
 
@@ -549,6 +560,18 @@ public class HomePage extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void createAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createAppointmentMouseClicked
+    AppointmentEntry appt = new AppointmentEntry();
+    appt.setVisible(true);
+    appt.setAccessLevel(accessLevel);
+    appt.setUserID(userID);
+    dispose();
+    }//GEN-LAST:event_createAppointmentMouseClicked
+
+    private void createAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAppointmentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createAppointmentActionPerformed
+
     /**
      * @param accessLevel the accessLevel to set
      */
@@ -611,6 +634,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton billingButton;
     private javax.swing.JLabel billingLabel;
     private javax.swing.JLabel billingTab;
+    private javax.swing.JButton createAppointment;
     private javax.swing.JLabel genetech;
     private javax.swing.JButton goButton;
     private javax.swing.JButton jButton2;

@@ -719,10 +719,10 @@ public class Billing extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     private void printInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printInvoiceActionPerformed
-        PDFOutput pdf = new PDFOutput(visitID);
+        /*PDFOutput pdf = new PDFOutput(visitID);
         pdf.setBillableSum(Float.valueOf(billableItemsTextField.getText()));
         pdf.setDiscountAmount(Float.valueOf(discountTextField.getText()));
-        pdf.setAmountDue(Float.valueOf(payableTextField.getText()));
+        pdf.setAmountDue(Float.valueOf(payableTextField.getText()));*/
         
     }//GEN-LAST:event_printInvoiceActionPerformed
 

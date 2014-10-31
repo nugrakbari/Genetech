@@ -124,6 +124,11 @@ public class AppointmentEntry extends javax.swing.JFrame {
                 createButtonMouseClicked(evt);
             }
         });
+        createButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setText("Cancel");
 
@@ -267,7 +272,17 @@ public class AppointmentEntry extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(PatientForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+    HomePage home = new HomePage();
+    home.setVisible(true);
+    home.setAccessLevel(accessLevel);
+    home.setUserID(userID);
+    this.dispose();   
     }//GEN-LAST:event_createButtonMouseClicked
+
+    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_createButtonActionPerformed
 
         /**
      * @param accessLevel the accessLevel to set
