@@ -79,12 +79,6 @@ public class AppointmentEntry extends javax.swing.JFrame {
 
         jLabel2.setText("Date:");
 
-        patientIDField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patientIDFieldActionPerformed(evt);
-            }
-        });
-
         browsePatientButton.setText("Browse");
         browsePatientButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

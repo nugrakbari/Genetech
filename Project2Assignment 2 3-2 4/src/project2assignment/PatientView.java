@@ -130,6 +130,7 @@ public class PatientView extends javax.swing.JFrame {
                 //form.setAccessLevel(accessLevel);
                 form.setAction(PatientForm.Action.EDIT);
                 form.setToEdit(id);
+                form.setUserID(userID);
                 setVisible(false);
                 form.setVisible(true);
             }
@@ -149,6 +150,8 @@ public class PatientView extends javax.swing.JFrame {
                 System.out.println(id);
                 history.setVisible(true);
                 history.setToView(id);
+                history.setAccessLevel(accessLevel);
+                history.setUserID(userID);
             }
         }
     };
