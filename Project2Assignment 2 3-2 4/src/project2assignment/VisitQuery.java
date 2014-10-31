@@ -30,6 +30,8 @@ public class VisitQuery {
     private PreparedStatement displayBills = null;
     private PreparedStatement displayVisits = null;
     private PreparedStatement displaySelectedVisits = null;
+    private PreparedStatement displayVisitHistory = null;
+    private PreparedStatement insertClinicalMeasurements = null;
     private ResultSet rs = null;
     private static final String URL = "jdbc:oracle:thin:@//sage.business.unsw.edu.au:1521/orcl01.asbpldb001.ad.unsw.edu.au";
     private static final String USERNAME = "Z3373928";
@@ -76,6 +78,9 @@ public class VisitQuery {
             }
             if (displaySelectedVisits != null) {
                 displaySelectedVisits.close();
+            }
+            if (insertClinicalMeasurements != null) {
+                insertClinicalMeasurements.close();
             }
             if (displayBills != null) {
                 displayBills.close();
@@ -185,17 +190,22 @@ public class VisitQuery {
         return results;
     }
     
-    public List<VisitToday> getVisits(String date) {
-        System.out.println("in get visits" + date);
+    public List<VisitToday> getVisits(String d) {
        
         List<VisitToday> results = null;
         ResultSet resultSet = null;
+        String date = d;
         openConnection();
         
         try {
-            displaySelectedVisits = conn.prepareStatement("SELECT * FROM VISITS NATURAL JOIN PATIENT NATURAL JOIN STAFF WHERE "
-                    + "to_date(appointment_time, 'DD/MM/YYYY') = to_date(?, 'DD/MM/YYYY')");
-            displaySelectedVisits.setString(1, date);
+            System.out.println("in get visits" + date);
+            displaySelectedVisits = conn.prepareStatement("SELECT * FROM VISITS v INNER JOIN PATIENT p ON"
+                    + " v.patient_id = p.patient_id INNER JOIN STAFF s ON v.staff_id = s.staff_id "
+                    + "WHERE "
+                    + "to_date('31/10/2014', 'DD/MM/YYYY') = to_date(v.appointment_time, 'DD/MM/YYYY')");
+            System.out.println("Setting date as " + date);
+            //displaySelectedVisits.setString(1, date);
+            System.out.println("Executing query");
             resultSet = displaySelectedVisits.executeQuery();
             results = new ArrayList<VisitToday>();
             
@@ -242,5 +252,63 @@ public class VisitQuery {
         }
         closeConnection();
         return i;
+        
+    }
+    
+    public void addClinicalMeasurements(ClinicalMeasurement c, int id) {
+            openConnection();
+            
+        try {
+            insertClinicalMeasurements = conn.prepareStatement("UPDATE VISITS "
+                    + "SET current_weight = ?, "
+                    + "blood_pressure = ?, "
+                    + "heart_rate = ?, "
+                    + "oxy_level = ?, "
+                    + "prescribed_meds = ?, "
+                    + "fev1 = ?, "
+                    + "lung_capacity = ?, "
+                    + "tidal_lung_flow = ? "
+                    + "WHERE patient_id = ? AND to_date(appointment_time, 'DD/MM/YYYY') = to_date(sysdate, 'DD/MM/YYYY')");
+            insertClinicalMeasurements.setFloat(1, c.getCurrentWeight());
+            insertClinicalMeasurements.setString(2, c.getBloodPressure());
+            insertClinicalMeasurements.setInt(3, c.getHeartRate());
+            insertClinicalMeasurements.setInt(4, c.getOxygenLevel());
+            insertClinicalMeasurements.setString(5, c.getPrescription());
+            insertClinicalMeasurements.setInt(6, c.getFev1());
+            insertClinicalMeasurements.setInt(7, c.getLungCapacity());
+            insertClinicalMeasurements.setInt(8, c.getTidalLungFlow());
+            insertClinicalMeasurements.setInt(9, id);
+            insertClinicalMeasurements.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(VisitQuery.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        closeConnection();
+    }
+    
+    public List<VisitHistory> getVisitHistory(int id) {
+        List<VisitHistory> results = null;
+        ResultSet resultSet = null;
+        openConnection();
+        
+        try {
+            displayVisitHistory = conn.prepareStatement("SELECT * FROM VISITS NATURAL JOIN STAFF WHERE patient_id = ?");
+            displayVisitHistory.setInt(1, id);
+            resultSet = displayVisitHistory.executeQuery();
+            results = new ArrayList<VisitHistory>();
+            
+            while (resultSet.next()) {
+                results.add(new VisitHistory(
+                    resultSet.getDate("appointment_time"),
+                    resultSet.getString("staff_firstname") + " " + resultSet.getString("staff_lastname"),
+                    resultSet.getString("procedure_done"),
+                    resultSet.getInt("visit_id")));
+            }
+            
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        closeConnection();
+        return results;
     }
 }

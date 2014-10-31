@@ -6,6 +6,11 @@
 
 package project2assignment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author GuestAccount
@@ -15,13 +20,44 @@ public class ViewHistory extends javax.swing.JFrame {
     private String accessLevel;
     private int toView;
     private int userID;
-
+    private PatientQuery patientQuery;
+    private DateFormat df;
+    private DefaultTableModel historyTableModel;
+    private VisitQuery visitQuery;
     /**
      * Creates new form ViewHistory
      */
-    public ViewHistory() {
+    public ViewHistory(int patient) {
+        setToView(patient);
         initComponents();
         patientIDField.setText(String.valueOf(toView));
+        patientQuery = new PatientQuery();
+        df = new SimpleDateFormat("dd/MM/yyyy");
+        Patient p = patientQuery.getPatientByID(patient);
+        patientNameField.setText(p.getFirstName() + " " + p.getLastName());
+        
+        visitQuery = new VisitQuery();
+        
+        historyTableModel = new DefaultTableModel();
+        historyTableModel.setColumnCount(4);
+        historyTableModel.setColumnIdentifiers(new String[]{"Date", "Doctor", "Procedure Done",
+            "Visit Number"});
+        historyTable.setModel(historyTableModel);
+        loadHistoryTable();
+    }
+    
+    private void loadHistoryTable() {
+        List<VisitHistory> entries = visitQuery.getVisitHistory(toView);
+        int tableRow = 0;
+        historyTableModel.setNumRows(entries.size());
+        for (VisitHistory v : entries) {
+            historyTableModel.setValueAt(df.format(v.getVisitDate()), tableRow, 0);
+            historyTableModel.setValueAt(v.getDoctorsName(), tableRow, 1);
+            historyTableModel.setValueAt(v.getProcedure(), tableRow, 2);
+            historyTableModel.setValueAt(v.getVisitID(), tableRow, 3);
+            tableRow++;
+        }
+        //loadPopupMenu();
     }
 
     /**
@@ -51,10 +87,10 @@ public class ViewHistory extends javax.swing.JFrame {
         welcome = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        patientNameField = new javax.swing.JTextField();
         patientIDField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        historyTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -176,20 +212,20 @@ public class ViewHistory extends javax.swing.JFrame {
         jLabel5.setText("Patient Name:");
         jInternalFrame1.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, 30));
 
-        jTextField1.setEnabled(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        patientNameField.setEditable(false);
+        patientNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                patientNameFieldActionPerformed(evt);
             }
         });
-        jInternalFrame1.getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 290, -1));
+        jInternalFrame1.getContentPane().add(patientNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 290, -1));
 
+        patientIDField.setEditable(false);
         patientIDField.setText(String.valueOf(toView)
         );
-        patientIDField.setEnabled(false);
         jInternalFrame1.getContentPane().add(patientIDField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 140, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        historyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -200,7 +236,7 @@ public class ViewHistory extends javax.swing.JFrame {
                 "Date", "Doctor", "Procedure Done"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(historyTable);
 
         jInternalFrame1.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 940, 250));
 
@@ -266,9 +302,9 @@ public class ViewHistory extends javax.swing.JFrame {
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void patientNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientNameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_patientNameFieldActionPerformed
 
     /**
      * @param accessLevel the accessLevel to set
@@ -292,45 +328,12 @@ public class ViewHistory extends javax.swing.JFrame {
         System.out.println("(InstantMessaging) user is " + userID);
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewHistory().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton billingButton;
     private javax.swing.JLabel billingLabel;
     private javax.swing.JLabel billingTab;
+    private javax.swing.JTable historyTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JInternalFrame jInternalFrame1;
@@ -341,8 +344,6 @@ public class ViewHistory extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel logo;
     private javax.swing.JButton messagesButton;
     private javax.swing.JLabel messagesLabel;
@@ -350,6 +351,7 @@ public class ViewHistory extends javax.swing.JFrame {
     private javax.swing.JButton patientButton;
     private javax.swing.JTextField patientIDField;
     private javax.swing.JLabel patientLabel;
+    private javax.swing.JTextField patientNameField;
     private javax.swing.JLabel patientTab;
     private javax.swing.JButton scheduleButton;
     private javax.swing.JLabel scheduleLabel;

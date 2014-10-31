@@ -142,7 +142,7 @@ public class PatientView extends javax.swing.JFrame {
             int patientElementToView = patientTable.getSelectedRow();
             String patientID = (String) patientTable.getValueAt(patientElementToView, 0);
             int id = Integer.parseInt(patientID);
-            ViewHistory history = new ViewHistory();
+            ViewHistory history = new ViewHistory(id);
             history.setVisible(true);
 
             if (patientElementToView != -1) {
