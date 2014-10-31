@@ -283,6 +283,11 @@ public class AdminView extends javax.swing.JFrame {
                 viewButtonMouseClicked(evt);
             }
         });
+        viewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewButtonActionPerformed(evt);
+            }
+        });
         jInternalFrame1.getContentPane().add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 560, 100, 40));
 
         staffTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -387,6 +392,10 @@ public class AdminView extends javax.swing.JFrame {
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_adminButtonActionPerformed
+
+    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewButtonActionPerformed
 
     /**
      * @param userID the userID to set
